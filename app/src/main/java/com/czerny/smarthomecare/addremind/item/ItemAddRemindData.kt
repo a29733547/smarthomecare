@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView.OnDateChangeListener
+import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.databinding.ItemRemindDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -17,6 +18,7 @@ import java.util.*
 class ItemAddRemindData : BottomSheetDialogFragment() {
 
     private lateinit var binding: ItemRemindDataBinding
+
 
 
     override fun onCreateView(
@@ -36,10 +38,16 @@ class ItemAddRemindData : BottomSheetDialogFragment() {
             Log.d("Czerny", "sDate formatted: $sDate")
 
             val testabd = "what is this"
-            (activity as MainActivity).remindTimeData = sDate
+//            (activity as MainActivity).remindTimeData = sDate
+
+
+
+
 
             binding.buttonRemindGetdata.setOnClickListener {
                 Log.d("czerny", "date=${(activity as MainActivity).remindTimeData}")
+                findNavController().previousBackStackEntry?.savedStateHandle?.set("RemindData", sDate)
+                findNavController().popBackStack()
             }
 
 //            var activity: MainActivity

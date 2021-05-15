@@ -16,6 +16,11 @@
         android:id="@+id/profileFragment"
         android:name="com.czerny.smarthomecare.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
+        android:label="ChatRoomFragment" />
+
     <dialog
         android:id="@+id/addRemindDialog"
         android:name="com.czerny.smarthomecare.addremind.AddRemindDialog"
@@ -53,10 +58,15 @@
     <action android:id="@+id/navigate_to_profile_fragment" app:destination="@id/profileFragment"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_chatroom_fragment" app:destination="@id/chatRoomFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
     <dialog
         android:id="@+id/itemAddRemindData"
         android:name="com.czerny.smarthomecare.addremind.item.ItemAddRemindData"
         android:label="ItemAddRemindData" />
+
 
 
 </navigation>

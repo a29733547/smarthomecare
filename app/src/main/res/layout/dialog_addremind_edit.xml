@@ -4,6 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="addremindEditViewModel"
+            type="com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel" />
+        <variable
+            name="testviewmode"
+            type="com.czerny.smarthomecare.addremind.item.AddRemindEditDialog" />
 
     </data>
 
@@ -44,7 +50,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/text_address"
-                app:layout_constraintTop_toTopOf="@+id/text_address" />
+                app:layout_constraintTop_toTopOf="@+id/text_address"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/text_content"
@@ -191,13 +198,27 @@
                 android:id="@+id/text_addremind_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="2021/05/15"
+                android:layout_marginStart="20dp"
+                android:text="@{addremindEditViewModel.getRemindTimeData}"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/text_data"
                 app:layout_constraintStart_toEndOf="@+id/text_data"
                 app:layout_constraintTop_toTopOf="@+id/text_data"
+                app:layout_constraintVertical_bias="1.0"
                 tools:text="2021/05/15" />
+
+<!--            <EditText-->
+<!--                android:id="@+id/text_addremind_data"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:text="@{addremindEditViewModel.getRemindTimeData}"-->
+<!--                android:textSize="16dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_data"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/text_data"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_data"-->
+<!--                app:layout_constraintVertical_bias="1.0"-->
+<!--                tools:text="2021/05/15" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

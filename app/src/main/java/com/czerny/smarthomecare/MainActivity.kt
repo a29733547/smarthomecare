@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToProfileFragment())
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.chatRoomFragment -> {
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment())
+                return@OnNavigationItemSelectedListener true
+
+            }
         }
         false
     }
