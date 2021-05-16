@@ -6,15 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.MainActivity
+import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.databinding.DialogAddremindEditBinding
 import com.czerny.smarthomecare.home.HomeViewModel
 
 
 class AddRemindEditDialog : AppCompatDialogFragment() {
+
+
 
     private val viewModel: AddHealthEditViewModel by lazy {
         ViewModelProvider(this).get(AddHealthEditViewModel::class.java)

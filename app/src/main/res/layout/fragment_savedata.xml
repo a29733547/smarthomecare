@@ -8,19 +8,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_savedata"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             tools:layout_editor_absoluteX="203dp"
             tools:layout_editor_absoluteY="37dp">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_savedata"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_remind_time">
 
 
             </com.google.android.material.tabs.TabLayout>

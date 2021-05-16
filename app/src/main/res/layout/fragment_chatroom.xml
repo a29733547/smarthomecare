@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#039BE5">
 
         <EditText
             android:id="@+id/edit_chatroom_keyin"
@@ -54,9 +55,9 @@
             android:id="@+id/recyclerview_chatroom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/chatroomt_recycler"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

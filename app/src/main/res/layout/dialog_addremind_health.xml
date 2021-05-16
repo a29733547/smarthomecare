@@ -12,14 +12,16 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_dialog_health"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/edit_note2"
+                android:id="@+id/edit_health_note"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -67,14 +69,14 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="0.1"
-                android:text="健康 :"
+                android:text="狀況 :"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
             <EditText
-                android:id="@+id/edit_content"
+                android:id="@+id/edit_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -88,7 +90,7 @@
                 app:layout_constraintTop_toTopOf="@+id/text_name" />
 
             <EditText
-                android:id="@+id/edit_note"
+                android:id="@+id/edit_health_content"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -112,17 +114,20 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_time" />
+                app:layout_constraintTop_toBottomOf="@+id/text_happen" />
 
             <Button
                 android:id="@+id/button_remind_edit"
-                android:layout_width="411dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:background="@drawable/add_add_button"
                 android:text="新增事項"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -143,30 +148,30 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_time"
+                android:id="@+id/text_happen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="0.1"
-                android:text="時間 :"
+                android:text="事項 :"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_address" />
 
             <EditText
-                android:id="@+id/editTextTime2"
+                android:id="@+id/edit_health_happen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="time"
-                app:layout_constraintBottom_toBottomOf="@+id/text_time"
+                app:layout_constraintBottom_toBottomOf="@+id/text_happen"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_time"
-                app:layout_constraintTop_toTopOf="@+id/text_time" />
+                app:layout_constraintStart_toEndOf="@+id/text_happen"
+                app:layout_constraintTop_toTopOf="@+id/text_happen" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
