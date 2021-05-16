@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.data.Message
 import com.czerny.smarthomecare.databinding.FragmentChatroomBinding
@@ -45,6 +46,9 @@ class ChatRoomFragment: Fragment() {
             }
         })
 
+        if (activity is MainActivity) {
+            (activity as MainActivity).mainToolBar("聊天室")
+        }
 
         return binding.root
     }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.databinding.FragmentHomeBinding
@@ -46,7 +47,9 @@ class HomeFragment:Fragment() {
             }
         })
 
-
+        if (activity is MainActivity) {
+            (activity as MainActivity).mainToolBar("提醒")
+        }
 
 
         return binding.root

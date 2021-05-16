@@ -6,7 +6,7 @@
     <data>
         <variable
             name="addremindEditViewModel"
-            type="com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel" />
+            type="com.czerny.smarthomecare.addremind.item.AddRemindEditViewModel" />
         <variable
             name="testviewmode"
             type="com.czerny.smarthomecare.addremind.item.AddRemindEditDialog" />
@@ -205,7 +205,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="@{addremindEditViewModel.getRemindTimeData}"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/text_data"
                 app:layout_constraintStart_toEndOf="@+id/text_data"

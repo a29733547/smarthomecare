@@ -26,7 +26,9 @@ class ProfileFragment : Fragment(){
 
 
 
-
+        if (activity is MainActivity) {
+            (activity as MainActivity).mainToolBar("個人資料")
+        }
 
         return binding.root
     }

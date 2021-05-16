@@ -48,6 +48,10 @@ class AddRemindDialog : BottomSheetDialogFragment() {
             findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddhealthEditDialog())
         }
 
+
+
+
+
         return binding.root
     }
 

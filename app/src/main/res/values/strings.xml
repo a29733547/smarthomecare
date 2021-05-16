@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">smarthomecare</string>
+
+    <!-- General -->
+    <string name="savedata">紀錄</string>
+    <string name="message">聊天室</string>
+
+    <string name="profile">個人資料</string>
+
+
 </resources>

@@ -2,6 +2,7 @@ package com.czerny.smarthomecare
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -82,6 +83,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    fun mainToolBar(newTitle: String) {
+        binding.textToolbarTitle.visibility = View.VISIBLE
+        binding.textToolbarTitle.text = newTitle
+        binding.toolbar.visibility = View.VISIBLE
+        binding.navView.visibility = View.VISIBLE
     }
 
 

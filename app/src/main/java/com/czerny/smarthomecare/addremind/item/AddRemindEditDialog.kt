@@ -20,8 +20,8 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
 
 
 
-    private val viewModel: AddHealthEditViewModel by lazy {
-        ViewModelProvider(this).get(AddHealthEditViewModel::class.java)
+    private val viewModel: AddRemindEditViewModel by lazy {
+        ViewModelProvider(this).get(AddRemindEditViewModel::class.java)
     }
 
     private lateinit var binding: DialogAddremindEditBinding
@@ -39,8 +39,7 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
         /**---------ItemAddRemindData 選擇日期後會這這邊Log會看到*/
         findNavController().currentBackStackEntry?.savedStateHandle?.
         getLiveData<String>("RemindData")?.observe(viewLifecycleOwner) { data ->
-            viewModel.getRemindTimeData = data
-
+            binding.textAddremindData.text = data
 
             Log.i("howdoyoudo","gogoback = ${data}")
             Log.i("howdoyoudo", "gogo= ${viewModel.getRemindTimeData}")

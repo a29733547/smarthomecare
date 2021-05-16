@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.databinding.FragmentSavedataBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -17,9 +18,17 @@ class SaveDataFragment : Fragment(){
                     it.adapter = SaveDataAdapteer(childFragmentManager)
                     it.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabsSavedata))
                 }
+
+                if (activity is MainActivity) {
+                    (activity as MainActivity).mainToolBar("健康紀錄")
+                }
                 return@onCreateView root
             }
 
+
+
+
     }
+
     
 }
