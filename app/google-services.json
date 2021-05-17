@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "378453191254",
+    "project_id": "smarthomecare-ab24a",
+    "storage_bucket": "smarthomecare-ab24a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378453191254:android:fc99fe113101f1b0bfa9f7",
+        "android_client_info": {
+          "package_name": "com.czerny.smarthomecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378453191254-9d6ev2m1ppt2pko315pjjaammcppurmj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzzuOAPBQQeNzeQkoZHSVxOFC_YOvxb0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378453191254-9d6ev2m1ppt2pko315pjjaammcppurmj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

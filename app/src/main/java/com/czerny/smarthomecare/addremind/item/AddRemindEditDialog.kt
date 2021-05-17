@@ -14,6 +14,9 @@ import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.databinding.DialogAddremindEditBinding
 import com.czerny.smarthomecare.home.HomeViewModel
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class AddRemindEditDialog : AppCompatDialogFragment() {
@@ -25,6 +28,7 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
     }
 
     private lateinit var binding: DialogAddremindEditBinding
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,33 +50,15 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
         }
 
 
-//        (activity as MainActivity).remindTimeData
-//        Log.i("wuwuhaha", "remindEdit =${(activity as MainActivity).remindTimeData}")
 
 
 
 
-//// 獲取意圖物件
-//        // 獲取意圖物件
-//        val intent = getIntent()
-////獲取傳遞的值
-////獲取傳遞的值
-//        val str = intent.getStringExtra("data")
-////設定值
-////設定值
-//        binding.textAddremindData.setText(str)
+
 
 
         return binding.root
     }
 
-    /**---------ItemAddRemindData 選擇日期後會這這邊Log會看到*/
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        findNavController().currentBackStackEntry?.savedStateHandle?.
-//        getLiveData<String>("RemindData")?.observe(viewLifecycleOwner) { data ->
-//            viewModel.getRemindTimeData = data
-//            Log.i("howdoyoudo","gogoback = ${data}")
-//            Log.i("howdoyoudo", "gogo= ${viewModel.getRemindTimeData}")
-//        }
-//    }
+
 }

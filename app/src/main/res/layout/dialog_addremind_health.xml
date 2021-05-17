@@ -4,6 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="viewModelAddHealth"
+            type="com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel" />
 
     </data>
 
@@ -28,7 +31,7 @@
                 android:layout_marginEnd="12dp"
                 android:ems="10"
                 android:hint="狀況良好繼續加油"
-                android:inputType="textPersonName"
+                android:text="@={viewModelAddHealth.health.note}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_note"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_note"
@@ -48,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_content" />
 
             <EditText
-                android:id="@+id/edit_address"
+                android:id="@+id/edit_palce"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -56,6 +59,7 @@
                 android:ems="10"
                 android:hint="台大醫院"
                 android:inputType="textPersonName"
+                android:text="@={viewModelAddHealth.health.palce}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -83,7 +87,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="爺爺"
-                android:inputType="textPersonName"
+                android:text="@={viewModelAddHealth.health.name}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_name"
@@ -97,7 +101,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="醫生待人親切"
-                android:inputType="textPersonName"
+                android:text="@={viewModelAddHealth.health.content}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_content"
@@ -161,13 +165,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_address" />
 
             <EditText
-                android:id="@+id/edit_health_happen"
+                android:id="@+id/edit_health_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:inputType="time"
+                android:text="@={viewModelAddHealth.health.title}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_happen"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_happen"
