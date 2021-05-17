@@ -37,6 +37,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildTypes {
+        release {
+            buildConfigField("Boolean", "LOGGER_VISIABLE", "false")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("Boolean", "LOGGER_VISIABLE", "true")
+        }
+    }
+
     dataBinding
             {
                 enabled true
