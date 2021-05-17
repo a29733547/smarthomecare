@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.MockData
+import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 class HomeViewModel : ViewModel(){
+//class HomeViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
 
     var editableList: MutableList<MockData> = mutableListOf()
 

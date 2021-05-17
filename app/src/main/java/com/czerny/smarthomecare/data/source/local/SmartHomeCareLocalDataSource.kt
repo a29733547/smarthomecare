@@ -1,6 +1,7 @@
 package com.czerny.smarthomecare.data.source.local
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.data.Author
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.source.SmartHomeCareDataSource
@@ -27,6 +28,14 @@ class SmartHomeCareLocalDataSource (val context: Context) : SmartHomeCareDataSou
         }
 
     override suspend fun getHealth(): Result<List<Health>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getLiveHealth(): MutableLiveData<List<Health>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun smart(health: Health): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

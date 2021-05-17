@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.czerny.smarthomecare.MockData
+import com.czerny.smarthomecare.data.Health
 
 import com.czerny.smarthomecare.databinding.ItemSavedataHealthBinding
 
-class SaveDataHealthAdapter (): ListAdapter<MockData, SaveDataHealthViewHoler>(healthDiffCallBack()) {
+class SaveDataHealthAdapter (): ListAdapter<Health, SaveDataHealthViewHoler>(healthDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaveDataHealthViewHoler {
         val layoutInflater = LayoutInflater.from(parent.context)
         return SaveDataHealthViewHoler(
@@ -27,17 +28,17 @@ class SaveDataHealthAdapter (): ListAdapter<MockData, SaveDataHealthViewHoler>(h
 
 class SaveDataHealthViewHoler( var binding: ItemSavedataHealthBinding) :
         RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: MockData) {
-        binding.viewModelItemSaveDataHealth= item
+    fun bind(health: Health) {
+        binding.viewModelItemSaveDataHealth= health
         binding.executePendingBindings()
     }
 }
 
-class healthDiffCallBack : DiffUtil.ItemCallback<MockData>() {
-    override fun areItemsTheSame(oldItem: MockData, newItem: MockData): Boolean {
+class healthDiffCallBack : DiffUtil.ItemCallback<Health>() {
+    override fun areItemsTheSame(oldItem: Health, newItem: Health): Boolean {
         return oldItem == newItem
     }
-    override fun areContentsTheSame(oldItem: MockData, newItem: MockData): Boolean {
+    override fun areContentsTheSame(oldItem: Health, newItem: Health): Boolean {
         return oldItem == newItem
     }
 }

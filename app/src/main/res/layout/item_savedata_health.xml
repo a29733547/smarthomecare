@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModelItemSaveDataHealth"
-            type="com.czerny.smarthomecare.MockData" />
+            type="com.czerny.smarthomecare.data.Health" />
 
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:letterSpacing="0.1"
-            android:text="@{viewModelItemSaveDataHealth.title}"
+            android:text="@{viewModelItemSaveDataHealth.palce}"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
