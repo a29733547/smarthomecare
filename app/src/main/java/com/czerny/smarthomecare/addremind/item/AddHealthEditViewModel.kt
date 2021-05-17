@@ -10,6 +10,7 @@ import kotlinx.coroutines.Job
 
 class AddHealthEditViewModel : ViewModel(){
 
+    val test bindg
 
 
 }
