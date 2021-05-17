@@ -33,11 +33,11 @@ class ChatRoomFragment: Fragment() {
         binding.recyclerviewChatroom.adapter = chatRoomAdapter
 
         val mockData: MutableList<Message> = mutableListOf()
-        mockData.add(Message("1","2","3","4","測試"))
-        mockData.add(Message("1","2","3","4","今天"))
-        mockData.add(Message("1","2","3","4","天氣"))
-        mockData.add(Message("1","2","3","4","如何"))
-        mockData.add(Message("1","2","3","4","爺爺奶奶爸爸媽嘰嘰歪歪"))
+        mockData.add(Message(1,"2","測試"))
+        mockData.add(Message(1,"2","今天"))
+        mockData.add(Message(1,"2","天氣"))
+        mockData.add(Message(1,"2","如何"))
+        mockData.add(Message(1,"2","真的"))
         viewModel.editableList = mockData
         chatRoomAdapter.submitList(viewModel.editableList)
         viewModel.Mockdata.observe(viewLifecycleOwner, Observer {
