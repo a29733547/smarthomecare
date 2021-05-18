@@ -59,7 +59,7 @@
                 android:ems="10"
                 android:hint="台大醫院"
                 android:inputType="textPersonName"
-                android:text="@={viewModelAddHealth.health.palce}"
+                android:text="@={viewModelAddHealth.health.place}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

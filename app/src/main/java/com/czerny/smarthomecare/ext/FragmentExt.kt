@@ -2,9 +2,9 @@ package com.czerny.smarthomecare.ext
 
 import androidx.fragment.app.Fragment
 
-import app.appworks.school.publisher.factory.ViewModelFactory
+import com.czerny.smarthomecare.factory.ViewModelFactory
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Author
+
 
 /**
  * Created by Wayne Chen in Jul. 2019.

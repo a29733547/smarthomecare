@@ -1,10 +1,10 @@
-package app.appworks.school.publisher.factory
+package com.czerny.smarthomecare.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.czerny.smarthomecare.MainViewModel
+
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
-import com.czerny.smarthomecare.home.HomeViewModel
+
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
 
 /**

@@ -40,7 +40,7 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
 
             user["title"] = viewModel.health.title
             user["name"] = viewModel.health.name
-            user["place"] = viewModel.health.palce
+            user["place"] = viewModel.health.place
             user["content"] = viewModel.health.content
             user["note"] = viewModel.health.note
 

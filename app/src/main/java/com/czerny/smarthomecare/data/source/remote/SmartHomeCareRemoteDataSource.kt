@@ -1,6 +1,7 @@
 package com.czerny.smarthomecare.data.source.remote
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
@@ -16,23 +17,25 @@ import com.czerny.smarthomecare.util.Logger
 
 object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
-    override suspend fun login(id: String): Result<Author> {
-        TODO("Not yet implemented")
-    }
 
     private const val PATH_ARTICLES = "healthDate"
     private const val KEY_CREATED_TIME = "createdTime"
 
+    override suspend fun login(id: String): Result<Author> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getHealth(): Result<List<Health>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val list = mutableListOf<Health>()
                     for (document in task.result!!) {
                         Logger.d(document.id + " => " + document.data)
+                        Log.i("whatthefuck","czerny=${document.data}")
 
                         val health = document.toObject(Health::class.java)
                         list.add(health)
@@ -56,7 +59,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
 
                 Logger.i("addSnapshotListener detect")
@@ -80,8 +83,8 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
 
     override suspend fun smart(health: Health): Result<Boolean> = suspendCoroutine { continuation ->
-        val articles = FirebaseFirestore.getInstance().collection(PATH_ARTICLES)
-        val document = articles.document()
+        val healthdate = FirebaseFirestore.getInstance().collection(PATH_ARTICLES)
+        val document = healthdate.document()
 
         health.id = document.id
 //        article.createdTime = Calendar.getInstance().timeInMillis
