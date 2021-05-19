@@ -1,24 +1,20 @@
 package com.czerny.smarthomecare.addremind.item
 
 
-import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 import com.czerny.smarthomecare.data.Health
 
-import com.google.firebase.firestore.FirebaseFirestore
+
 
 
 class AddHealthEditViewModel : ViewModel() {
-    val db = FirebaseFirestore.getInstance()
-
-//    private val _healthData = MutableLiveData<List<Health>>() //w2p2
-//    val healthData: LiveData<List<Health>>
-//        get() = _healthData
-//    val healthData = MutableLiveData<List<Health>>()
 
 
+
+    //沒有好像也可以？
     val healthId = MutableLiveData<String>()
     val healthTitle = MutableLiveData<String>()
     val healthPlace = MutableLiveData<String>()
@@ -36,21 +32,6 @@ class AddHealthEditViewModel : ViewModel() {
         healthNote.value ?: "",
     )
 
-//    override fun onCleared() {
-//
-//        val user: MutableMap<Health, Any> = HashMap()
-//        user[Health(
-//            0,
-//            "",
-//            "",
-//            "",
-//            "",
-//            "",
-//        )]
-//
-//
-//        super.onCleared()
-//    }
 
 
 }

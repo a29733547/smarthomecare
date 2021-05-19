@@ -55,7 +55,7 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
 
 
 
-
+    // 2021/5/19 git checkout test
 
         return binding.root
     }
