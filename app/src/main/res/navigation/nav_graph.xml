@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.czerny.smarthomecare.home.HomeFragment"
@@ -16,34 +17,39 @@
         android:id="@+id/profileFragment"
         android:name="com.czerny.smarthomecare.profile.ProfileFragment"
         android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_profileAddDataDialog"
-            app:destination="@id/profileAddDataDialog" />
+
     </fragment>
+
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
         android:label="ChatRoomFragment" />
 
+    <fragment
+        android:id="@+id/saveDataHealthFragment"
+        android:name="com.czerny.smarthomecare.savedata.remind.SaveDataHealthFragment"
+        android:label="SaveDataHealthFragment" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/saveDataHealtyModifyFragment"
+        android:name="com.czerny.smarthomecare.savedata.modify.SaveDataHealtyModifyFragment"
+        android:label="SaveDataHealtyModifyFragment" />
+
+
+
     <dialog
         android:id="@+id/addRemindDialog"
         android:name="com.czerny.smarthomecare.addremind.AddRemindDialog"
         android:label="AddRemindDialog" >
-        <action
-            android:id="@+id/action_addRemindDialog_to_addRemindEditDialog"
-            app:destination="@id/addRemindEditDialog" />
-        <action
-            android:id="@+id/action_addRemindDialog_to_addhealthEditDialog"
-            app:destination="@id/addHealthEditDialog" />
+
     </dialog>
 
     <dialog
         android:id="@+id/addRemindEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddRemindEditDialog"
         android:label="addRemindEditDialog" >
-        <action
-            android:id="@+id/action_addRemindEditDialog_to_itemAddRemindData"
-            app:destination="@id/itemAddRemindData" />
     </dialog>
 
     <dialog
@@ -77,6 +83,20 @@
         android:name="com.czerny.smarthomecare.addremind.item.ItemAddRemindData"
         android:label="ItemAddRemindData" />
 
-
+    <action
+        android:id="@+id/action_saveDataHealthFragment_to_saveDataHealtyModifyFragment"
+        app:destination="@id/saveDataHealtyModifyFragment" />
+    <action
+        android:id="@+id/action_profileFragment_to_profileAddDataDialog"
+        app:destination="@id/profileAddDataDialog" />
+    <action
+        android:id="@+id/action_addRemindDialog_to_addRemindEditDialog"
+        app:destination="@id/addRemindEditDialog" />
+    <action
+        android:id="@+id/action_addRemindDialog_to_addhealthEditDialog"
+        app:destination="@id/addHealthEditDialog" />
+    <action
+        android:id="@+id/action_addRemindEditDialog_to_itemAddRemindData"
+        app:destination="@id/itemAddRemindData" />
 
 </navigation>

@@ -1,27 +1,25 @@
 package com.czerny.smarthomecare.savedata.remind
 
 import android.os.Bundle
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.czerny.smarthomecare.MockData
+
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Health
+
 import com.czerny.smarthomecare.databinding.FragmentSavedataHealthBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.home.HomeAdapter
-import com.czerny.smarthomecare.home.HomeViewModel
+
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
-import com.czerny.smarthomecare.util.Logger
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlin.coroutines.resume
+
 
 class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fragment() {
 
@@ -40,9 +38,19 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fra
         binding.recyclerviewSavedataHealth.layoutManager = LinearLayoutManager(context)
         binding.recyclerviewSavedataHealth.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
-        val saveDataHealthAdapter = SaveDataHealthAdapter()
+        val saveDataHealthAdapter = SaveDataHealthAdapter(SaveDataHealthAdapter.OnClickListener {
+            viewModel.navigateToHealthModify(it)
+        })
         binding.recyclerviewSavedataHealth.adapter = saveDataHealthAdapter
 
+        viewModel.navigateToHealthModify.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                findNavController().navigate(SaveDataHealthFragmentDirections.
+                actionSaveDataHealthFragmentToSaveDataHealtyModifyFragment())
+                viewModel.onHealthModifylNavigated() //no this can't go back
+            }
+
+        })
 
 
 

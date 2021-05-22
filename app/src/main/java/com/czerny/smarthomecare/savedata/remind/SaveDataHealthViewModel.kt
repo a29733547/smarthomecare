@@ -58,7 +58,10 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
-
+    // Handle navigation to Savedata Health Modify
+    private val _navigateToHealthModify = MutableLiveData<Health>()
+    val navigateToHealthModify: LiveData<Health>
+        get() = _navigateToHealthModify
 
 
 
@@ -126,6 +129,13 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
         _refreshStatus.value = false
     }
 
+    fun navigateToHealthModify(health: Health) {
+        _navigateToHealthModify.value = health
+    }
 
-
+    fun onHealthModifylNavigated() {
+        _navigateToHealthModify.value = null
+    }
 }
+
+

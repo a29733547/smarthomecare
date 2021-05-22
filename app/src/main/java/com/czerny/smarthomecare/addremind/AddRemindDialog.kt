@@ -38,11 +38,9 @@ class AddRemindDialog : BottomSheetDialogFragment() {
 
         binding.buttonAddremindRemind.setOnClickListener{
 
-
-
-
             findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog())
         }
+
         binding.buttonAddremindHealth.setOnClickListener{
 //            Log.d("Hiya", "date=${(activity as MainActivity).data}")
             findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddhealthEditDialog())
