@@ -39,7 +39,7 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
         val saveDataRemindAdapter = SaveDataRemindAdapter()
         binding.recyclerviewSavedataRemind.adapter = saveDataRemindAdapter
 
-
+        //20210522 branch test
 
 
 
