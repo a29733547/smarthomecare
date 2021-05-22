@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.czerny.smarthomecare.databinding.DialogAddremindBinding
 import com.czerny.smarthomecare.databinding.DialogAddremindEditBinding
 import com.czerny.smarthomecare.databinding.DialogAddremindHealthBinding
+import com.czerny.smarthomecare.ext.getVmFactory
 import com.czerny.smarthomecare.home.HomeViewModel
+import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -18,9 +21,11 @@ import kotlin.collections.HashMap
 
 class AddHealthEditDialog : AppCompatDialogFragment() {
 
-    private val viewModel: AddHealthEditViewModel by lazy {
-        ViewModelProvider(this).get(AddHealthEditViewModel::class.java)
-    }
+    private val viewModel by viewModels<AddHealthEditViewModel> { getVmFactory() }
+
+//    private val viewModel: AddHealthEditViewModel by lazy {
+//        ViewModelProvider(this).get(AddHealthEditViewModel::class.java)
+//    }
 
 
 
@@ -40,7 +45,7 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
 
             user["title"] = viewModel.health.title
             user["name"] = viewModel.health.name
-            user["place"] = viewModel.health.place
+            user["healthPlaceData"] = viewModel.health.healthPlaceData
             user["content"] = viewModel.health.content
             user["note"] = viewModel.health.note
 

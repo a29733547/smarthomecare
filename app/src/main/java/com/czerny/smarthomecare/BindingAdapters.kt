@@ -7,12 +7,15 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 import com.czerny.smarthomecare.data.Health
+import com.czerny.smarthomecare.data.Remind
+import com.czerny.smarthomecare.home.HomeAdapter
 import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthAdapter
+import com.czerny.smarthomecare.savedata.remind.SaveDataRemindAdapter
 
 
-@BindingAdapter("healthDate")
-fun bindRecyclerView(recyclerView: RecyclerView, SaveDataHealthItem: List<Health>?) {
+@BindingAdapter("healthData")
+fun bindRecyclerViewWithHealthData(recyclerView: RecyclerView, SaveDataHealthItem: List<Health>?) {
     SaveDataHealthItem?.let {
         recyclerView.adapter?.apply {
             when (this) {
@@ -21,6 +24,29 @@ fun bindRecyclerView(recyclerView: RecyclerView, SaveDataHealthItem: List<Health
         }
     }
 }
+
+@BindingAdapter("remindData")
+fun bindRecyclerViewWithRemindData(recyclerView: RecyclerView, SaveDataRemindItem: List<Remind>?) {
+    SaveDataRemindItem?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is SaveDataRemindAdapter -> submitList(it)
+            }
+        }
+    }
+}
+
+@BindingAdapter("homeData")
+fun bindRecyclerViewWithHomeData(recyclerView: RecyclerView, SaveDataRemindItem: List<Remind>?) {
+    SaveDataRemindItem?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is HomeAdapter -> submitList(it)
+            }
+        }
+    }
+}
+
 
 //@BindingAdapter("timeToDisplayFormat")
 //fun bindDisplayFormatTime(textView: TextView, time: Long?) {

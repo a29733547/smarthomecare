@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.czerny.smarthomecare.data.Remind
 
-
-class HomeAdapter (): ListAdapter<MockData, HomeViewHolder>(DiffCallBack()) {
+class HomeAdapter (): ListAdapter<Remind, HomeViewHolder>(DiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return HomeViewHolder(
@@ -25,21 +25,19 @@ class HomeAdapter (): ListAdapter<MockData, HomeViewHolder>(DiffCallBack()) {
 
 }
 
-
-
 class HomeViewHolder( var binding:ItemRemindBinding) :
         RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: MockData) {
-        binding.itemRemindViewModel = item
+    fun bind(item: Remind) {
+        binding.viewModelHomeItemRemind = item
         binding.executePendingBindings()
     }
 }
 
-class DiffCallBack : DiffUtil.ItemCallback<MockData>() {
-    override fun areItemsTheSame(oldItem: MockData, newItem: MockData): Boolean {
+class DiffCallBack : DiffUtil.ItemCallback<Remind>() {
+    override fun areItemsTheSame(oldItem: Remind, newItem: Remind): Boolean {
         return oldItem == newItem
     }
-    override fun areContentsTheSame(oldItem: MockData, newItem: MockData): Boolean {
+    override fun areContentsTheSame(oldItem: Remind, newItem: Remind): Boolean {
         return oldItem == newItem
     }
 }

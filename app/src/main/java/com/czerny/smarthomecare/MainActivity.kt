@@ -11,7 +11,6 @@ import com.czerny.smarthomecare.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,10 +18,6 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
-
-//    var map: Map<String, String> = HashMap()
-
-
 
     lateinit var binding: ActivityMainBinding
 
@@ -62,26 +57,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+
+
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
 
 
         setupBottomNav()
-
-
-        Log.i("kavily", "data = ${remindTimeData}")
-
-//        viewModel.getRemindTimeData.observe(this, Observer {
-//            it?.let {
-//                remindTimeData
-//            }
-//        })
-
-
-//        fun getMap(): Map<*, *>? {
-//            return map
-//        }
-
 
 
     }

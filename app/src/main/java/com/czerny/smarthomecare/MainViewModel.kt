@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.util.CurrentFragmentType
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 //    class MainViewModel (private val repository: SmartHomeCareRepository): ViewModel() {
 
     private val _getRemindTimeData = MutableLiveData<String>()

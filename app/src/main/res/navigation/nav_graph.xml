@@ -15,7 +15,11 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.czerny.smarthomecare.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileAddDataDialog"
+            app:destination="@id/profileAddDataDialog" />
+    </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
@@ -41,6 +45,12 @@
             android:id="@+id/action_addRemindEditDialog_to_itemAddRemindData"
             app:destination="@id/itemAddRemindData" />
     </dialog>
+
+    <dialog
+        android:id="@+id/profileAddDataDialog"
+        android:name="com.czerny.smarthomecare.profile.add.ProfileAddDataDialog"
+        android:label="ProfileAddDataDialog" />
+
     <dialog
         android:id="@+id/addHealthEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddHealthEditDialog"

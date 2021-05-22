@@ -5,59 +5,535 @@
 
     <data>
 
+        <variable
+            name="viewModelProfile"
+            type="com.czerny.smarthomecare.profile.ProfileViewModel" />
+
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_profile_blood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:letterSpacing="0.1"
-            android:text="血型："
-            android:textSize="20dp"
-            android:textStyle="bold"
+        <ScrollView
+            android:id="@+id/scrollView_profile"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_profile_year" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text_profile_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:letterSpacing="0.1"
-            android:text="年齡："
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_profile_name" />
 
-        <TextView
-            android:id="@+id/text_profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:letterSpacing="0.1"
-            android:text="姓名："
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_not"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/profile_data"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_allergy"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageView21"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_new_releases_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/imageView18"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_new_releases_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/text_profile_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:letterSpacing="0.1"
+                        android:text="其他注意事項："
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView21"
+                        app:layout_constraintStart_toEndOf="@+id/imageView18"
+                        app:layout_constraintTop_toTopOf="@+id/imageView18" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView18">
+
+                        <TextView
+                            android:id="@+id/text_content_note"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/profile_data"
+                            android:letterSpacing="0.1"
+                            android:padding="8dp"
+                            android:text="@{viewModelProfile.profile.note}"
+                            android:textSize="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="注意注意" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_allergy"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/profile_data"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_genetic"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_coronavirus_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/imageView17"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_coronavirus_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/text_profile_allergy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:letterSpacing="0.1"
+                        android:text="過敏因素"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView20"
+                        app:layout_constraintStart_toEndOf="@+id/imageView17"
+                        app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView17"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/text_content_allergy"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/profile_data"
+                            android:letterSpacing="0.1"
+                            android:padding="8dp"
+                            android:text="@{viewModelProfile.profile.allergy}"
+                            android:textSize="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:text="蠶豆症，被蜜蜂蜇會休克" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_genetic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/profile_data"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_profile"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageView19"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_sick_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_sick_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/text_profile_genetic_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:letterSpacing="0.1"
+                        android:text="病歷狀況"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView19"
+                        app:layout_constraintStart_toEndOf="@+id/imageView15"
+                        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView15">
+
+                        <TextView
+                            android:id="@+id/text_content_genetic"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/profile_data"
+                            android:letterSpacing="0.1"
+                            android:padding="8dp"
+                            android:text="@{viewModelProfile.profile.genetic}"
+                            android:textSize="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="高血壓，心臟病，開過刀" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/profile_data"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/image_profile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_face_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/image_year"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                        app:srcCompat="@drawable/baseline_calendar_today_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/image_birth"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_year"
+                        app:srcCompat="@drawable/baseline_cake_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/image_blood"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_birth_weith"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/baseline_bloodtype_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/image_birth_weith"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/profile_add"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_birth"
+                        app:srcCompat="@drawable/baseline_monitor_weight_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/text_profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="姓名："
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_profile"
+                        app:layout_constraintStart_toEndOf="@+id/image_profile"
+                        app:layout_constraintTop_toTopOf="@+id/image_profile" />
+
+                    <TextView
+                        android:id="@+id/text_profile_birth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="生日："
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_year"
+                        app:layout_constraintStart_toEndOf="@+id/image_year"
+                        app:layout_constraintTop_toTopOf="@+id/image_year" />
+
+                    <TextView
+                        android:id="@+id/text_profile_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="年齡："
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_birth"
+                        app:layout_constraintStart_toEndOf="@+id/image_birth"
+                        app:layout_constraintTop_toTopOf="@+id/image_birth" />
+
+                    <TextView
+                        android:id="@+id/text_profile_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="體重："
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_birth_weith"
+                        app:layout_constraintStart_toEndOf="@+id/image_birth_weith"
+                        app:layout_constraintTop_toTopOf="@+id/image_birth_weith" />
+
+                    <TextView
+                        android:id="@+id/text_profile_blood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="血型："
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_blood"
+                        app:layout_constraintStart_toEndOf="@+id/image_blood"
+                        app:layout_constraintTop_toTopOf="@+id/image_blood" />
+
+                    <TextView
+                        android:id="@+id/text_content_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:letterSpacing="0.1"
+                        android:text="@{viewModelProfile.profile.profileNameData}"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_profile_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_profile_name"
+                        app:layout_constraintTop_toTopOf="@+id/text_profile_name"
+                        tools:text="個人姓名" />
+
+                    <TextView
+                        android:id="@+id/text_content_birth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:letterSpacing="0.1"
+                        android:text="@{viewModelProfile.profile.birth}"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_profile_birth"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_profile_birth"
+                        app:layout_constraintTop_toTopOf="@+id/text_profile_birth"
+                        tools:text="1987/03/25" />
+
+                    <TextView
+                        android:id="@+id/text_conten_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@{viewModelProfile.profile.year}"
+                        android:letterSpacing="0.1"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_profile_year"
+                        app:layout_constraintStart_toEndOf="@+id/text_profile_year"
+                        app:layout_constraintTop_toTopOf="@+id/text_profile_year"
+                        tools:text="35" />
+
+                    <TextView
+                        android:id="@+id/text_content_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:letterSpacing="0.1"
+                        android:text="@{viewModelProfile.profile.weight}"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_profile_weight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_profile_weight"
+                        app:layout_constraintTop_toTopOf="@+id/text_profile_weight"
+                        tools:text="70" />
+
+                    <TextView
+                        android:id="@+id/text_content_blood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:letterSpacing="0.1"
+                        android:text="@{viewModelProfile.profile.blood}"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_profile_blood"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_profile_blood"
+                        app:layout_constraintTop_toTopOf="@+id/text_profile_blood"
+                        tools:text="O" />
+
+                    <TextView
+                        android:id="@+id/text_profile_year_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="歲"
+                        android:letterSpacing="0.1"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_conten_year"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_conten_year"
+                        app:layout_constraintTop_toTopOf="@+id/text_conten_year" />
+
+                    <TextView
+                        android:id="@+id/text_profile_weight_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Kg"
+                        android:letterSpacing="0.1"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_content_weight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_content_weight"
+                        app:layout_constraintTop_toTopOf="@+id/text_content_weight" />
+
+                    <TextView
+                        android:id="@+id/text_profile_blood_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="型"
+                        android:letterSpacing="0.1"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_content_blood"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_content_blood"
+                        app:layout_constraintTop_toTopOf="@+id/text_content_blood" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_profile_add"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/profile_add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.51"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_not">
+
+                    <ImageView
+                        android:id="@+id/image_profile_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.428"
+                        app:srcCompat="@drawable/baseline_person_add_white_24dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

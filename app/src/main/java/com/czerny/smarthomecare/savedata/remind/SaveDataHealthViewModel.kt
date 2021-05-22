@@ -1,5 +1,6 @@
 package com.czerny.smarthomecare.savedata.remind
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -62,39 +63,13 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
 
 
 
-//    val gethealthId = MutableLiveData<String>()
-//    val gethealthTitle = MutableLiveData<String>()
-//    val gethealthPlace = MutableLiveData<String>()
-//    val gethealthContent = MutableLiveData<String>()
-//    val gethealthName = MutableLiveData<String>()
-//    val gethealthNote = MutableLiveData<String>()
-
-/*    val gethealthId = MutableLiveData<String>()
-    val gethealthTitle = MutableLiveData<String>()
-    val gethealthPlace = MutableLiveData<String>()
-    val gethealthContent = MutableLiveData<String>()
-    val gethealthName = MutableLiveData<String>()
-    val gethealthNote = MutableLiveData<String>()
-
-
-    val gethealth = Health(
-        gethealthId.value ?: "",
-        gethealthPlace.value ?: "",
-        gethealthTitle.value ?: "",
-        gethealthName.value ?: "",
-        gethealthContent.value ?: "",
-        gethealthNote.value ?: "",
-    )*/
-
-
-
-
-
-
-
     /**
-     * Call getArticlesResult() on init so we can display status immediately.
+     * Call getHealthResult() on init so we can display status immediately.
      */
+//    init {
+//        getHealthResult()
+//
+//    }
     init {
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")
@@ -106,6 +81,8 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
             getHealthResult()
 
         }
+        Log.i("hyyago","hyyago=${getHealthResult()}}")
+        Log.i("hyyago","hyyago=${getLiveHealthResult()}}")
     }
 
     fun getHealthResult() {
@@ -115,6 +92,7 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
             _status.value = LoadApiStatus.LOADING
 
             val result = repository.getHealth()
+            Log.i("czerny save data", "save data =${result}")
 
             _health.value = when (result) {
                 is Result.Success -> {

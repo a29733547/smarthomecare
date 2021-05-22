@@ -6,13 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 import com.czerny.smarthomecare.data.Health
+import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 
+//class AddHealthEditViewModel : ViewModel() {
+class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
 
-
-class AddHealthEditViewModel : ViewModel() {
-
-
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     //沒有好像也可以？
     val healthId = MutableLiveData<String>()

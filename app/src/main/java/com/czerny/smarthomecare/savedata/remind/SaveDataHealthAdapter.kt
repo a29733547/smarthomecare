@@ -10,26 +10,26 @@ import com.czerny.smarthomecare.data.Health
 
 import com.czerny.smarthomecare.databinding.ItemSavedataHealthBinding
 
-class SaveDataHealthAdapter (): ListAdapter<Health, SaveDataHealthViewHoler>(healthDiffCallBack()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaveDataHealthViewHoler {
+class SaveDataHealthAdapter() : ListAdapter<Health, SaveDataHealthViewHolder>(healthDiffCallBack()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaveDataHealthViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return SaveDataHealthViewHoler(
-                ItemSavedataHealthBinding.inflate(layoutInflater, parent, false)
+        return SaveDataHealthViewHolder(
+            ItemSavedataHealthBinding.inflate(layoutInflater, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: SaveDataHealthViewHoler, position: Int) {
+    override fun onBindViewHolder(holder: SaveDataHealthViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
 }
-    //test git branch
+//test git branch
 
-class SaveDataHealthViewHoler( var binding: ItemSavedataHealthBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+class SaveDataHealthViewHolder(var binding: ItemSavedataHealthBinding) :
+    RecyclerView.ViewHolder(binding.root) {
     fun bind(health: Health) {
-        binding.viewModelItemSaveDataHealth= health
+        binding.viewModelItemSaveDataHealth = health
         binding.executePendingBindings()
     }
 }
@@ -38,6 +38,7 @@ class healthDiffCallBack : DiffUtil.ItemCallback<Health>() {
     override fun areItemsTheSame(oldItem: Health, newItem: Health): Boolean {
         return oldItem == newItem
     }
+
     override fun areContentsTheSame(oldItem: Health, newItem: Health): Boolean {
         return oldItem == newItem
     }
