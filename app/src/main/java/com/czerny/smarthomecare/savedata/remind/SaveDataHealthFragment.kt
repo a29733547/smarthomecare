@@ -1,6 +1,7 @@
 package com.czerny.smarthomecare.savedata.remind
 
 import android.os.Bundle
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +39,10 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fra
         binding.recyclerviewSavedataHealth.layoutManager = LinearLayoutManager(context)
         binding.recyclerviewSavedataHealth.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
-        val saveDataHealthAdapter = SaveDataHealthAdapter(SaveDataHealthAdapter.OnClickListener {
+        val saveDataHealthAdapter = SaveDataHealthAdapter(viewModel, SaveDataHealthAdapter.OnClickListener {
+//            viewModel.deleteHealth(it)
             viewModel.navigateToHealthModify(it)
+//            Log.i("czerny", "viewModel.deleteHealth(it) = $it")
         })
         binding.recyclerviewSavedataHealth.adapter = saveDataHealthAdapter
 

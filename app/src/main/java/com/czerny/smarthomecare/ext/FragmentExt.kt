@@ -6,6 +6,7 @@ import com.czerny.smarthomecare.factory.ViewModelFactory
 import com.czerny.smarthomecare.SmartHomeCareApplication
 
 
+
 /**
  * Created by Wayne Chen in Jul. 2019.
  *
@@ -16,7 +17,7 @@ fun Fragment.getVmFactory(): ViewModelFactory {
     return ViewModelFactory(repository)
 }
 
-//fun Fragment.getVmFactory(author: Author?): AuthorViewModelFactory {
-//    val repository = (requireContext().applicationContext as PublisherApplication).repository
-//    return AuthorViewModelFactory(repository, author)
+//fun Fragment.getVmFactory(health: Health?): HealthModifyViewModelFactory {
+//    val repository = (requireContext().applicationContext as SmartHomeCareApplication).repository
+//    return HealthModifyViewModelFactory(repository, health)
 //}

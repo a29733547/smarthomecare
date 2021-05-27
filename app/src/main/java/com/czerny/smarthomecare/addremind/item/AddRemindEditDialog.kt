@@ -25,9 +25,6 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
 
 
     private val viewModel by viewModels<AddRemindEditViewModel> { getVmFactory() }
-//    private val viewModel: AddRemindEditViewModel by lazy {
-//        ViewModelProvider(this).get(AddRemindEditViewModel::class.java)
-//    }
 
     private lateinit var binding: DialogAddremindEditBinding
     val db = FirebaseFirestore.getInstance()
@@ -59,6 +56,8 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
             remindPushFireBase["data"] = viewModel.remindPush.data
             remindPushFireBase["content"] = viewModel.remindPush.content
             remindPushFireBase["note"] = viewModel.remindPush.note
+//            remindPushFireBase["createdTime"] = Date()
+            remindPushFireBase["createdTime"] = viewModel.remindPush.createdTime
 
             /**將資料上傳到firebase*/
             db.collection("remindDate")

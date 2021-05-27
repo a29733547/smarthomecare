@@ -43,10 +43,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="："
-                    android:textSize="48dp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/text_item_savedata_remind_hours"
-                    app:layout_constraintEnd_toStartOf="@+id/text_item_savedata_remind_minute"
                     app:layout_constraintStart_toEndOf="@+id/text_item_savedata_remind_hours"
                     app:layout_constraintTop_toTopOf="@+id/text_item_savedata_remind_hours" />
 
@@ -54,7 +53,7 @@
                     android:id="@+id/text_item_savedata_remind_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="56dp"
                     android:layout_marginTop="32dp"
                     android:text="@={viewModelItemSaveDataRemind.hours}"
                     android:textSize="48dp"
@@ -69,15 +68,15 @@
                     android:id="@+id/text_item_savedata_remind_minute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="85dp"
                     android:layout_marginEnd="8dp"
                     android:text="@={viewModelItemSaveDataRemind.minute}"
                     android:textSize="48dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_item_savedata_remind_nothing"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_item_savedata_remind_hours"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/text_item_savedata_remind_nothing"
-                    app:layout_constraintTop_toTopOf="@+id/text_item_savedata_remind_nothing"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_item_savedata_remind_hours"
                     tools:text="分" />
 
                 <TextView
@@ -100,7 +99,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     android:text="@={viewModelItemSaveDataRemind.content}"
@@ -110,6 +108,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_item_savedata_remind_hours"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:text="事項" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

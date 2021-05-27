@@ -452,7 +452,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:letterSpacing="0.1"
-                        android:text="@{viewModelProfile.profile.blood}"
+                        android:text="@={viewModelProfile.profile.blood}"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="@+id/text_profile_blood"
                         app:layout_constraintEnd_toEndOf="parent"

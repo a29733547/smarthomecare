@@ -28,7 +28,15 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
 //            }
 //        }
 
+    override suspend fun deleteHealth(health: Health): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override suspend fun getHealth(): Result<List<Health>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun getHealthModify(id: String): Result<Health> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -36,7 +44,15 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("Not yet implemented")
     }
 
-    override suspend fun smart(health: Health): Result<Boolean> {
+    override fun getLiveHealthModify(): MutableLiveData<Health> {
+        TODO("Not yet implemented")
+    }
+//    override fun getLiveHealthModify(): MutableLiveData<List<Health>> {
+//        TODO("Not yet implemented")
+//    }
+
+
+    override suspend fun healthModify(health: Health): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -50,38 +66,17 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("Not yet implemented")
     }
 
-    override suspend fun smartRemind(remind: Remind): Result<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-    /**get remind data*/
-
-
-    /**get profile data*/
-
     override suspend fun getProfile(): Result<User> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-/*        override fn getLiveProfile(): MutableLiveData<User> {
-        TODO("Not yet implemented")
+
+    override suspend fun addHealthDate(health: Health): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun smartProfile(user: User): Result<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }*/
-    /**get profile data*/
 
 
-    /**get add home data*/
-//    override suspend fun getHome(): Result<List<Remind>> {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-//    override fun getLiveHome(): MutableLiveData<List<Remind>> {
-//        TODO("Not yet implemented")
-//    }
-//    override suspend fun smartHome(remind: Remind): Result<Boolean> {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-    /**get add home data*/
+
 
 
 }

@@ -7,8 +7,9 @@
         <variable
             name="viewModelAddHealth"
             type="com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel" />
-
-
+        <variable
+            name="isLiveDataDesign"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,7 @@
                 android:layout_marginEnd="12dp"
                 android:ems="10"
                 android:hint="狀況良好繼續加油"
-                android:text="@={viewModelAddHealth.health.note}"
+                android:text="@={viewModelAddHealth.note}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_note"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_note"
@@ -60,7 +61,7 @@
                 android:ems="10"
                 android:hint="台大醫院"
                 android:inputType="textPersonName"
-                android:text="@={viewModelAddHealth.health.healthPlaceData}"
+                android:text="@={viewModelAddHealth.healthPlaceData}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -88,7 +89,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="爺爺"
-                android:text="@={viewModelAddHealth.health.name}"
+                android:text="@={viewModelAddHealth.name}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_name"
@@ -102,7 +103,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="醫生待人親切"
-                android:text="@={viewModelAddHealth.health.content}"
+                android:text="@={viewModelAddHealth.content}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_content"
@@ -122,7 +123,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_happen" />
 
             <Button
-                android:id="@+id/button_remind_edit"
+                android:id="@+id/button_health_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -133,8 +134,10 @@
                 android:text="新增事項"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:onClick="@{() -> viewModelAddHealth.addHealthDateFun()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_note"
                 app:layout_constraintVertical_bias="0.0" />
@@ -172,7 +175,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:text="@={viewModelAddHealth.health.title}"
+                android:text="@={viewModelAddHealth.title}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_happen"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_happen"

@@ -9,4 +9,11 @@
 
     <string name="you_know_nothing">You know nothing</string>
 
+
+
+    <string name="dialog_title_delete">Sure To Delete?</string>
+    <string name="dialog_delete_content">The article will be deleted permanently</string>
+    <string name="dialog_btn_pos">Sure</string>
+    <string name="dialog_btn_neg">Cancel</string>
+
 </resources>

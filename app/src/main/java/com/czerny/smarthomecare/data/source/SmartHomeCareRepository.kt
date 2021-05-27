@@ -8,30 +8,26 @@ import com.czerny.smarthomecare.data.User
 
 interface SmartHomeCareRepository {
 
+    suspend fun deleteHealth(health: Health): Result<Boolean>
+
     suspend fun getHealth(): Result<List<Health>>
 
+    suspend fun getHealthModify(id: String): Result<Health>
+
     fun getLiveHealth(): MutableLiveData<List<Health>>
+
+    fun getLiveHealthModify(): MutableLiveData<Health>
+//    fun getLiveHealthModify(): MutableLiveData<List<Health>>
+
+    suspend fun healthModify(health: Health): Result<Boolean>
 
     suspend fun getRemind(): Result<List<Remind>>
 
     fun getLiveRemind(): MutableLiveData<List<Remind>>
 
-    suspend fun smart(health: Health): Result<Boolean>
-
-    suspend fun smartRemind(remind: Remind): Result<Boolean>
 
     suspend fun getProfile(): Result<User>
 
-/*    fun getLiveProfile(): MutableLiveData<User>
-
-    suspend fun smartProfile(user: User): Result<Boolean>*/
-
-
-/*    suspend fun getHome(): Result<List<Remind>>
-
-    fun getLiveHome(): MutableLiveData<List<Remind>>
-
-    suspend fun smartHome(remind: Remind): Result<Boolean>*/
-    
+    suspend fun addHealthDate(health: Health): Result<Boolean>
 
 }

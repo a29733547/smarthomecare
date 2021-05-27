@@ -19,9 +19,6 @@ import java.util.*
 
 class ProfileFragment : Fragment(){
 
-
-
-
     private val viewModel by viewModels<ProfileViewModel> { getVmFactory() }
 
     override fun onCreateView(

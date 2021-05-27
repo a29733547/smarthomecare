@@ -12,7 +12,8 @@ data class Remind(
     var minute: String = "",
     var data: String = "",
     var content: String = "",
-    var note: String = ""
+    var note: String = "",
+    var createdTime : Long = -1
 ) : Parcelable{
 }
 

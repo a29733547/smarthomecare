@@ -7,29 +7,28 @@ import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
+import com.czerny.smarthomecare.data.Author
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.data.Result
-import com.czerny.smarthomecare.data.source.remote.SmartHomeCareRemoteDataSource
 import com.czerny.smarthomecare.util.Logger
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
-//class SaveDataHealthViewModel : ViewModel(){
+
 class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) : ViewModel(){
 
 
 
-//    private lateinit var repository: SmartHomeCareRepository
 
-    var editableList: MutableList<Health> = mutableListOf()
+
+    private val _author = MutableLiveData<Author>()
+
+    val author: LiveData<Author>
+        get() = _author
 
     private val _health = MutableLiveData<List<Health>>()
     val health: LiveData<List<Health>>
@@ -63,6 +62,11 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
     val navigateToHealthModify: LiveData<Health>
         get() = _navigateToHealthModify
 
+//     Deleted article title for snack bar to show
+    private val _deletedArticleTitle = MutableLiveData<String>()
+
+    val deletedArticleTitle: LiveData<String>
+        get() = _deletedArticleTitle
 
 
 
@@ -78,14 +82,48 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
+
+
         if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
             getLiveHealthResult()
         } else {
             getHealthResult()
-
         }
-        Log.i("hyyago","hyyago=${getHealthResult()}}")
-        Log.i("hyyago","hyyago=${getLiveHealthResult()}}")
+    }
+
+
+    fun deleteHealth(health: Health) {
+//
+//        if (_author.value == null) {
+//            _error.value = "who r u?"
+//            _refreshStatus.value = false
+//            return
+//        }
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+            when (val result = repository.deleteHealth(health)) {
+                is Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    refresh()
+                }
+                is Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+            _refreshStatus.value = false
+        }
     }
 
     fun getHealthResult() {
@@ -125,6 +163,7 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
 
     fun getLiveHealthResult() {
         liveHealth = repository.getLiveHealth()
+        Log.i("czerny", "liveHealth = ${liveHealth}")
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }
@@ -135,6 +174,25 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
 
     fun onHealthModifylNavigated() {
         _navigateToHealthModify.value = null
+    }
+
+//    fun passDeletedTitle(title: String) {
+//        _deletedArticleTitle.value = title
+//    }
+
+
+
+    fun refresh() {
+
+        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
+            _status.value = LoadApiStatus.DONE
+            _refreshStatus.value = false
+
+        } else {
+            if (status.value != LoadApiStatus.LOADING) {
+                SmartHomeCareApplication()
+            }
+        }
     }
 }
 
