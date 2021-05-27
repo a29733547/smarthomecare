@@ -28,6 +28,9 @@ interface SmartHomeCareRepository {
 
     suspend fun getProfile(): Result<User>
 
-    suspend fun addHealthDate(health: Health): Result<Boolean>
+    suspend fun addHealthData(health: Health): Result<Boolean>
+
+    suspend fun addRemindData(remind: Remind): Result<Boolean>
+
 
 }

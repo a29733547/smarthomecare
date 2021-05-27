@@ -90,7 +90,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="@={viewModelHomeItemRemind.data}"
+            android:text="@={viewModelHomeItemRemind.date}"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/image_item_remind"
             app:layout_constraintHorizontal_bias="0.0"

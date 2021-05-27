@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Health(
-//    @DocumentId var id: String? = "",
     var id: String = "",
     var healthPlaceData: String = "",
     var title: String = "",
@@ -15,7 +14,6 @@ data class Health(
     var content: String = "",
     var note: String = "",
     var createdTime: Long = -1,
-    var info: String = "",
 
 
     var tag: String = "",

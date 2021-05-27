@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.R
+import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.databinding.DialogAddremindEditBinding
 import com.czerny.smarthomecare.ext.getVmFactory
 import com.czerny.smarthomecare.home.HomeViewModel
@@ -32,7 +33,8 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DialogAddremindEditBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.addremindEditViewModel = viewModel
 
         binding.buttonRemindSelectData.setOnClickListener{
@@ -44,28 +46,9 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
         getLiveData<String>("RemindData")?.observe(viewLifecycleOwner) { data ->
             binding.textAddremindData.text = data
 
-            Log.i("howdoyoudo","gogoback = ${data}")
-            Log.i("howdoyoudo", "gogo= ${viewModel.getRemindTimeData}")
         }
 
-        binding.buttonRemindEdit.setOnClickListener {
-            val remindPushFireBase: MutableMap<String, Any> = HashMap()
-            remindPushFireBase["name"] = viewModel.remindPush.name
-            remindPushFireBase["hours"] = viewModel.remindPush.hours
-            remindPushFireBase["minute"] = viewModel.remindPush.minute
-            remindPushFireBase["data"] = viewModel.remindPush.data
-            remindPushFireBase["content"] = viewModel.remindPush.content
-            remindPushFireBase["note"] = viewModel.remindPush.note
-//            remindPushFireBase["createdTime"] = Date()
-            remindPushFireBase["createdTime"] = viewModel.remindPush.createdTime
 
-            /**將資料上傳到firebase*/
-            db.collection("remindDate")
-                .add(remindPushFireBase)
-                .addOnSuccessListener { documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.id) }
-                .addOnFailureListener { e -> Log.w("TAG", "Error adding document", e) }
-            /**將資料上傳到firebase*/
-        }
 
 
 

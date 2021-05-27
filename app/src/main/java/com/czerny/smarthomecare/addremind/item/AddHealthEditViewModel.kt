@@ -34,16 +34,6 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
     val content = MutableLiveData<String>()
     val note = MutableLiveData<String>()
 
-//
-//    var health = Health(
-//    id = "",
-//    healthPlaceData = "",
-//    title = "",
-//    name = "",
-//    content = "",
-//    note = ""
-//    )
-
 
 
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -61,7 +51,7 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
         _leave.value = needRefresh
     }
 
-    fun addHealthDateFun() {
+    fun addHealthDataFun() {
 
         val health = Health(
             healthPlaceData = healthPlaceData.value!!,
@@ -75,7 +65,7 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.addHealthDate(health)) {
+            when (val result = repository.addHealthData(health)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

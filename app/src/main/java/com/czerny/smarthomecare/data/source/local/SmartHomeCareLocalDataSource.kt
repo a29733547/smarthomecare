@@ -70,11 +70,13 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun addHealthDate(health: Health): Result<Boolean> {
+    override suspend fun addHealthData(health: Health): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-
+    override suspend fun addRemindData(remind: Remind): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
 

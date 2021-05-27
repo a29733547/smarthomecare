@@ -49,11 +49,13 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.getProfile()
     }
 
-    override suspend fun addHealthDate(health: Health): Result<Boolean> {
-        return remoteDataSource.addHealthDate(health)
+    override suspend fun addHealthData(health: Health): Result<Boolean> {
+        return remoteDataSource.addHealthData(health)
     }
 
-
+    override suspend fun addRemindData(remide: Remind): Result<Boolean> {
+        return remoteDataSource.addRemindData(remide)
+    }
 
 
 }

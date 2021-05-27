@@ -10,20 +10,12 @@ data class Remind(
     var name: String = "",
     var hours: String = "",
     var minute: String = "",
-    var data: String = "",
+    var date: String = "",
     var content: String = "",
     var note: String = "",
-    var createdTime : Long = -1
-) : Parcelable{
-}
+    var createdTime : Long = -1,
 
-//@Parcelize
-//data class Remind(
-//    var id: String = "",
-//    var name: String = "",
-//    var hours: String = "0L",
-//    var minute: String = "0L",
-//    var data: String = "",
-//    var content: String = "",
-//    var note: String = ""
-//) : Parcelable
+    var tag: String = "",
+    val author: Author? = null
+
+) : Parcelable

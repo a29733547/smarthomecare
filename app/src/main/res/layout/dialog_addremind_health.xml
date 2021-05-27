@@ -134,7 +134,7 @@
                 android:text="新增事項"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:onClick="@{() -> viewModelAddHealth.addHealthDateFun()}"
+                android:onClick="@{() -> viewModelAddHealth.addHealthDataFun()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

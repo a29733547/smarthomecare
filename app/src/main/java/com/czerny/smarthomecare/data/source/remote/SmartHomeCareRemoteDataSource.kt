@@ -22,8 +22,8 @@ import kotlin.collections.HashMap
 object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
 
-    private const val PATH_HEALTH = "healthDate"
-    private const val PATH_REMIND = "remindDate"
+    private const val PATH_HEALTH = "healthData"
+    private const val PATH_REMIND = "remindData"
     private const val PATH_PROFILE = "profileDate"
     private const val KEY_CREATED_TIME = "createdTime"
     private const val TEST_ID = "id"
@@ -359,7 +359,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     }
 
 
-    override suspend fun addHealthDate(health: Health): Result<Boolean> = suspendCoroutine { continuation ->
+    override suspend fun addHealthData(health: Health): Result<Boolean> = suspendCoroutine { continuation ->
         val remindDate = FirebaseFirestore.getInstance().collection(PATH_HEALTH)
         val document = remindDate.document()
 
@@ -384,4 +384,31 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                 }
             }
     }
+
+    override suspend fun addRemindData(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+        val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+        val document = remindDate.document()
+
+        remind.id = document.id
+        remind.createdTime = Calendar.getInstance().timeInMillis
+
+        document
+            .set(remind)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("health: $remind")
+
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
 }
