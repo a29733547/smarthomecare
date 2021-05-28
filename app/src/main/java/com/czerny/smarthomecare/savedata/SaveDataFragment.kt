@@ -20,7 +20,7 @@ class SaveDataFragment : Fragment(){
                 }
 
                 if (activity is MainActivity) {
-                    (activity as MainActivity).mainToolBar("健康紀錄")
+                    (activity as MainActivity).mainToolBar("記錄")
                 }
                 return@onCreateView root
             }

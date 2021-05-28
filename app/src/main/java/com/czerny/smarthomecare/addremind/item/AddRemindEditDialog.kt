@@ -28,7 +28,6 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
     private val viewModel by viewModels<AddRemindEditViewModel> { getVmFactory() }
 
     private lateinit var binding: DialogAddremindEditBinding
-    val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

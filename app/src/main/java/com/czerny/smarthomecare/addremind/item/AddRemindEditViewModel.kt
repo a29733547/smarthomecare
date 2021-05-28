@@ -32,7 +32,6 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     val minute = MutableLiveData<String>()
     val title = MutableLiveData<String>()
     val content = MutableLiveData<String>()
-    val note = MutableLiveData<String>()
 
 
 
@@ -52,14 +51,21 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     }
 
     fun addRemindData() {
-
         val remind = Remind(
+
+//            name = name,
+//            hours = "",
+//            minute = "",
+//            date = "",
+//            content = "",
+//            title = "",
+
             name = name.value!!,
             hours = hours.value!!,
             minute = minute.value!!,
             date = date.value!!,
             content = content.value!!,
-            note = note.value!!
+            title = title.value!!,
         )
 
         coroutineScope.launch {

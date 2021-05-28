@@ -25,12 +25,95 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <Button
+                android:id="@+id/button_health_select_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="選擇日期"
+                app:layout_constraintBottom_toBottomOf="@+id/text_add_health_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_add_health_data" />
+
+            <TextView
+                android:id="@+id/text_add_health_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="16dp"
+                android:text="@={viewModelAddHealth.date}"
+                app:layout_constraintBottom_toBottomOf="@+id/text_health_date"
+                app:layout_constraintStart_toEndOf="@+id/text_health_date"
+                app:layout_constraintTop_toTopOf="@+id/text_health_date"
+                tools:text="2021/05/15" />
+
+            <TextView
+                android:id="@+id/text_health_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.1"
+                android:text="日期 :"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_edit_health_time" />
+
+            <EditText
+                android:id="@+id/edit_remind_health_hours"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:inputType="time"
+                android:text="@={viewModelAddHealth.hours}"
+                app:layout_constraintBottom_toBottomOf="@+id/text_edit_health_time"
+                app:layout_constraintStart_toEndOf="@+id/text_edit_health_time"
+                app:layout_constraintTop_toTopOf="@+id/text_edit_health_time" />
+
+            <TextView
+                android:id="@+id/text_edit_health_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.1"
+                android:text="時間 :"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_add_remind_title" />
+
+            <EditText
+                android:id="@+id/edit_remind_health_minute"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="time"
+                android:text="@={viewModelAddHealth.minute}"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_remind_health_hours"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/edit_remind_health_hours" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text=":"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_remind_health_hours"
+                app:layout_constraintStart_toEndOf="@+id/edit_remind_health_hours"
+                app:layout_constraintTop_toTopOf="@+id/edit_remind_health_hours" />
+
             <EditText
                 android:id="@+id/edit_health_note"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="狀況良好繼續加油"
                 android:text="@={viewModelAddHealth.note}"
@@ -38,6 +121,33 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_note"
                 app:layout_constraintTop_toTopOf="@+id/text_note" />
+
+            <TextView
+                android:id="@+id/text_add_remind_content"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.1"
+                android:text="狀況 :"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_add_remind_name" />
+
+            <EditText
+                android:id="@+id/edit_health_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="醫生待人親切"
+                android:text="@={viewModelAddHealth.content}"
+                app:layout_constraintBottom_toBottomOf="@+id/text_add_remind_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_add_remind_content"
+                app:layout_constraintTop_toTopOf="@+id/text_add_remind_content" />
 
             <TextView
                 android:id="@+id/text_note"
@@ -50,77 +160,62 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_content" />
+                app:layout_constraintTop_toBottomOf="@+id/text_add_remind_content" />
 
             <EditText
                 android:id="@+id/edit_palce"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="台大醫院"
                 android:inputType="textPersonName"
                 android:text="@={viewModelAddHealth.healthPlaceData}"
-                app:layout_constraintBottom_toBottomOf="@+id/text_address"
+                app:layout_constraintBottom_toBottomOf="@+id/text_add_remind_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/text_address"
-                app:layout_constraintTop_toTopOf="@+id/text_address" />
+                app:layout_constraintStart_toEndOf="@+id/text_add_remind_name"
+                app:layout_constraintTop_toTopOf="@+id/text_add_remind_name" />
 
             <TextView
-                android:id="@+id/text_content"
+                android:id="@+id/text_add_remind_name"
                 android:layout_width="wrap_content"
-                android:layout_height="27dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="0.1"
-                android:text="狀況 :"
+                android:text="地點 :"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_name" />
+                app:layout_constraintTop_toBottomOf="@+id/text_add_remind_time" />
 
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="爺爺"
                 android:text="@={viewModelAddHealth.name}"
-                app:layout_constraintBottom_toBottomOf="@+id/text_name"
+                app:layout_constraintBottom_toBottomOf="@+id/text_add_remind_title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_name"
-                app:layout_constraintTop_toTopOf="@+id/text_name" />
-
-            <EditText
-                android:id="@+id/edit_health_content"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:hint="醫生待人親切"
-                android:text="@={viewModelAddHealth.content}"
-                app:layout_constraintBottom_toBottomOf="@+id/text_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_content"
-                app:layout_constraintTop_toTopOf="@+id/text_content" />
+                app:layout_constraintStart_toEndOf="@+id/text_add_remind_title"
+                app:layout_constraintTop_toTopOf="@+id/text_add_remind_title" />
 
             <TextView
-                android:id="@+id/text_name"
+                android:id="@+id/text_add_remind_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:letterSpacing="0.1"
                 android:text="成員 :"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_happen" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button_health_edit"
@@ -131,32 +226,31 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/add_add_button"
+                android:onClick="@{() -> viewModelAddHealth.addHealthDataFun()}"
                 android:text="新增事項"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:onClick="@{() -> viewModelAddHealth.addHealthDataFun()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_note"
+                app:layout_constraintTop_toBottomOf="@+id/edit_health_note"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/text_address"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_health_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:letterSpacing="0.1"
-                android:text="地點 :"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:text="@={viewModelAddHealth.title}"
+                app:layout_constraintBottom_toBottomOf="@+id/text_add_remind_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_add_remind_time"
+                app:layout_constraintTop_toTopOf="@+id/text_add_remind_time" />
 
             <TextView
-                android:id="@+id/text_happen"
+                android:id="@+id/text_add_remind_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -166,20 +260,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_address" />
-
-            <EditText
-                android:id="@+id/edit_health_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:text="@={viewModelAddHealth.title}"
-                app:layout_constraintBottom_toBottomOf="@+id/text_happen"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_happen"
-                app:layout_constraintTop_toTopOf="@+id/text_happen" />
+                app:layout_constraintTop_toBottomOf="@+id/text_health_date" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

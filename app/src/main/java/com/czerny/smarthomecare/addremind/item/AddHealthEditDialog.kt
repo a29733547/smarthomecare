@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.databinding.DialogAddremindBinding
@@ -43,6 +44,16 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
         binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.buttonHealthSelectData.setOnClickListener {
+            findNavController().navigate(AddHealthEditDialogDirections.actionAddHealthEditDialogToItemAddRemindData())
+        }
+
+        /**---------ItemAddRemindData 選擇日期後會這這邊Log會看到*/
+        findNavController().currentBackStackEntry?.savedStateHandle?.
+        getLiveData<String>("RemindData")?.observe(viewLifecycleOwner) { data ->
+            binding.textAddHealthData.text = data
+
+        }
 
 //        binding.buttonHealthEdit.setOnClickListener{
 

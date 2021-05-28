@@ -50,6 +50,7 @@
         android:id="@+id/addRemindEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddRemindEditDialog"
         android:label="addRemindEditDialog" >
+
     </dialog>
 
     <dialog
@@ -60,7 +61,9 @@
     <dialog
         android:id="@+id/addHealthEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddHealthEditDialog"
-        android:label="addhealthEditDialog" />
+        android:label="addhealthEditDialog" >
+
+    </dialog>
 
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
         app:popUpTo="@id/nav_graph"
@@ -98,5 +101,9 @@
     <action
         android:id="@+id/action_addRemindEditDialog_to_itemAddRemindData"
         app:destination="@id/itemAddRemindData" />
+    <action
+        android:id="@+id/action_addHealthEditDialog_to_itemAddRemindData"
+        app:destination="@id/itemAddRemindData" />
+
 
 </navigation>

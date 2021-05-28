@@ -33,6 +33,9 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
     val healthPlaceData = MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val note = MutableLiveData<String>()
+    val date = MutableLiveData<String>()
+    val hours = MutableLiveData<String>()
+    val minute = MutableLiveData<String>()
 
 
 
@@ -52,13 +55,15 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
     }
 
     fun addHealthDataFun() {
-
         val health = Health(
             healthPlaceData = healthPlaceData.value!!,
             title = title.value!!,
             name = name.value!!,
             content = content.value!!,
-            note = note.value!!
+            note = note.value!!,
+            hours = hours.value!!,
+            minute = minute.value!!,
+            date = date.value!!
         )
 
         coroutineScope.launch {

@@ -20,11 +20,11 @@
             android:id="@+id/text_item_remind_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@={viewModelHomeItemRemind.content}"
-            android:textSize="20dp"
+            android:text="@={viewModelHomeItemRemind.title}"
+            android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/image_item_remind"
             app:layout_constraintHorizontal_bias="0.0"
@@ -40,47 +40,55 @@
             android:background="@drawable/home_remind_time"
             tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/text_item_remind_hours"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@={viewModelHomeItemRemind.hours}"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/text_item_savedata_remind_nothing2"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="時" />
-
-            <TextView
-                android:id="@+id/text_item_savedata_remind_nothing2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="："
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
-                app:layout_constraintStart_toEndOf="@+id/text_item_remind_hours"
-                app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours" />
-
-            <TextView
-                android:id="@+id/text_item_remind_minute"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:text="@={viewModelHomeItemRemind.minute}"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours"
-                tools:text="分" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/text_item_remind_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@={viewModelHomeItemRemind.minute}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_item_savedata_remind_nothing2"
+                    app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours"
+                    tools:text="分" />
+
+                <TextView
+                    android:id="@+id/text_item_savedata_remind_nothing2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
+                    app:layout_constraintEnd_toStartOf="@+id/text_item_remind_minute"
+                    app:layout_constraintStart_toEndOf="@+id/text_item_remind_hours"
+                    app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours" />
+
+                <TextView
+                    android:id="@+id/text_item_remind_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@={viewModelHomeItemRemind.hours}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/text_item_savedata_remind_nothing2"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="時" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -109,5 +117,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icons8_alarm_clock_64" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

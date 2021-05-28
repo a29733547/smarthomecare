@@ -41,7 +41,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_allergy"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/imageView21"
@@ -110,7 +110,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_genetic"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/imageView20"
@@ -184,7 +184,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_profile"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/imageView19"
@@ -257,7 +257,7 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <ImageView
                         android:id="@+id/image_profile"
@@ -423,8 +423,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@{viewModelProfile.profile.year}"
                         android:letterSpacing="0.1"
+                        android:text="@{viewModelProfile.profile.year}"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="@+id/text_profile_year"
                         app:layout_constraintStart_toEndOf="@+id/text_profile_year"
@@ -466,8 +466,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="歲"
                         android:letterSpacing="0.1"
+                        android:text="歲"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/text_conten_year"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -480,8 +480,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Kg"
                         android:letterSpacing="0.1"
+                        android:text="Kg"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/text_content_weight"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -495,8 +495,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:text="型"
                         android:letterSpacing="0.1"
+                        android:text="型"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/text_content_blood"
                         app:layout_constraintEnd_toEndOf="parent"

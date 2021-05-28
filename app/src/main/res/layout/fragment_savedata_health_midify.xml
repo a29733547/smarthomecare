@@ -18,210 +18,326 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
 
-        <Button
-            android:id="@+id/button_savedata_health_modify_push"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="儲存"
-            android:onClick="@{() -> viewModelHealthModify.healthModifyFun(viewModelHealthModify.healthModify)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_content" />
+        <ScrollView
+            android:id="@+id/scrollView_modify_health"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_modify_place"
+            android:id="@+id/layout_scroview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add_dialog_health_modify_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/image_health_modify_place"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/savedata_item_health"
-                android:scaleType="centerInside"
+            <Button
+                android:id="@+id/button_savedata_health_modify_push"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+
+                android:onClick="@{() -> viewModelHealthModify.healthModifyFun(viewModelHealthModify.healthModify)}"
+                android:text="儲存"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_content"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_health_modify_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/modify_health_content_edit"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_note"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/image_health_modify_content"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/savedata_item_health"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_content_paste_white_24dp" />
+
+                    <ImageView
+                        android:id="@+id/image_health_modify_content2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/savedata_item_health"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_content_paste_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="內容"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_content"
+                        app:layout_constraintEnd_toStartOf="@+id/image_health_modify_content2"
+                        app:layout_constraintStart_toEndOf="@+id/image_health_modify_content"
+                        app:layout_constraintTop_toTopOf="@+id/image_health_modify_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/modify_health_content_edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <EditText
+                        android:id="@+id/edit_health_modify_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModelHealthModify.healthModify.content}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="不小心所以然的撞上去" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_health_modify_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/modify_health_content_edit"
+                app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_place"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/image_health_modify_note"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/savedata_item_health"
+                    android:scaleType="centerInside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_new_releases_white_24dp" />
+
+                <EditText
+                    android:id="@+id/edit_health_modify_note"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModelHealthModify.healthModify.note}"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_note"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_health_modify_note"
+                    app:layout_constraintTop_toTopOf="@+id/image_health_modify_note" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_health_modify_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/modify_health_content_edit"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_title"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/image_health_modify_place"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/savedata_item_health"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_person_pin_circle_white_24dp" />
+
+                <EditText
+                    android:id="@+id/edit_savedata_health_modify_place"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModelHealthModify.healthModify.healthPlaceData}"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_place"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_health_modify_place"
+                    app:layout_constraintTop_toTopOf="@+id/image_health_modify_place" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_health_modify_name"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/modify_health_content_edit"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_person_pin_circle_white_24dp" />
+                tools:visibility="visible">
 
-            <EditText
-                android:id="@+id/edit_savedata_health_modify_place"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModelHealthModify.healthModify.healthPlaceData}"
-                app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_place"
+                <ImageView
+                    android:id="@+id/image_health_modify_name"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/savedata_item_health"
+                    android:scaleType="centerInside"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_family_restroom_white_24dp" />
+
+                <EditText
+                    android:id="@+id/edit_savedata_health_modify_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModelHealthModify.healthModify.name}"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_health_modify_name" />
+
+                <TextView
+                    android:id="@+id/text_savedata_health_modify_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="119dp"
+                    android:text="@={viewModelHealthModify.healthModify.date}"
+                    app:layout_constraintEnd_toStartOf="@+id/layout_savedata_health_modify_time"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2021/05/30"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_savedata_health_modify_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_savedata_health_modify_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_savedata_health_modify_date"
+                    app:layout_constraintTop_toTopOf="@+id/text_savedata_health_modify_date">
+
+                    <TextView
+                        android:id="@+id/text_savedata_health_modify_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModelHealthModify.healthModify.hours}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView6"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="12"/>
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text=":"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_savedata_health_modify_hours"
+                        app:layout_constraintEnd_toStartOf="@+id/text_savedata_health_modify_minute"
+                        app:layout_constraintStart_toEndOf="@+id/text_savedata_health_modify_hours"
+                        app:layout_constraintTop_toTopOf="@+id/text_savedata_health_modify_hours" />
+
+                    <TextView
+                        android:id="@+id/text_savedata_health_modify_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModelHealthModify.healthModify.minute}"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_savedata_health_modify_hours"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView6"
+                        app:layout_constraintTop_toTopOf="@+id/text_savedata_health_modify_hours"
+                        tools:text="30"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_health_modify_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/modify_health_content_edit"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_health_modify_place"
-                app:layout_constraintTop_toTopOf="@+id/image_health_modify_place" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_modify_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add_dialog_health_modify_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_place">
-
-            <ImageView
-                android:id="@+id/image_health_modify_name"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/savedata_item_health"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_family_restroom_white_24dp" />
+                app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_name"
+                tools:visibility="visible">
 
-            <EditText
-                android:id="@+id/edit_savedata_health_modify_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModelHealthModify.healthModify.name}"
-                app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_health_modify_name"
-                app:layout_constraintTop_toTopOf="@+id/image_health_modify_name" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/edit_savedata_health_modify_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModelHealthModify.healthModify.title}"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_health_modify_title"
+                    app:layout_constraintTop_toTopOf="@+id/image_health_modify_title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_modify_title"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add_dialog_health_modify_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_name">
-
-            <EditText
-                android:id="@+id/edit_savedata_health_modify_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModelHealthModify.healthModify.title}"
-                app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_health_modify_title"
-                app:layout_constraintTop_toTopOf="@+id/image_health_modify_title" />
-
-            <ImageView
-                android:id="@+id/image_health_modify_title"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/savedata_item_health"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_library_books_white_24dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_modify_note"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add_dialog_health_modify_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_title">
-
-            <ImageView
-                android:id="@+id/image_health_modify_note"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/savedata_item_health"
-                android:scaleType="centerInside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_new_releases_white_24dp" />
-
-            <EditText
-                android:id="@+id/edit_health_modify_note"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModelHealthModify.healthModify.note}"
-                app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_note"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_health_modify_note"
-                app:layout_constraintTop_toTopOf="@+id/image_health_modify_note" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_health_modify_content"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add_dialog_health_modify_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_note">
-
-            <ImageView
-                android:id="@+id/image_health_modify_content"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/savedata_item_health"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_content_paste_white_24dp" />
-
-            <EditText
-                android:id="@+id/edit_health_modify_content"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModelHealthModify.healthModify.content}"
-                app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_health_modify_content"
-                app:layout_constraintTop_toTopOf="@+id/image_health_modify_content" />
+                <ImageView
+                    android:id="@+id/image_health_modify_title"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/savedata_item_health"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_library_books_white_24dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,9 @@ data class Health(
     var name: String = "",
     var content: String = "",
     var note: String = "",
+    var hours: String = "",
+    var minute: String = "",
+    var date: String = "",
     var createdTime: Long = -1,
 
 
