@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.czerny.smarthomecare.MockData
@@ -36,11 +37,19 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
         binding.recyclerviewSavedataRemind.layoutManager = LinearLayoutManager(context)
         binding.recyclerviewSavedataRemind.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
-        val saveDataRemindAdapter = SaveDataRemindAdapter()
+        val saveDataRemindAdapter = SaveDataRemindAdapter(viewModel, SaveDataRemindAdapter.OnClickListener{
+            viewModel.navigateToRemindModify(it)
+        })
         binding.recyclerviewSavedataRemind.adapter = saveDataRemindAdapter
 
-        //20210522 branch test
-        //20210528 branch test
+        viewModel.navigateToRemindModify.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                findNavController().navigate(SaveDataHealthFragmentDirections.
+                actionSaveDataRemindFragmentToSaveDataRemindModifyFragment())
+                viewModel.onRemindModifylNavigated() //no this can't go back
+            }
+
+        })
 
 
         return binding.root

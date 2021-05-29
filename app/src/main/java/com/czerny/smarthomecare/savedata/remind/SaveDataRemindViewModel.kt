@@ -47,6 +47,15 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
+    // Handle navigation to Savedata Health Modify
+    private val _navigateToRemindModify = MutableLiveData<Remind>()
+    val navigateToRemindModify: LiveData<Remind>
+        get() = _navigateToRemindModify
+
+    fun onRemindModifylNavigated() {
+        _navigateToRemindModify.value = null
+    }
+
 
     /**
      * Call getRemindResult() on init so we can display status immediately.
@@ -61,6 +70,40 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         } else {
             getRemindResult()
 
+        }
+    }
+
+    fun deleteRemind(remind: Remind) {
+//
+//        if (_author.value == null) {
+//            _error.value = "who r u?"
+//            _refreshStatus.value = false
+//            return
+//        }
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+            when (val result = repository.deleteRemind(remind)) {
+                is Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    refresh()
+                }
+                is Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+            _refreshStatus.value = false
         }
     }
 
@@ -102,6 +145,24 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         liveRemind = repository.getLiveRemind()
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
+    }
+
+    fun navigateToRemindModify(remind: Remind) {
+        _navigateToRemindModify.value = remind
+    }
+
+
+    fun refresh() {
+
+        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
+            _status.value = LoadApiStatus.DONE
+            _refreshStatus.value = false
+
+        } else {
+            if (status.value != LoadApiStatus.LOADING) {
+                SmartHomeCareApplication()
+            }
+        }
     }
 
 }

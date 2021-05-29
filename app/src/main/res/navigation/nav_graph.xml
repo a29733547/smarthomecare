@@ -37,6 +37,17 @@
         android:name="com.czerny.smarthomecare.savedata.modify.SaveDataHealtyModifyFragment"
         android:label="SaveDataHealtyModifyFragment" />
 
+    <fragment
+        android:id="@+id/saveDataRemindFragment"
+        android:name="com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment"
+        android:label="SaveDataRemindFragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/saveDataRemindModifyFragment"
+        android:name="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragment"
+        android:label="SaveDataRemindModifyFragment" />
+
 
 
     <dialog
@@ -81,6 +92,7 @@
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
 
+
     <dialog
         android:id="@+id/itemAddRemindData"
         android:name="com.czerny.smarthomecare.addremind.item.ItemAddRemindData"
@@ -104,6 +116,11 @@
     <action
         android:id="@+id/action_addHealthEditDialog_to_itemAddRemindData"
         app:destination="@id/itemAddRemindData" />
+    <action
+        android:id="@+id/action_saveDataRemindFragment_to_saveDataRemindModifyFragment"
+        app:destination="@id/saveDataRemindModifyFragment" />
+
+
 
 
 </navigation>

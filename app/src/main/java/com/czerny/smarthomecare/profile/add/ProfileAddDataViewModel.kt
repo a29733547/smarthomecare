@@ -34,7 +34,7 @@ class ProfileAddDataViewModel (private val repository: SmartHomeCareRepository):
 
     val userProfile = User(
         id = "",
-        profileNameData = "",
+        name = "",
         birth = "",
         year = "",
         weight = "",

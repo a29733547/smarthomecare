@@ -10,6 +10,7 @@ import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.profile.ProfileViewModel
 import com.czerny.smarthomecare.profile.add.ProfileAddDataViewModel
+import com.czerny.smarthomecare.savedata.modify.SavaDataRemindModifyViewModel
 import com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel
 
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
@@ -28,6 +29,9 @@ class ViewModelFactory constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
+
+                isAssignableFrom(SavaDataRemindModifyViewModel::class.java) ->
+                    SavaDataRemindModifyViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)

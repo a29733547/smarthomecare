@@ -8,6 +8,11 @@
         <item name="android:animation">@null</item>
     </style>
 
+    <style name="remind_modify_text">
+
+        <item name="android:textColor">@color/remind_modify_image</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
 
 </resources>

@@ -32,7 +32,7 @@ class ProfileAddDataDialog : BottomSheetDialogFragment() {
         binding.buttonProfileAddSave.setOnClickListener {
             val user: MutableMap<String, Any> = HashMap()
 
-            user["profileNameData"] = viewModel.userProfile.profileNameData
+            user["name"] = viewModel.userProfile.name
             user["birth"] = viewModel.userProfile.birth
             user["year"] = viewModel.userProfile.year
 

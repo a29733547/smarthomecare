@@ -32,6 +32,10 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override suspend fun deleteRemind(remind: Remind): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override suspend fun getHealth(): Result<List<Health>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -56,6 +60,10 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override suspend fun remindModify(remind: Remind): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
 
     /**get remind data*/
     override suspend fun getRemind(): Result<List<Remind>> {
@@ -63,6 +71,10 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
     }
 
     override fun getLiveRemind(): MutableLiveData<List<Remind>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLiveRemindModify(): MutableLiveData<Remind> {
         TODO("Not yet implemented")
     }
 

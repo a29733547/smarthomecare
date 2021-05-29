@@ -61,31 +61,36 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                 continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
             }
         }
-
-//        when {
-//            health.author?.id == "waynechen323"
-//                    && health.tag.toLowerCase(Locale.TAIWAN) != "test"
-//                    && health.tag.trim().isNotEmpty() -> {
-//
-//                continuation.resume(Result.Fail("You know nothing!! ${health.author?.name}"))
-//            }
-//            else -> {
-//                FirebaseFirestore.getInstance()
-//                    .collection(PATH_HEALTH)
-//                    .document()
-//                    .delete()
-//                    .addOnSuccessListener {
-//                        Logger.i("Delete: $health")
-//
-//                        continuation.resume(Result.Success(true))
-//                    }.addOnFailureListener {
-//                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                        continuation.resume(Result.Error(it))
-//                    }
-//            }
-//        }
     }
     /**--------delete save health-----------*/
+
+    override suspend fun deleteRemind(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+
+        val articles = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+        val document = articles.document(remind.id)
+
+        remind.id = document.id
+
+
+        document
+            .delete()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("Publish: $remind")
+
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
 
     /** get health date*/
     override suspend fun getHealth(): Result<List<Health>> = suspendCoroutine { continuation ->
@@ -257,6 +262,33 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
+    override suspend fun remindModify(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+        val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+        val document = remindDate.document()
+
+        remind.id = document.id
+        remind.createdTime = Calendar.getInstance().timeInMillis
+
+        document
+//                    .update("id", "Z9usq02R5SOlstL9AW3n")
+            .set(remind)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("health: $remind")
+
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
 
     override suspend fun getProfile(): Result<User> = suspendCoroutine { continuation ->
 //        override suspend fun getProfile(): Result<List<User>> = suspendCoroutine { continuation ->
@@ -350,6 +382,34 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                     Logger.d(document.id + " => " + document.data)
                     val article = document.toObject(Health::class.java)
 //                    list.add(article)
+                    list = article
+                }
+
+                liveData.value = list
+            }
+        return liveData
+    }
+
+    override fun getLiveRemindModify(): MutableLiveData<Remind> {
+
+        val liveData = MutableLiveData<Remind>()
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_HEALTH)
+
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .addSnapshotListener { snapshot, exception ->
+                Logger.i("addSnapshotListener detect")
+                exception?.let {
+                    Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                }
+
+                var list = Remind()
+
+
+                for (document in snapshot!!) {
+                    Logger.d(document.id + " => " + document.data)
+                    val article = document.toObject(Remind::class.java)
                     list = article
                 }
 

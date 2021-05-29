@@ -14,6 +14,10 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.deleteHealth(health)
     }
 
+    override suspend fun deleteRemind(remind: Remind): Result<Boolean> {
+        return remoteDataSource.deleteRemind(remind)
+    }
+
     override suspend fun getHealth(): Result<List<Health>> {
         return remoteDataSource.getHealth()
     }
@@ -29,12 +33,13 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
     override fun getLiveHealthModify(): MutableLiveData<Health> {
         return remoteDataSource.getLiveHealthModify()
     }
-//override fun getLiveHealthModify(): MutableLiveData<List<Health>> {
-//    return remoteDataSource.getLiveHealthModify()
-//}
 
     override suspend fun healthModify(health: Health): Result<Boolean> {
         return remoteDataSource.healthModify(health)
+    }
+
+    override suspend fun remindModify(remind: Remind): Result<Boolean> {
+        return remoteDataSource.remindModify(remind)
     }
 
     override suspend fun getRemind(): Result<List<Remind>> {
@@ -45,6 +50,11 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.getLiveRemind()
     }
 
+    override fun getLiveRemindModify(): MutableLiveData<Remind> {
+        return remoteDataSource.getLiveRemindModify()
+    }
+
+
     override suspend fun getProfile(): Result<User> {
         return remoteDataSource.getProfile()
     }
@@ -53,8 +63,8 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.addHealthData(health)
     }
 
-    override suspend fun addRemindData(remide: Remind): Result<Boolean> {
-        return remoteDataSource.addRemindData(remide)
+    override suspend fun addRemindData(remind: Remind): Result<Boolean> {
+        return remoteDataSource.addRemindData(remind)
     }
 
 
