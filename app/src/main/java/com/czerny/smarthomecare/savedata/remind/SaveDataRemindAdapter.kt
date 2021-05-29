@@ -12,6 +12,8 @@ import com.czerny.smarthomecare.databinding.ItemRemindBinding
 import com.czerny.smarthomecare.databinding.ItemSavedataHealthBinding
 import com.czerny.smarthomecare.databinding.ItemSavedataRemindBinding
 
+//20210529 branch test
+
 class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val onClickListener:OnClickListener) :
     ListAdapter<Remind, RecyclerView.ViewHolder>(DiffCallBack) {
 
