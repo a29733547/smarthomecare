@@ -4,7 +4,9 @@ import androidx.fragment.app.Fragment
 
 import com.czerny.smarthomecare.factory.ViewModelFactory
 import com.czerny.smarthomecare.SmartHomeCareApplication
-
+import com.czerny.smarthomecare.data.Health
+import com.czerny.smarthomecare.data.Remind
+import com.czerny.smarthomecare.factory.RemindModifyViewModelFactory
 
 
 /**
@@ -17,7 +19,7 @@ fun Fragment.getVmFactory(): ViewModelFactory {
     return ViewModelFactory(repository)
 }
 
-//fun Fragment.getVmFactory(health: Health?): HealthModifyViewModelFactory {
-//    val repository = (requireContext().applicationContext as SmartHomeCareApplication).repository
-//    return HealthModifyViewModelFactory(repository, health)
-//}
+fun Fragment.getVmFactory(remind: Remind): RemindModifyViewModelFactory {
+    val repository = (requireContext().applicationContext as SmartHomeCareApplication).repository
+    return RemindModifyViewModelFactory(repository, remind)
+}

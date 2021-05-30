@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModelRemindModify"
-            type="com.czerny.smarthomecare.savedata.modify.SavaDataRemindModifyViewModel" />
+            type="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel" />
         <variable
             name="isLiveDataDesign"
             type="Boolean" />
@@ -165,8 +165,10 @@
                     android:text="@={viewModelRemindModify.remindModify.name}"
                     app:layout_constraintBottom_toBottomOf="@+id/image_remind_mofify_profile"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/text_remind_modify_profile"
                     app:layout_constraintTop_toTopOf="@+id/image_remind_mofify_profile"
+                    app:layout_constraintVertical_bias="0.454"
                     tools:text="name" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -362,6 +364,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text="儲存"
+                android:onClick="@{() -> viewModelRemindModify.healthRemindFun()}"
                 app:layout_constraintBottom_toBottomOf="@+id/button_remind_modify_remove"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/button_remind_modify_remove"

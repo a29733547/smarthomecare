@@ -13,7 +13,8 @@ import com.czerny.smarthomecare.ext.getVmFactory
 
 class SaveDataRemindModifyFragment : Fragment() {
 
-    private val viewModel by viewModels<SavaDataRemindModifyViewModel> { getVmFactory() }
+    private val viewModel by viewModels<SaveDataRemindModifyViewModel> {
+        getVmFactory(SaveDataRemindModifyFragmentArgs.fromBundle(requireArguments()).remindKey) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

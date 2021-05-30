@@ -33,8 +33,10 @@ interface SmartHomeCareRepository {
 
     suspend fun getProfile(): Result<User>
 
+    //add頁面
     suspend fun addHealthData(health: Health): Result<Boolean>
 
+    //add頁面
     suspend fun addRemindData(remind: Remind): Result<Boolean>
 
 

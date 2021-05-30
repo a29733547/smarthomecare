@@ -46,7 +46,11 @@
     <fragment
         android:id="@+id/saveDataRemindModifyFragment"
         android:name="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragment"
-        android:label="SaveDataRemindModifyFragment" />
+        android:label="SaveDataRemindModifyFragment" >
+        <argument
+            android:name="remindKey"
+            app:argType="com.czerny.smarthomecare.data.Remind" />
+    </fragment>
 
 
 

@@ -1,26 +1,32 @@
 package com.czerny.smarthomecare.savedata.modify
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.network.LoadApiStatus
-import com.czerny.smarthomecare.util.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class SavaDataRemindModifyViewModel (private val repository: SmartHomeCareRepository): ViewModel() {
+class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareRepository,
+                                     private val arguments: Remind): ViewModel() {
 
-    private var _remindModify = MutableLiveData<Remind>()
+    private var _remindModify = MutableLiveData<Remind>().apply {
+        value = arguments
+    }
     val remindModify: LiveData<Remind>
         get() = _remindModify
+
+//    private var _remindModify = MutableLiveData<Remind>()
+//    val remindModify: LiveData<Remind>
+//        get() = _remindModify
 
 
     private var viewModelJob = Job()
@@ -41,18 +47,37 @@ class SavaDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
 
     private val _leave = MutableLiveData<Boolean>()
 
-    init {
-        Logger.i("------------------------------------")
-        Logger.i("[${this::class.simpleName}]${this}")
-        Logger.i("------------------------------------")
-
-        getLiveRemindModify()
-
-    }
+//    val name = MutableLiveData<String>()
+//    val date = MutableLiveData<String>()
+//    val hours = MutableLiveData<String>()
+//    val minute = MutableLiveData<String>()
+//    val title = MutableLiveData<String>()
+//    val content = MutableLiveData<String>()
 
 
+//
+//    init {
+//        Logger.i("------------------------------------")
+//        Logger.i("[${this::class.simpleName}]${this}")
+//        Logger.i("------------------------------------")
+//
+//        getLiveRemindModify()
+//
+//    }
+//
+//
+//
+    fun healthRemindFun() {
 
-    fun healthRemindFun(remind: Remind) {
+    val remind = Remind(
+
+        name = remindModify.value?.name,
+        hours = remindModify.value?.hours,
+        minute = remindModify.value?.minute,
+        date = remindModify.value?.date,
+        content = remindModify.value?.content,
+        title = remindModify.value?.title,
+    )
 
         coroutineScope.launch {
 
@@ -79,16 +104,16 @@ class SavaDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
             }
         }
     }
-
+//
     fun leave(needRefresh: Boolean = false) {
         _leave.value = needRefresh
     }
-
-
-    fun getLiveRemindModify() {
-        _remindModify = repository.getLiveRemindModify()
-        _status.value = LoadApiStatus.DONE
-        _refreshStatus.value = false
-    }
+//
+//
+//    fun getLiveRemindModify() {
+//        _remindModify = repository.getLiveRemindModify()
+//        _status.value = LoadApiStatus.DONE
+//        _refreshStatus.value = false
+//    }
 
 }

@@ -45,7 +45,7 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
         viewModel.navigateToRemindModify.observe(viewLifecycleOwner, Observer {
             it?.let {
                 findNavController().navigate(SaveDataHealthFragmentDirections.
-                actionSaveDataRemindFragmentToSaveDataRemindModifyFragment())
+                actionSaveDataRemindFragmentToSaveDataRemindModifyFragment(it))
                 viewModel.onRemindModifylNavigated() //no this can't go back
             }
 

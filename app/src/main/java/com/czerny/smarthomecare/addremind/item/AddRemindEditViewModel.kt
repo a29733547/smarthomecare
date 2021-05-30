@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.network.LoadApiStatus
+import com.czerny.smarthomecare.util.Logger
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,9 +23,12 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+//    private val _remind = MutableLiveData<Remind>()
+//    val remind: LiveData<Remind>
+//        get() = _remind
 
 
-    //    val id = MutableLiveData<String>()
+    val id = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val date = MutableLiveData<String>()
     val hours = MutableLiveData<String>()
@@ -50,26 +53,38 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
         _leave.value = needRefresh
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
+    init {
+        Logger.i("------------------------------------")
+        Logger.i("[${this::class.simpleName}]${this}")
+        Logger.i("------------------------------------")
+    }
+
     fun addRemindData() {
         val remind = Remind(
 
-//            name = name,
-//            hours = "",
-//            minute = "",
-//            date = "",
-//            content = "",
-//            title = "",
+            name = name.value,
+            hours = hours.value,
+            minute = minute.value,
+            date = date.value,
+            content = content.value,
+            title = title.value,
 
-            name = name.value!!,
-            hours = hours.value!!,
-            minute = minute.value!!,
-            date = date.value!!,
-            content = content.value!!,
-            title = title.value!!,
+//            name = name.value!!,
+//            hours = hours.value!!,
+//            minute = minute.value!!,
+//            date = date.value!!,
+//            content = content.value!!,
+//            title = title.value!!,
         )
 
         coroutineScope.launch {
 
+//            val result = repository.addRemindData(remind)
             _status.value = LoadApiStatus.LOADING
 
             when (val result = repository.addRemindData(remind)) {

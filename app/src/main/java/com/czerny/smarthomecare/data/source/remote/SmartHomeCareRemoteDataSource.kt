@@ -2,22 +2,20 @@ package com.czerny.smarthomecare.data.source.remote
 
 
 
+import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.*
 import com.czerny.smarthomecare.data.source.SmartHomeCareDataSource
-import com.czerny.smarthomecare.login.UserManager.user
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import com.czerny.smarthomecare.util.Logger
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.SnapshotMetadata
 import java.util.*
-import kotlin.collections.HashMap
 
 object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
@@ -43,7 +41,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
     health.id = document.id
 
-
     document
         .delete()
         .addOnCompleteListener { task ->
@@ -67,10 +64,10 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     override suspend fun deleteRemind(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
 
         val articles = FirebaseFirestore.getInstance().collection(PATH_REMIND)
-        val document = articles.document(remind.id)
+        val document = articles.document(remind.id!!)
+//        Log.i("czerny","articles.document = ${document}")
 
         remind.id = document.id
-
 
         document
             .delete()
@@ -123,8 +120,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     override fun getLiveHealth(): MutableLiveData<List<Health>> {
 
         val liveData = MutableLiveData<List<Health>>()
-
-
 
         FirebaseFirestore.getInstance()
             .collection(PATH_HEALTH)
@@ -240,10 +235,10 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         val document = remindDate.document()
 
         health.id = document.id
+
         health.createdTime = Calendar.getInstance().timeInMillis
 
-                document
-//                    .update("id", "Z9usq02R5SOlstL9AW3n")
+        document
             .set(health)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -262,19 +257,38 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
-    override suspend fun remindModify(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+//    override suspend fun remindModify(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+//
+//        val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+//            remindDate.document()
+//                .update("name", remind.name,
+//                "title", remind.title,
+//                "content", remind.content)
+//                .addOnSuccessListener {
+//                    Logger.d("DocumentSnapshot added with ID: ${remind}")
+//                }
+//                .addOnFailureListener { e ->
+//                    Logger.w("Error adding document $e")
+//                }
+//
+//
+//    }
+
+
+        override suspend fun remindModify(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+
         val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
         val document = remindDate.document()
+            Log.i("czerny","remind.id = ${document}")
 
         remind.id = document.id
         remind.createdTime = Calendar.getInstance().timeInMillis
 
         document
-//                    .update("id", "Z9usq02R5SOlstL9AW3n")
             .set(remind)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Logger.i("health: $remind")
+                    Logger.i("remind: $remind")
 
                     continuation.resume(Result.Success(true))
                 } else {
@@ -282,12 +296,42 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
                         Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
-                        return@addOnCompleteListener
+//                        return@addOnCompleteListener
                     }
                     continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
                 }
             }
     }
+
+
+//    override suspend fun remindModify(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
+//
+//
+//
+//        val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+//        val document = remindDate.document()
+//
+//        remind.id = document.id
+//        remind.createdTime = Calendar.getInstance().timeInMillis
+//
+//        document
+//            .set(remind)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    Logger.i("remind: $remind")
+//
+//                    continuation.resume(Result.Success(true))
+//                } else {
+//                    task.exception?.let {
+//
+//                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+//                        continuation.resume(Result.Error(it))
+//                        return@addOnCompleteListener
+//                    }
+//                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+//                }
+//            }
+//    }
 
 
     override suspend fun getProfile(): Result<User> = suspendCoroutine { continuation ->

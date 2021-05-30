@@ -33,7 +33,7 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DialogAddremindEditBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
+//        binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.addremindEditViewModel = viewModel
 
         binding.buttonRemindSelectData.setOnClickListener{

@@ -2,7 +2,6 @@ package com.czerny.smarthomecare.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.czerny.smarthomecare.MainViewModel
 import com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel
 import com.czerny.smarthomecare.addremind.item.AddRemindEditViewModel
 
@@ -10,7 +9,7 @@ import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.profile.ProfileViewModel
 import com.czerny.smarthomecare.profile.add.ProfileAddDataViewModel
-import com.czerny.smarthomecare.savedata.modify.SavaDataRemindModifyViewModel
+import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel
 import com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel
 
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
@@ -30,8 +29,8 @@ class ViewModelFactory constructor(
         with(modelClass) {
             when {
 
-                isAssignableFrom(SavaDataRemindModifyViewModel::class.java) ->
-                    SavaDataRemindModifyViewModel(repository)
+//                isAssignableFrom(SaveDataRemindModifyViewModel::class.java) ->
+//                    SaveDataRemindModifyViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)
