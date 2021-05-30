@@ -67,23 +67,39 @@ class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
 //
 //
 //
+
+
+
     fun healthRemindFun() {
 
-    val remind = Remind(
+        val remind = remindModify.value?.let {
+            Remind(
+                id = it.id,
+                name = it.name,
+                hours = it.hours,
+                minute = it.minute,
+                date = it.date,
+                content = it.content,
+                title = it.title,
+            )
+        }
 
-        name = remindModify.value?.name,
-        hours = remindModify.value?.hours,
-        minute = remindModify.value?.minute,
-        date = remindModify.value?.date,
-        content = remindModify.value?.content,
-        title = remindModify.value?.title,
-    )
+//    val remind = Remind(
+//
+//        id = remindModify.value?.id,
+//        name = remindModify.value?.name,
+//        hours = remindModify.value?.hours,
+//        minute = remindModify.value?.minute,
+//        date = remindModify.value?.date,
+//        content = remindModify.value?.content,
+//        title = remindModify.value?.title,
+//    )
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.remindModify(remind)) {
+            when (val result = remind?.let { repository.remindModify(it) }) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

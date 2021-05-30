@@ -23,9 +23,9 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-//    private val _remind = MutableLiveData<Remind>()
-//    val remind: LiveData<Remind>
-//        get() = _remind
+    private var _remindData = MutableLiveData<Remind>()
+    val remindData: LiveData<Remind>
+        get() = _remindData
 
 
     val id = MutableLiveData<String>()
@@ -65,21 +65,25 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     }
 
     fun addRemindData() {
-        val remind = Remind(
+//        val remind = remindData.value?.let {
+//            Remind(
+//                id = it.id,
+//                name = it.name,
+//                hours = it.hours,
+//                minute = it.minute,
+//                date = it.date,
+//                content = it.content,
+//                title = it.title,
+//            )
+//        }
 
+        val remind = Remind(
             name = name.value,
             hours = hours.value,
             minute = minute.value,
             date = date.value,
             content = content.value,
             title = title.value,
-
-//            name = name.value!!,
-//            hours = hours.value!!,
-//            minute = minute.value!!,
-//            date = date.value!!,
-//            content = content.value!!,
-//            title = title.value!!,
         )
 
         coroutineScope.launch {
@@ -87,7 +91,8 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
 //            val result = repository.addRemindData(remind)
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.addRemindData(remind)) {
+            when (val result = repository.addRemindData(remind)){
+//            when (val result = remind?.let { repository.addRemindData(it) }){
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
