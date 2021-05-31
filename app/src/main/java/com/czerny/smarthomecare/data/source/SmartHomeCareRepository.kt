@@ -1,10 +1,7 @@
 package com.czerny.smarthomecare.data.source
 
 import androidx.lifecycle.MutableLiveData
-import com.czerny.smarthomecare.data.Health
-import com.czerny.smarthomecare.data.Remind
-import com.czerny.smarthomecare.data.Result
-import com.czerny.smarthomecare.data.User
+import com.czerny.smarthomecare.data.*
 
 interface SmartHomeCareRepository {
 
@@ -38,6 +35,10 @@ interface SmartHomeCareRepository {
 
     //add頁面
     suspend fun addRemindData(remind: Remind): Result<Boolean>
+
+    suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean>
+
+    fun getAllLiveMessage (emails: List<String>) : MutableLiveData<List<Message>>
 
 
 }

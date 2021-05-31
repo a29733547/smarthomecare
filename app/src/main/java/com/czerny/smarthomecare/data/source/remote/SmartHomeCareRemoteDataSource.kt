@@ -430,4 +430,101 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
+    override suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean> = suspendCoroutine { continuation ->
+
+        val chat = FirebaseFirestore.getInstance().collection("PATH_CHATLIST")
+        chat.whereIn("attendees", listOf(emails, emails.reversed()))
+            .get()
+            .addOnSuccessListener { result ->
+                val documentId = chat.document(result.documents[0].id)
+                documentId
+                    .update("latestTime", Calendar.getInstance().timeInMillis, "latestMessage", message.text)
+            }
+            .continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    if (task.exception != null) {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                        }
+                    } else {
+                        continuation.resume(Result.Fail(SmartHomeCareApplication.appContext.getString(R.string.you_shall_not_pass)))
+                    }
+                }
+
+                task.result?.let {
+                    val documentId2 = chat.document(it.documents[0].id).collection("message").document()
+
+                    message.createdTime = Calendar.getInstance().timeInMillis
+                    message.id = documentId2.id
+
+                    chat.document(it.documents[0].id).collection("message").add(message)
+
+                }
+
+
+            }
+            .addOnCompleteListener { taskTwo ->
+                if (taskTwo.isSuccessful) {
+                    Logger.i("Chatroom: $message")
+
+                    continuation.resume(Result.Success(true))
+                } else {
+                    taskTwo.exception?.let {
+
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.appContext.getString(R.string.you_shall_not_pass)))
+                }
+
+            }
+
+    }
+
+    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<Message>> {
+        val liveData = MutableLiveData<List<Message>>()
+
+        val chat = FirebaseFirestore.getInstance().collection("PATH_CHATLIST")
+        chat.whereIn("attendees", listOf(emails, emails.reversed()))
+            .get()
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        return@addOnCompleteListener
+                    }
+                }
+
+                task.result?.let {
+                    chat.document(it.documents[0].id).collection("message")
+
+                        .orderBy("createdTime", Query.Direction.ASCENDING)
+                        .addSnapshotListener { snapshot, exception ->
+                            Logger.i("add SnapshotListener detected")
+
+                            exception?.let {
+                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            }
+
+                            val list = mutableListOf<Message>()
+                            snapshot?.forEach { document ->
+                                Logger.d(document.id + " => " + document.data)
+
+                                val message = document.toObject(Message::class.java)
+                                list.add(message)
+                            }
+                            liveData.value = list
+
+                        }
+
+                }
+
+            }
+        return liveData
+
+
+    }
+
 }

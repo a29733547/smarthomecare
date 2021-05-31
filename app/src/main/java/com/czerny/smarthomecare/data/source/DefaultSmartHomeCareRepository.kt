@@ -1,10 +1,7 @@
 package com.czerny.smarthomecare.data.source
 
 import androidx.lifecycle.MutableLiveData
-import com.czerny.smarthomecare.data.Health
-import com.czerny.smarthomecare.data.Remind
-import com.czerny.smarthomecare.data.Result
-import com.czerny.smarthomecare.data.User
+import com.czerny.smarthomecare.data.*
 
 class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCareDataSource,
                                       private val localDataSource: SmartHomeCareDataSource
@@ -67,5 +64,11 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.addRemindData(remind)
     }
 
+    override suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean> {
+        return remoteDataSource.postMessage(emails, message)
+    }
+    override fun getAllLiveMessage (emails: List<String>) : MutableLiveData<List<Message>> {
+        return remoteDataSource.getAllLiveMessage(emails)
+    }
 
 }
