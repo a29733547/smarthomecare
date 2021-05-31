@@ -24,6 +24,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     private const val PATH_REMIND = "remindData"
     private const val PATH_PROFILE = "profileDate"
     private const val KEY_CREATED_TIME = "createdTime"
+    private const val PATH_CHATLIST = "chatList"
 
     override suspend fun login(id: String): Result<Author> {
         TODO("Not yet implemented")
@@ -432,7 +433,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
     override suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean> = suspendCoroutine { continuation ->
 
-        val chat = FirebaseFirestore.getInstance().collection("PATH_CHATLIST")
+        val chat = FirebaseFirestore.getInstance().collection(PATH_CHATLIST)
         chat.whereIn("attendees", listOf(emails, emails.reversed()))
             .get()
             .addOnSuccessListener { result ->

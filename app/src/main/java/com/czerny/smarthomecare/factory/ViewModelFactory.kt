@@ -29,9 +29,9 @@ class ViewModelFactory constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
-
-                isAssignableFrom(ChatRoomViewModel::class.java) ->
-                    ChatRoomViewModel(repository)
+//
+//                isAssignableFrom(ChatRoomViewModel::class.java) ->
+//                    ChatRoomViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)

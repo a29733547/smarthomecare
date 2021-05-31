@@ -10,12 +10,16 @@ import com.czerny.smarthomecare.data.Message
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.login.UserManager
 import com.czerny.smarthomecare.network.LoadApiStatus
+import com.czerny.smarthomecare.util.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewModel() {
+//class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewModel() {
+
+class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
+    userEmail: String, userName: String): ViewModel() {
 
     private val _Mockdata = MutableLiveData<List<Message>>()
     val Mockdata: LiveData<List<Message>>
@@ -26,9 +30,12 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewMo
 
     //20210531 branch test
 
+    val currentChattingUser = userEmail
+
+    val currentChattingName = userName
+
     // EditText input
     val enterMessage = MutableLiveData<String>()
-
 
     var allLiveMessage = MutableLiveData<List<Message>>()
 
@@ -57,6 +64,19 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewMo
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
+    init {
+        Logger.i("------------------------------------")
+        Logger.i("[${this::class.simpleName}]${this}")
+        Logger.i("------------------------------------")
+
+        getAllLiveMessage(getUserEmails(UserManager.user.email, currentChattingUser))
+    }
 
     fun postMessage(userEmails: List<String>, message: Message) {
 
