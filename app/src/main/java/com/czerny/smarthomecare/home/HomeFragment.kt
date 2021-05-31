@@ -38,22 +38,8 @@ class HomeFragment : Fragment() {
         binding.recyclerViewHome.adapter = homeAdapter
 
 
-//        val mockData: MutableList<Remind> = mutableListOf()
-//        mockData.add(Remind(1, "teest", "吃藥", "123", "123", "09:00", "2021/05/14"))
-//        mockData.add(Remind(1, "teest", "回診", "123", "123", "13:00", "2021/05/15"))
-//        mockData.add(Remind(1, "teest", "抽血", "123", "123", "10:30", "2021/05/16"))
-//        mockData.add(Remind(1, "teest", "住院", "123", "123", "18:00", "2021/05/17"))
-//
-//        viewModel.editableList = mockData
-//        homeAdapter.submitList(viewModel.editableList)
-//        viewModel.Mockdata.observe(viewLifecycleOwner, Observer {
-//            it?.let {
-//                homeAdapter.notifyDataSetChanged()
-//            }
-//        })
-
         if (activity is MainActivity) {
-            (activity as MainActivity).mainToolBar("提醒")
+            (activity as MainActivity).mainToolBar("鬧鈴")
         }
 
 

@@ -24,16 +24,12 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     private const val PATH_REMIND = "remindData"
     private const val PATH_PROFILE = "profileDate"
     private const val KEY_CREATED_TIME = "createdTime"
-    private const val TEST_ID = "id"
-    private const val INFO_ID1 = "info1"
-    private const val INFO_DI2 = "info2"
 
     override suspend fun login(id: String): Result<Author> {
         TODO("Not yet implemented")
     }
 
 
-/**--------delete save health-----------*/
     override suspend fun deleteHealth(health: Health): Result<Boolean> = suspendCoroutine { continuation ->
 
     val articles = FirebaseFirestore.getInstance().collection(PATH_HEALTH)
@@ -59,7 +55,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
         }
     }
-    /**--------delete save health-----------*/
+
 
     override suspend fun deleteRemind(remind: Remind): Result<Boolean> = suspendCoroutine { continuation ->
 

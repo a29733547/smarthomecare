@@ -9,26 +9,28 @@ import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.databinding.FragmentSavedataBinding
 import com.google.android.material.tabs.TabLayout
 
-class SaveDataFragment : Fragment(){
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            FragmentSavedataBinding.inflate(inflater, container, false).apply {
-                lifecycleOwner = viewLifecycleOwner
-                viewpagerSavedata.let {
-                    tabsSavedata.setupWithViewPager(it)
-                    it.adapter = SaveDataAdapteer(childFragmentManager)
-                    it.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabsSavedata))
-                }
-
-                if (activity is MainActivity) {
-                    (activity as MainActivity).mainToolBar("記錄")
-                }
-                return@onCreateView root
+class SaveDataFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        FragmentSavedataBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewpagerSavedata.let {
+                tabsSavedata.setupWithViewPager(it)
+                it.adapter = SaveDataAdapteer(childFragmentManager)
+                it.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabsSavedata))
             }
 
-
+            if (activity is MainActivity) {
+                (activity as MainActivity).mainToolBar("記錄")
+            }
+            return@onCreateView root
+        }
 
 
     }
 
-    
+
 }

@@ -7,8 +7,8 @@
         android:bottomLeftRadius="75dp" />
     <stroke
         android:width="2dp"
-        android:color="#B1B6D1" />
+        android:color="@color/chatroom" />
 
-    <solid android:color="#E1E1E1" />
+    <solid android:color="@color/chatroom" />
 
 </shape>

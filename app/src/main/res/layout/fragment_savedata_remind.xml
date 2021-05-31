@@ -16,21 +16,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F1F1F1">
+        android:background="@drawable/background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_savedata_remind"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:background="#F1F1F1"
-            app:remindData="@{isLiveDataDesign ? savedataRemindViewModel.liveRemind : savedataRemindViewModel.remind}"
+            android:background="@drawable/background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_savedata_remind_search"
-            tools:listitem="@layout/item_savedata_remind"/>
+            app:remindData="@{isLiveDataDesign ? savedataRemindViewModel.liveRemind : savedataRemindViewModel.remind}"
+            tools:listitem="@layout/item_savedata_remind" />
 
         <EditText
             android:id="@+id/edit_savedata_remind_search"
@@ -41,7 +40,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:background="@drawable/home_remind"
+            android:background="@drawable/item_save_remind_layout"
             android:hint="搜尋"
             android:textSize="30dp"
             android:paddingStart="16dp"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,22 +9,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="4dp">
+        android:layout_height="match_parent">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_savedata"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            tools:layout_editor_absoluteX="203dp"
-            tools:layout_editor_absoluteY="37dp">
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_savedata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/home_remind_time">
+                android:background="#2499FF"
+                app:tabTextAppearance="@style/save_tab_text_size"
+                app:tabTextColor="@color/white"
+                app:tabIndicatorColor="@color/myPrimary">
 
 
             </com.google.android.material.tabs.TabLayout>

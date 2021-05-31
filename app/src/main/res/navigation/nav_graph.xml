@@ -8,45 +8,53 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.czerny.smarthomecare.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/saveDataFragment"
         android:name="com.czerny.smarthomecare.savedata.SaveDataFragment"
-        android:label="SaveDataFragment" />
+        android:label="SaveDataFragment"
+        tools:layout="@layout/fragment_savedata"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.czerny.smarthomecare.profile.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
 
     </fragment>
 
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
-        android:label="ChatRoomFragment" />
+        android:label="ChatRoomFragment"
+        tools:layout="@layout/fragment_chatroom"/>
 
     <fragment
         android:id="@+id/saveDataHealthFragment"
         android:name="com.czerny.smarthomecare.savedata.remind.SaveDataHealthFragment"
-        android:label="SaveDataHealthFragment" >
+        android:label="SaveDataHealthFragment"
+        tools:layout="@layout/item_savedata_health">
 
     </fragment>
 
     <fragment
         android:id="@+id/saveDataHealtyModifyFragment"
         android:name="com.czerny.smarthomecare.savedata.modify.SaveDataHealtyModifyFragment"
-        android:label="SaveDataHealtyModifyFragment" />
+        android:label="SaveDataHealtyModifyFragment"
+        tools:layout="@layout/fragment_savedata_health_midify"/>
 
     <fragment
         android:id="@+id/saveDataRemindFragment"
         android:name="com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment"
-        android:label="SaveDataRemindFragment" >
+        android:label="SaveDataRemindFragment"
+        tools:layout="@layout/item_savedata_remind">
     </fragment>
 
     <fragment
         android:id="@+id/saveDataRemindModifyFragment"
         android:name="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragment"
-        android:label="SaveDataRemindModifyFragment" >
+        android:label="SaveDataRemindModifyFragment"
+        tools:layout="@layout/fragment_savedata_remind_modify">
         <argument
             android:name="remindKey"
             app:argType="com.czerny.smarthomecare.data.Remind" />
@@ -57,26 +65,30 @@
     <dialog
         android:id="@+id/addRemindDialog"
         android:name="com.czerny.smarthomecare.addremind.AddRemindDialog"
-        android:label="AddRemindDialog" >
+        android:label="AddRemindDialog"
+        tools:layout="@layout/dialog_addremind">
 
     </dialog>
 
     <dialog
         android:id="@+id/addRemindEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddRemindEditDialog"
-        android:label="addRemindEditDialog" >
+        android:label="addRemindEditDialog"
+        tools:layout="@layout/dialog_addremind_edit">
 
     </dialog>
 
     <dialog
         android:id="@+id/profileAddDataDialog"
         android:name="com.czerny.smarthomecare.profile.add.ProfileAddDataDialog"
-        android:label="ProfileAddDataDialog" />
+        android:label="ProfileAddDataDialog"
+        tools:layout="@layout/dialog_profile_add"/>
 
     <dialog
         android:id="@+id/addHealthEditDialog"
         android:name="com.czerny.smarthomecare.addremind.item.AddHealthEditDialog"
-        android:label="addhealthEditDialog" >
+        android:label="addhealthEditDialog"
+        tools:layout="@layout/dialog_addremind_health">
 
     </dialog>
 
@@ -100,7 +112,8 @@
     <dialog
         android:id="@+id/itemAddRemindData"
         android:name="com.czerny.smarthomecare.addremind.item.ItemAddRemindData"
-        android:label="ItemAddRemindData" />
+        android:label="ItemAddRemindData"
+        tools:layout="@layout/item_remind_data"/>
 
     <action
         android:id="@+id/action_saveDataHealthFragment_to_saveDataHealtyModifyFragment"

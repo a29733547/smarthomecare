@@ -9,11 +9,14 @@
     </style>
 
     <style name="remind_modify_text">
-
         <item name="android:textColor">@color/remind_modify_image</item>
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="save_tab_text_size">
+        <item name="android:textSize">@dimen/textsize</item>
+    </style>
+    <dimen name="textsize">18dp</dimen>
 
 </resources>
 

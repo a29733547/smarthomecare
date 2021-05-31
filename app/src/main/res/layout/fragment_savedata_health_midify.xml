@@ -19,7 +19,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp">
+        android:layout_margin="16dp"
+        android:background="@drawable/background">
 
         <ScrollView
             android:id="@+id/scrollView_modify_health"
@@ -52,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/modify_health_content_edit"
+                android:background="@drawable/remind_modify_background"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
                     android:id="@+id/constraintLayout2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
+                    android:background="@drawable/remind_modify_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -72,8 +73,8 @@
                         android:id="@+id/image_health_modify_content"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:background="@drawable/savedata_item_health"
                         android:scaleType="centerInside"
+                        app:tint="@color/remind_modify_image"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -82,9 +83,9 @@
                     <ImageView
                         android:id="@+id/image_health_modify_content2"
                         android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/savedata_item_health"
+                        android:layout_height="55dp"
                         android:scaleType="centerInside"
+                        app:tint="@color/remind_modify_image"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_content_paste_white_24dp" />
@@ -106,7 +107,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/modify_health_content_edit"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/modify_health_content_edit"
+                android:background="@drawable/remind_modify_background"
                 app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_place"
                 tools:visibility="visible">
 
@@ -143,8 +144,8 @@
                     android:id="@+id/image_health_modify_note"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="@drawable/savedata_item_health"
                     android:scaleType="centerInside"
+                    app:tint="@color/remind_modify_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/baseline_new_releases_white_24dp" />
@@ -169,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/modify_health_content_edit"
+                android:background="@drawable/remind_modify_background"
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_title"
                 tools:visibility="visible">
@@ -178,8 +179,8 @@
                     android:id="@+id/image_health_modify_place"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="@drawable/savedata_item_health"
                     android:scaleType="centerInside"
+                    app:tint="@color/remind_modify_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -204,7 +205,7 @@
                 android:id="@+id/layout_health_modify_name"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/modify_health_content_edit"
+                android:background="@drawable/remind_modify_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -215,8 +216,9 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/savedata_item_health"
+                    android:background="@drawable/savedata_item_health_profile_"
                     android:scaleType="centerInside"
+                    app:tint="@color/remind_modify_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -292,14 +294,14 @@
 
                     <TextView
                         android:id="@+id/text_savedata_health_modify_minute"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="18dp"
+                        android:layout_height="24dp"
                         android:text="@={viewModelHealthModify.healthModify.minute}"
                         app:layout_constraintBottom_toBottomOf="@+id/text_savedata_health_modify_hours"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView6"
                         app:layout_constraintTop_toTopOf="@+id/text_savedata_health_modify_hours"
-                        tools:text="30"/>
+                        tools:text="30" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -308,7 +310,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/modify_health_content_edit"
+                android:background="@drawable/remind_modify_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_health_modify_name"
@@ -323,6 +325,7 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="@={viewModelHealthModify.healthModify.title}"
+
                     app:layout_constraintBottom_toBottomOf="@+id/image_health_modify_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/image_health_modify_title"
@@ -332,7 +335,7 @@
                     android:id="@+id/image_health_modify_title"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="@drawable/savedata_item_health"
+                    app:tint="@color/remind_modify_image"
                     android:scaleType="centerInside"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
