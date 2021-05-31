@@ -24,7 +24,8 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewMo
     var editableList: MutableList<Message> = mutableListOf()
 
 
-    
+    //20210531 branch test
+
     // EditText input
     val enterMessage = MutableLiveData<String>()
 
