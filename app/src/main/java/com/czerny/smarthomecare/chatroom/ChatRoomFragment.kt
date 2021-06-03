@@ -59,7 +59,7 @@ class ChatRoomFragment : Fragment() {
         })
 
 
-
+//test
 
         if (activity is MainActivity) {
             (activity as MainActivity).mainToolBar("聊天室")
