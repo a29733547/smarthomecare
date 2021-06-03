@@ -6,7 +6,7 @@
     <data>
         <variable
             name="familyMessage"
-            type="com.czerny.smarthomecare.data.Message" />
+            type="com.czerny.smarthomecare.data.ChatRoom" />
 
     </data>
 
@@ -21,8 +21,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/chatroom_message"
+            android:letterSpacing="0.025"
             android:padding="8dp"
-            android:text="@{familyMessage.text}"
+            android:paddingStart="16sp"
+            android:paddingEnd="16dp"
+            android:text="@{familyMessage.message}"
             android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,6 +41,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:letterSpacing="0.1"
+            android:text="@{familyMessage.senderName}"
             android:textColor="@color/text_home_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

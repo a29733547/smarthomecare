@@ -90,11 +90,26 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean> {
+    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<Message>> {
+
+    override suspend fun postMessage(userId: String, message: String): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    //    override fun getAllLiveMessage(): MutableLiveData<List<ChatRoom>> {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    //    override fun getAllLiveMessage(id:String): MutableLiveData<List<ChatRoom>> {
+//    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//}
+    override suspend fun getUser(userEmail: String): Result<User> {
+        TODO("Not yet implemented")
     }
 
 }

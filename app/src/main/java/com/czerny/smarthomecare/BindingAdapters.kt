@@ -47,6 +47,7 @@ fun bindRecyclerViewWithHomeData(recyclerView: RecyclerView, SaveDataRemindItem:
     }
 }
 
+
 //
 //@BindingAdapter("timeToDisplayFormat")
 //fun bindDisplayFormatTime(textView: TextView, time: Long?) {

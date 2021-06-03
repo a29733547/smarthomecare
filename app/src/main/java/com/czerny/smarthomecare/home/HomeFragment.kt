@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
 
         if (activity is MainActivity) {
-            (activity as MainActivity).mainToolBar("鬧鈴")
+            (activity as MainActivity).mainToolBar("提醒事項")
         }
 
 

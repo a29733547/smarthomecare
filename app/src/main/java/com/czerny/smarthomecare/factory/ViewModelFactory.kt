@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel
 import com.czerny.smarthomecare.addremind.item.AddRemindEditViewModel
+
 import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
@@ -29,9 +30,9 @@ class ViewModelFactory constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
-//
-//                isAssignableFrom(ChatRoomViewModel::class.java) ->
-//                    ChatRoomViewModel(repository)
+
+                isAssignableFrom(ChatRoomViewModel::class.java) ->
+                    ChatRoomViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)
@@ -56,7 +57,6 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(ProfileAddDataViewModel::class.java) ->
                     ProfileAddDataViewModel(repository)
-
 
 
                 else ->

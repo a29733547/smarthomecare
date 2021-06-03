@@ -36,9 +36,14 @@ interface SmartHomeCareRepository {
     //add頁面
     suspend fun addRemindData(remind: Remind): Result<Boolean>
 
-    suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean>
+    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean>
 
-    fun getAllLiveMessage (emails: List<String>) : MutableLiveData<List<Message>>
+//    fun getAllLiveMessage () : MutableLiveData<List<ChatRoom>>
+    fun getAllLiveMessage (emails: List<String>) : MutableLiveData<List<ChatRoom>>
+//    fun getAllLiveMessage (id: String) : MutableLiveData<List<ChatRoom>>
 
+    suspend fun getUser(userEmail: String): Result<User>
+
+    suspend fun postMessage(userId: String, message: String): Result<Boolean>
 
 }

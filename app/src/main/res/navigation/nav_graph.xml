@@ -27,14 +27,7 @@
         android:id="@+id/chatRoomFragment"
         android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
         android:label="ChatRoomFragment"
-        tools:layout="@layout/fragment_chatroom">
-        <argument
-            android:name="userEmail"
-            app:argType="string" />
-        <argument
-            android:name="userName"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_chatroom"/>
 
     <fragment
         android:id="@+id/saveDataHealthFragment"
@@ -65,6 +58,12 @@
         <argument
             android:name="remindKey"
             app:argType="com.czerny.smarthomecare.data.Remind" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.czerny.smarthomecare.chatlist.ChatListFragment"
+        android:label="ChatListFragment"
+        tools:layout="@layout/fragment_chat_list">
     </fragment>
 
 
@@ -143,8 +142,6 @@
     <action
         android:id="@+id/action_saveDataRemindFragment_to_saveDataRemindModifyFragment"
         app:destination="@id/saveDataRemindModifyFragment" />
-
-
 
 
 </navigation>

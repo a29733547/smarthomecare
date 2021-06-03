@@ -3,8 +3,9 @@ package com.czerny.smarthomecare.data.source
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.data.*
 
-class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCareDataSource,
-                                      private val localDataSource: SmartHomeCareDataSource
+class DefaultSmartHomeCareRepository(
+    private val remoteDataSource: SmartHomeCareDataSource,
+    private val localDataSource: SmartHomeCareDataSource
 ) : SmartHomeCareRepository {
 
     override suspend fun deleteHealth(health: Health): Result<Boolean> {
@@ -64,11 +65,26 @@ class DefaultSmartHomeCareRepository (private val remoteDataSource: SmartHomeCar
         return remoteDataSource.addRemindData(remind)
     }
 
-    override suspend fun postMessage(emails: List<String>, message: Message): Result<Boolean> {
-        return remoteDataSource.postMessage(emails, message)
+    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean> {
+        return remoteDataSource.postMessage(emails, chatRoom)
     }
-    override fun getAllLiveMessage (emails: List<String>) : MutableLiveData<List<Message>> {
+
+    //    override fun getAllLiveMessage () : MutableLiveData<List<ChatRoom>> {
+//        return remoteDataSource.getAllLiveMessage()
+//    }
+    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
         return remoteDataSource.getAllLiveMessage(emails)
+    }
+
+    //    override fun getAllLiveMessage (id:String) : MutableLiveData<List<ChatRoom>> {
+//        return remoteDataSource.getAllLiveMessage(id)
+//    }
+    override suspend fun getUser(userEmail: String): Result<User> {
+        return remoteDataSource.getUser(userEmail)
+    }
+
+    override suspend fun postMessage(userId: String, message: String): Result<Boolean> {
+        return remoteDataSource.postMessage(userId, message)
     }
 
 }

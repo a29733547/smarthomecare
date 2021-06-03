@@ -5,15 +5,26 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ChatRoom(
-        var chatRoomId : String = "",
-        var latestTime : Long = -0L,
-        var attendeesInfo: List<UserInfo> = listOf(),
-        var attendees: List<String> = listOf(""),
-        var latestMessage: String =""
+        var id: String = "",
+        var senderName: String = "",
+        var senderImage: String = "",
+        var senderEmail: String = "",
+        var message: String = "",
+        var createdTime: Long = 0L,
 ): Parcelable
+
 @Parcelize
 data class UserInfo(
-        var userEmail : String ="",
+        var userId : String ="",
         var userName : String = "",
         var userImage : String =""
 ) : Parcelable
+
+//data class Message(
+//        var id : String = "",
+//        var senderName : String = "",
+//        var senderImage : String = "",
+//        var senderEmail : String = "",
+//        var text : String = "",
+//        var createdTime : Long = 0L
+//)

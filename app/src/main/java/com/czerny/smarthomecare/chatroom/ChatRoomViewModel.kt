@@ -1,12 +1,15 @@
 package com.czerny.smarthomecare.chatroom
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Message
+import com.czerny.smarthomecare.data.ChatRoom
+import com.czerny.smarthomecare.data.User
+import com.czerny.smarthomecare.data.UserInfo
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.login.UserManager
 import com.czerny.smarthomecare.network.LoadApiStatus
@@ -16,30 +19,31 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-//class ChatRoomViewModel(private val repository: SmartHomeCareRepository): ViewModel() {
 
-class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
-    userEmail: String, userName: String): ViewModel() {
+class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
+//class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
+//    userEmail: String, userName: String): ViewModel() {
 
-    private val _Mockdata = MutableLiveData<List<Message>>()
-    val Mockdata: LiveData<List<Message>>
-        get() = _Mockdata
-
-    var editableList: MutableList<Message> = mutableListOf()
+//    private val _Mockdata = MutableLiveData<List<Message>>()
+//    val Mockdata: LiveData<List<Message>>
+//        get() = _Mockdata
+//
+//    var editableList: MutableList<Message> = mutableListOf()
 
 
     //20210531 branch test
+//
+//    val currentChattingUser = userEmail
 
-    val currentChattingUser = userEmail
+    val userEmail = "a29733547@gmail.com"
 
-    val currentChattingName = userName
 
-    // EditText input
+
+
     val enterMessage = MutableLiveData<String>()
 
-    var allLiveMessage = MutableLiveData<List<Message>>()
+    var allLiveMessage = MutableLiveData<List<ChatRoom>>()
 
-//    val currentChattingUser = userEmail
 
     private val _leave = MutableLiveData<Boolean>()
 
@@ -75,16 +79,26 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-        getAllLiveMessage(getUserEmails(UserManager.user.email, currentChattingUser))
+        getAllLiveMessage(getUserEmails(UserManager.user.userId, userEmail))
+        Log.i("czerny","getEmail1 = ${UserManager.user.userId}")
+        Log.i("czerny","getEmail2 = ${userEmail}")
     }
 
-    fun postMessage(userEmails: List<String>, message: Message) {
+    fun sendMessage(userId: String) {
+        postMessage(userId, enterMessage.value.toString())
+    }
+
+    fun getUserEmails(user1Email: String, user2Email: String): List<String> {
+        return listOf(user1Email, user2Email)
+    }
+
+    fun postMessage(userId: String, message: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.postMessage(userEmails, message)) {
+            when (val result = repository.postMessage(userId, message)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -107,22 +121,8 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
 
     }
 
-    fun getUserEmails(user1Email: String, user2Email: String): List<String> {
-        return listOf(user1Email, user2Email)
-    }
-
-    fun getMessage(): Message {
-        return Message(
-            id = "",
-            senderName = UserManager.user.name,
-            senderImage = UserManager.user.image,
-            senderEmail = UserManager.user.email,
-            text = enterMessage.value.toString(),
-            createdTime = 0L
-        )
-    }
-
     private fun getAllLiveMessage(userEmails: List<String>) {
+
         allLiveMessage = repository.getAllLiveMessage(userEmails)
         _status.value = LoadApiStatus.DONE
     }
