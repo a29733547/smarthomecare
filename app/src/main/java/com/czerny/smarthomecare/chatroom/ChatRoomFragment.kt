@@ -25,6 +25,7 @@ import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.login.UserManager
 import com.czerny.smarthomecare.util.Logger
 
+// 20210604 branch test
 
 class ChatRoomFragment : Fragment() {
 

@@ -85,6 +85,5 @@ class ChatRoomAdapter : ListAdapter<ChatRoom, RecyclerView.ViewHolder>(DiffCallB
             else -> ITEM_VIEW_TYPE_FAMILY
 
         }
-
     }
 }
