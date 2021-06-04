@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="@drawable/background">
+        android:background="@color/back_ground2">
 
         <ScrollView
             android:id="@+id/scrollView_modify_health"
@@ -39,9 +39,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-
+                android:textSize="24dp"
+                android:letterSpacing="0.1"
                 android:onClick="@{() -> viewModelHealthModify.healthModifyFun(viewModelHealthModify.healthModify)}"
                 android:text="儲存"
+                android:background="@color/chatroom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

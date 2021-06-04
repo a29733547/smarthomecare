@@ -34,7 +34,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/layout_savedata_remind_time"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_savedata_remind_name"
-                app:srcCompat="@drawable/icons8_alarm_clock_64" />
+                app:srcCompat="@drawable/save_remind_photo" />
 
             <TextView
                 android:id="@+id/text_savedata_remind_name"
@@ -114,12 +114,12 @@
                 android:id="@+id/image_savedata_remind_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/add_dialog_remind"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_delete_white_24dp" />
+                app:srcCompat="@drawable/baseline_delete_white_24dp"
+                app:tint="@color/remind_modify_image" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_savedata_remind_title"
@@ -151,10 +151,9 @@
                     android:id="@+id/text_item_savedata_remind_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.1"
                     android:text="@={viewModelItemSaveDataRemind.content}"
                     android:textSize="14sp"
-                    android:letterSpacing="0.1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

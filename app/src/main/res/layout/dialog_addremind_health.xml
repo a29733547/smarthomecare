@@ -25,6 +25,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="120dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/add_time_bottom_line"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/text_health_date"
+                app:layout_constraintTop_toBottomOf="@+id/text_add_health_data" />
+
             <Button
                 android:id="@+id/button_health_select_data"
                 android:layout_width="wrap_content"
@@ -38,11 +48,11 @@
 
             <TextView
                 android:id="@+id/text_add_health_data"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textSize="16dp"
+                android:layout_marginStart="24dp"
                 android:text="@={viewModelAddHealth.date}"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/text_health_date"
                 app:layout_constraintStart_toEndOf="@+id/text_health_date"
                 app:layout_constraintTop_toTopOf="@+id/text_health_date"
@@ -69,6 +79,7 @@
                 android:ems="10"
                 android:inputType="time"
                 android:text="@={viewModelAddHealth.hours}"
+                android:gravity="center_horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/text_edit_health_time"
                 app:layout_constraintStart_toEndOf="@+id/text_edit_health_time"
                 app:layout_constraintTop_toTopOf="@+id/text_edit_health_time" />
@@ -93,6 +104,7 @@
                 android:ems="10"
                 android:inputType="time"
                 android:text="@={viewModelAddHealth.minute}"
+                android:gravity="center_horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_remind_health_hours"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/edit_remind_health_hours" />
@@ -227,9 +239,9 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/add_add_button"
                 android:onClick="@{() -> viewModelAddHealth.addHealthDataFun()}"
-                android:text="新增事項"
+                android:text="新增紀錄"
                 android:textSize="24sp"
-                android:textStyle="bold"
+                android:letterSpacing="0.1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +273,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_health_date" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

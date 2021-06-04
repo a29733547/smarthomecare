@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@color/back_ground2">
 
         <EditText
             android:id="@+id/edit_chatroom_keyin"
@@ -61,7 +61,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/chatroomt_recycler"
             app:layout_constraintBottom_toTopOf="@+id/edit_chatroom_keyin"
             app:layout_constraintEnd_toEndOf="parent"

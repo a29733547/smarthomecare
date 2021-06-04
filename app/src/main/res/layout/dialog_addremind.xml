@@ -12,43 +12,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/button_addremind_remind"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/add_dialog_button_remind"
-            android:text="新增提醒"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_add_dialog_button_center"
-            app:layout_constraintEnd_toStartOf="@+id/image_add_dialog_button_center"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/image_add_dialog_button_center" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="53dp">
 
-        <Button
-            android:id="@+id/button_addremind_health"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/add_dialog_button_health"
-            android:text="健康紀錄"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_add_dialog_button_center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image_add_dialog_button_center"
-            app:layout_constraintTop_toTopOf="@+id/image_add_dialog_button_center" />
+            <Button
+                android:id="@+id/button_addremind_remind"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/add_dialog_button_remind"
+                android:letterSpacing="0.15"
+                android:text="新增提醒"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_addremind_health"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_addremind_health"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/add_dialog_button_health"
+                android:letterSpacing="0.15"
+                android:text="健康紀錄"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/button_addremind_remind"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_addremind_remind"
+                app:layout_constraintTop_toTopOf="@+id/button_addremind_remind" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/image_add_dialog_button_center"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/add_dialog_button_center"
-            android:scaleType="centerCrop"
+            android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_addremind_health"
-            app:layout_constraintStart_toEndOf="@+id/button_addremind_remind"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_health_and_safety_white_24dp" />
 

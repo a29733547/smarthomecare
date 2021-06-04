@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.czerny.smarthomecare.data.Remind
 
-class HomeAdapter (): ListAdapter<Remind, HomeViewHolder>(DiffCallBack()) {
+class HomeAdapter : ListAdapter<Remind, HomeViewHolder>(DiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return HomeViewHolder(

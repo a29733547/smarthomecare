@@ -19,11 +19,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="350dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/add_dialog_remind"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,10 +125,10 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/add_add_button"
+                android:letterSpacing="0.1"
                 android:onClick="@{() -> addremindEditViewModel.addRemindData()}"
                 android:text="新增提醒"
                 android:textSize="24sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -168,6 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
+                android:gravity="center_horizontal"
                 android:inputType="time"
                 android:text="@={addremindEditViewModel.minute}"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_remind_edti_hours"
@@ -182,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:ems="10"
+                android:gravity="center_horizontal"
                 android:inputType="time"
                 android:text="@={addremindEditViewModel.hours}"
                 app:layout_constraintBottom_toBottomOf="@+id/text_add_remind_time"
@@ -192,7 +194,6 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:text=":"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_remind_edti_hours"
@@ -205,6 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="選擇日期"
+
                 app:layout_constraintBottom_toBottomOf="@+id/text_data"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -215,14 +217,23 @@
                 android:id="@+id/text_addremind_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:text="@={addremindEditViewModel.date}"
-                android:textSize="16dp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/text_data"
                 app:layout_constraintStart_toEndOf="@+id/text_data"
                 app:layout_constraintTop_toTopOf="@+id/text_data"
-                app:layout_constraintVertical_bias="0.73"
+                app:layout_constraintVertical_bias="0.51"
                 tools:text="2021/05/15" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="118dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/add_time_bottom_line"
+                app:layout_constraintStart_toEndOf="@+id/text_data"
+                app:layout_constraintTop_toBottomOf="@+id/text_addremind_data" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

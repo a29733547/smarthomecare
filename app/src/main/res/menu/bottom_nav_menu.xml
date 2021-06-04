@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/baseline_alarm_white_24dp"
+        android:icon="@drawable/bottom_navigat_remind"
         android:title="" />
 
     <item
         android:id="@+id/saveDataFragment"
-        android:icon="@drawable/baseline_edit_notifications_white_24dp"
+        android:icon="@drawable/bottom_navigat_save"
         android:title="" />
     <item
         android:id="@+id/addRemindDialog"
@@ -16,7 +17,7 @@
         android:title="" />
     <item
         android:id="@+id/chatRoomFragment"
-        android:icon="@drawable/baseline_chat_bubble_white_24dp"
+        android:icon="@drawable/bottom_navigat_chatroom"
         android:title="" />
     <item
         android:id="@+id/profileFragment"

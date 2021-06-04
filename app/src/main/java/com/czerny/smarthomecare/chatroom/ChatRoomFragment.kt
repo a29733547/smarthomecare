@@ -1,39 +1,32 @@
 package com.czerny.smarthomecare.chatroom
 
 import android.os.Bundle
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.czerny.smarthomecare.MainActivity
-import com.czerny.smarthomecare.MockData
-import com.czerny.smarthomecare.R
-import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.ChatRoom
+
 
 import com.czerny.smarthomecare.databinding.FragmentChatroomBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.home.HomeViewModel
+
 import com.czerny.smarthomecare.login.UserManager
-import com.czerny.smarthomecare.util.Logger
+
 
 // 20210604 branch test
 
 class ChatRoomFragment : Fragment() {
 
-    private val viewModel by viewModels<ChatRoomViewModel> {
-        getVmFactory(
-
-        )
-    }
+    private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory() }
 
     lateinit var binding: FragmentChatroomBinding
 

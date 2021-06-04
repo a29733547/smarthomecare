@@ -21,18 +21,7 @@ import kotlinx.coroutines.launch
 
 
 class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
-//class ChatRoomViewModel(private val repository: SmartHomeCareRepository,
-//    userEmail: String, userName: String): ViewModel() {
 
-//    private val _Mockdata = MutableLiveData<List<Message>>()
-//    val Mockdata: LiveData<List<Message>>
-//        get() = _Mockdata
-//
-//    var editableList: MutableList<Message> = mutableListOf()
-
-
-    //20210531 branch test
-//
 //    val currentChattingUser = userEmail
 
     val userEmail = "a29733547@gmail.com"
