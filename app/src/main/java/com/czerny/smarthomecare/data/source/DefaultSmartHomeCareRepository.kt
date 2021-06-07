@@ -2,6 +2,7 @@ package com.czerny.smarthomecare.data.source
 
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.data.*
+import com.google.firebase.auth.FirebaseUser
 
 class DefaultSmartHomeCareRepository(
     private val remoteDataSource: SmartHomeCareDataSource,
@@ -85,6 +86,14 @@ class DefaultSmartHomeCareRepository(
 
     override suspend fun postMessage(userId: String, message: String): Result<Boolean> {
         return remoteDataSource.postMessage(userId, message)
+    }
+
+    override suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser> {
+        return remoteDataSource.firebaseAuthWithGoogle(idToken)
+    }
+
+    override suspend fun postUser(user: User): Result<Boolean> {
+        return remoteDataSource.postUser(user)
     }
 
 }

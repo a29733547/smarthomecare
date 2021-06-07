@@ -16,5 +16,5 @@ data class User(
         var genetic: String = "",
         var allergy: String = "",
         var note: String = "",
-        var familyId: Int = 0
+        var familyId: String = ""
 ) : Parcelable

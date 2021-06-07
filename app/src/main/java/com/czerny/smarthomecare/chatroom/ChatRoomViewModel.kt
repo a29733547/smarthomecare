@@ -68,8 +68,10 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewM
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-        getAllLiveMessage(getUserEmails(UserManager.user.userId, userEmail))
-        Log.i("czerny","getEmail1 = ${UserManager.user.userId}")
+//        getAllLiveMessage(getUserEmails(UserManager.user.userId, userEmail))
+        getAllLiveMessage(getUserEmails(UserManager.user.id, userEmail))
+//        Log.i("czerny","getEmail1 = ${UserManager.user.userId}")
+        Log.i("czerny","getEmail1 = ${UserManager.user.id}")
         Log.i("czerny","getEmail2 = ${userEmail}")
     }
 

@@ -34,8 +34,9 @@ class HomeFragment : Fragment() {
         binding.recyclerViewHome.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewHome.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
-        val homeAdapter = HomeAdapter()
+        val homeAdapter = HomeAdapter(HomeAdapter.OnClickListener{})
         binding.recyclerViewHome.adapter = homeAdapter
+
 
 
         if (activity is MainActivity) {

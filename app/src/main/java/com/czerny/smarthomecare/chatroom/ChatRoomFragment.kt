@@ -61,7 +61,8 @@ class ChatRoomFragment : Fragment() {
 
         binding.layoutButtonSend.setOnClickListener {
 
-            viewModel.sendMessage(UserManager.user.userId)
+//            viewModel.sendMessage(UserManager.user.userId)
+            viewModel.sendMessage(UserManager.user.id)
             viewModel.enterMessage.value = ""
         }
 

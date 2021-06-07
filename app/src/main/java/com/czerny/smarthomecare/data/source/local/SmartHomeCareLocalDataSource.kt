@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.data.*
 import com.czerny.smarthomecare.data.source.SmartHomeCareDataSource
+import com.google.firebase.auth.FirebaseUser
 
 class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSource {
     override suspend fun login(id: String): Result<Author> {
@@ -109,6 +110,14 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
 //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //}
     override suspend fun getUser(userEmail: String): Result<User> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun postUser(user: User): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

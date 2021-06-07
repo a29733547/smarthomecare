@@ -45,7 +45,6 @@ class ItemAddRemindData : BottomSheetDialogFragment() {
 
 
             binding.buttonRemindGetdata.setOnClickListener {
-                Log.d("czerny", "date=${(activity as MainActivity).remindTimeData}")
                 findNavController().previousBackStackEntry?.savedStateHandle?.set("RemindData", sDate)
                 findNavController().popBackStack()
             }

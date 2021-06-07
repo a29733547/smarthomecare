@@ -4,40 +4,115 @@ import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.databinding.ItemRemindBinding
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.czerny.smarthomecare.chatroom.ChatRoomAdapter
+import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
+import com.czerny.smarthomecare.databinding.ItemRemindCheckBinding
+import com.czerny.smarthomecare.databinding.ItemSavedataRemindBinding
+import com.czerny.smarthomecare.generated.callback.OnClickListener
+import com.czerny.smarthomecare.login.UserManager
+import java.util.concurrent.CancellationException
 
-class HomeAdapter : ListAdapter<Remind, HomeViewHolder>(DiffCallBack()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return HomeViewHolder(
-                ItemRemindBinding.inflate(layoutInflater, parent, false)
-        )
+class HomeAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<Remind, RecyclerView.ViewHolder>(DiffCallBack) {
+
+
+    class OnClickListener(val clickListener: (remind: Remind) -> Unit) {
+        fun onClick(remind: Remind) = clickListener(remind)
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
-    }
-
-}
-
-class HomeViewHolder( var binding:ItemRemindBinding) :
+    class HomeViewHolder(var binding: ItemRemindBinding) :
         RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Remind) {
-        binding.viewModelHomeItemRemind = item
-        binding.executePendingBindings()
+        fun bind(remind: Remind, onClickListener: OnClickListener) {
+            binding.viewModelHomeItemRemind = remind
+
+            binding.root.setOnClickListener {
+                onClickListener.onClick(remind)
+
+                if (binding.layoutItemCheck.visibility == View.GONE) {
+                    binding.layoutItemCheck.visibility = View.VISIBLE
+                } else {
+                    binding.layoutItemCheck.visibility = View.GONE
+                }
+            }
+
+            binding.buttonCheck.setOnClickListener {
+                binding.imageHomeItemYet.visibility = View.INVISIBLE
+                binding.imageHomeItemOk.visibility = View.VISIBLE
+            }
+            binding.buttonCancel.setOnClickListener {
+                binding.imageHomeItemYet.visibility = View.VISIBLE
+                binding.imageHomeItemOk.visibility = View.INVISIBLE
+            }
+
+
+
+
+            binding.executePendingBindings()
+        }
     }
+
+//    class HomeCheckViewModel(var binding: ItemRemindCheckBinding) :
+//        RecyclerView.ViewHolder(binding.root) {
+//        fun bind(remind: Remind) {
+//            binding.checker = remind
+//
+//            binding.executePendingBindings()
+//        }
+//    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ITEM_VIEW_TYPE -> HomeViewHolder(
+                ItemRemindBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+
+//            ITEM_VIEW_TYPE_CHECK -> HomeCheckViewModel(
+//                ItemRemindCheckBinding.inflate(
+//                    LayoutInflater.from(parent.context), parent, false
+//                )
+//            )
+
+            else -> throw CancellationException("Unknown viewType $viewType")
+        }
+
+//        val layoutInflater = LayoutInflater.from(parent.context)
+//        return HomeViewHolder(
+//                ItemRemindBinding.inflate(layoutInflater, parent, false)
+//        )
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is HomeViewHolder -> holder.bind((getItem(position) as Remind), onClickListener)
+//            is HomeCheckViewModel -> holder.bind((getItem(position) as Remind))
+        }
+
+    }
+
+    companion object DiffCallBack : DiffUtil.ItemCallback<Remind>() {
+        override fun areItemsTheSame(oldItem: Remind, newItem: Remind): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Remind, newItem: Remind): Boolean {
+            return oldItem == newItem
+        }
+
+        private const val ITEM_VIEW_TYPE = 0x00
+        private const val ITEM_VIEW_TYPE_CHECK = 0x01
+    }
+
+
+
 }
 
-class DiffCallBack : DiffUtil.ItemCallback<Remind>() {
-    override fun areItemsTheSame(oldItem: Remind, newItem: Remind): Boolean {
-        return oldItem == newItem
-    }
-    override fun areContentsTheSame(oldItem: Remind, newItem: Remind): Boolean {
-        return oldItem == newItem
-    }
-}
+
+

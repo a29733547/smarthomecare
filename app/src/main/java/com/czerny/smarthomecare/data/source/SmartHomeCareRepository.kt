@@ -2,6 +2,8 @@ package com.czerny.smarthomecare.data.source
 
 import androidx.lifecycle.MutableLiveData
 import com.czerny.smarthomecare.data.*
+import com.google.firebase.auth.FirebaseUser
+
 
 interface SmartHomeCareRepository {
 
@@ -45,5 +47,9 @@ interface SmartHomeCareRepository {
     suspend fun getUser(userEmail: String): Result<User>
 
     suspend fun postMessage(userId: String, message: String): Result<Boolean>
+
+    suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser>
+
+    suspend fun postUser(user: User): Result<Boolean>
 
 }

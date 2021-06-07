@@ -10,6 +10,7 @@ import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.home.HomeViewModel
+import com.czerny.smarthomecare.login.LoginViewModel
 import com.czerny.smarthomecare.profile.ProfileViewModel
 import com.czerny.smarthomecare.profile.add.ProfileAddDataViewModel
 import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel
@@ -31,6 +32,9 @@ class ViewModelFactory constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
+
+                isAssignableFrom(LoginViewModel::class.java) ->
+                    LoginViewModel(repository)
 
                 isAssignableFrom(MainViewModel::class.java) ->
                     MainViewModel(repository)

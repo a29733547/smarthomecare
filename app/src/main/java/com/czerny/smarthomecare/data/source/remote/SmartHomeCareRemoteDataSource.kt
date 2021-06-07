@@ -14,8 +14,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import com.czerny.smarthomecare.util.Logger
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
@@ -485,42 +490,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                 }
         }
 
-//    override suspend fun postMessage(chatRoom: ChatRoom): Result<Boolean> =
-//        suspendCoroutine { continuation ->
-//            val remindDate = FirebaseFirestore.getInstance()
-//                .collection("family")
-//            val document = remindDate
-//                .document("NaNSjGX9Ltf7jTE0Ovji")
-//                .collection("chatroom")
-//                .document()
-//
-//            chatRoom.id = document.id
-////            chatRoom.createdTime = Calendar.getInstance().timeInMillis
-//
-//            document
-//                .set(chatRoom)
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Logger.i("health: $chatRoom")
-//
-//                        continuation.resume(Result.Success(true))
-//                    } else {
-//                        task.exception?.let {
-//
-//                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                            continuation.resume(Result.Error(it))
-//                            return@addOnCompleteListener
-//                        }
-//                        continuation.resume(
-//                            Result.Fail(
-//                                SmartHomeCareApplication.instance.getString(
-//                                    R.string.you_know_nothing
-//                                )
-//                            )
-//                        )
-//                    }
-//                }
-//        }
 
     override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean> =
         suspendCoroutine { continuation ->
@@ -612,7 +581,8 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
 //            chatRoom.id = chat.id
 //            chatRoom.createdTime = Calendar.getInstance().timeInMillis
-        val userName = UserManager.user.userName
+//        val userName = UserManager.user.userName
+        val userName = UserManager.user.name
 
         val document = ref
             .document()
@@ -754,6 +724,75 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                     continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
                 }
             }
+    }
+
+
+    override suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser> = suspendCoroutine { continuation ->
+        Log.d("check_googleSign", "firebaseAuthWithGoogle in DataSource is used.")
+        Log.d("check_googleSign", "idToken = $idToken")
+        val auth = Firebase.auth
+//        val auth = FirebaseAuth.getInstance()
+
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+//                    Log.d(LoginActivity.TAG, "signInWithCredential:success")
+                    val user = auth.currentUser
+                    user?.let {
+                        continuation.resume(Result.Success(it))
+                    }
+                } else {
+                    // If sign in fails, display a message to the user.
+//                    Log.w(LoginActivity.TAG, "signInWithCredential:failure", task.exception)
+                    task.exception?.let {
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+    override suspend fun postUser(user: User): Result<Boolean> = suspendCoroutine { continuation ->
+        val db = FirebaseFirestore.getInstance().collection(PATH_USERS)
+        val document = db.document(user.id)
+        Log.d("checkUser", "user in DataSource = $user")
+        Log.d("checkUser", "user.id in DataSource = ${user.id}")
+        Log.d("checkUser", "user.email in DataSource = ${user.email}")
+
+        db.whereEqualTo("email", user.email)
+            .get()
+            .addOnSuccessListener {  documents ->
+                Log.d("documents"," Already initialized")
+                Log.d("documents", "documents = ${documents.isEmpty}}")
+
+                for (document in documents) {
+                    Log.d("documents", "Received in DataSource = ${document.id} => ${document.data}")
+                }
+                if (documents.isEmpty) {
+                    document
+                        .set(user)
+                        .addOnSuccessListener {
+                            Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
+                            Log.d("checkUser", "User in addOnSuccessListener = $user")
+
+                            Logger.i("User: $user")
+//                            continuation.resume(Result.Success(true))
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(ContentValues.TAG, "Error writing document", e)
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${e.message}")
+//                            continuation.resume(Result.Error(e))
+                        }
+//                    continuation.resume(Result.Fail(KnowHowBindingApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("documents", "Error getting documents: ", exception)
+            }
+
     }
 
 }

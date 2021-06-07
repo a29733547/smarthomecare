@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 import com.czerny.smarthomecare.databinding.ActivityMainBinding
 import com.czerny.smarthomecare.ext.getVmFactory
@@ -18,19 +20,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-//class MainActivity : AppCompatActivity() {
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
+//class MainActivity : BaseActivity() {
 
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
-
-//    private val viewModel: MainViewModel by lazy {
-//        ViewModelProvider(this).get(MainViewModel::class.java)
-//    }
-
-    lateinit var binding: ActivityMainBinding
+//    private lateinit var appBarConfiguration: AppBarConfiguration
 
 
-    var remindTimeData: String = ""
+
+    private lateinit var binding: ActivityMainBinding
 
     /**-----botton Navigation fun-------*/
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -66,8 +64,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -84,7 +80,10 @@ class MainActivity : BaseActivity() {
         binding.navView.visibility = View.VISIBLE
     }
 
-
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = findNavController(R.id.myNavHostFragment)
+//        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+//    }
 
 
 

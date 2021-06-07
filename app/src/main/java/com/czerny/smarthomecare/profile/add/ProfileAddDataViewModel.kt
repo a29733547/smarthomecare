@@ -42,6 +42,6 @@ class ProfileAddDataViewModel (private val repository: SmartHomeCareRepository):
         genetic = "",
         allergy = "",
         note = "",
-        familyId = 0
+        familyId = ""
     )
 }

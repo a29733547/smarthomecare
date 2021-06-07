@@ -59,12 +59,7 @@
             android:name="remindKey"
             app:argType="com.czerny.smarthomecare.data.Remind" />
     </fragment>
-    <fragment
-        android:id="@+id/chatListFragment"
-        android:name="com.czerny.smarthomecare.chatlist.ChatListFragment"
-        android:label="ChatListFragment"
-        tools:layout="@layout/fragment_chat_list">
-    </fragment>
+
 
 
 
@@ -142,6 +137,15 @@
     <action
         android:id="@+id/action_saveDataRemindFragment_to_saveDataRemindModifyFragment"
         app:destination="@id/saveDataRemindModifyFragment" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.czerny.smarthomecare.login.LoginActivity"
+        android:label="LoginActivity"
+        tools:layout="@layout/fragment_login"/>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.czerny.smarthomecare.MainActivity"
+        android:label="MainActivity" />
 
 
 </navigation>

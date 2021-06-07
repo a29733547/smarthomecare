@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_item_remind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -19,116 +20,186 @@
         android:background="@drawable/home_remind">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_item_remind_time"
-            android:layout_width="wrap_content"
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/home_item_time_background"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_item_remind_data">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/text_item_remind_minute"
+                android:id="@+id/text_item_remind_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:letterSpacing="0.1"
+                android:text="@={viewModelHomeItemRemind.name}"
+                android:textColor="@color/text_home_text"
+                app:layout_constraintBottom_toBottomOf="@+id/image_item_remind_profile"
+                app:layout_constraintStart_toEndOf="@+id/image_item_remind_profile"
+                app:layout_constraintTop_toTopOf="@+id/image_item_remind_profile"
+                tools:text="name" />
+
+            <ImageView
+                android:id="@+id/image_item_remind_profile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_item_remind_time"
+                app:srcCompat="@drawable/icons_36px_profile_normal"
+                app:tint="@color/remind_modify_image" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_item_remind_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/home_item_time_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_remind_data">
+
+                <TextView
+                    android:id="@+id/text_item_remind_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@={viewModelHomeItemRemind.minute}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_item_savedata_remind_nothing2"
+                    app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours"
+                    tools:text="分" />
+
+                <TextView
+                    android:id="@+id/text_item_savedata_remind_nothing2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text=":"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
+                    app:layout_constraintEnd_toStartOf="@+id/text_item_remind_minute"
+                    app:layout_constraintStart_toEndOf="@+id/text_item_remind_hours"
+                    app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours" />
+
+                <TextView
+                    android:id="@+id/text_item_remind_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@={viewModelHomeItemRemind.hours}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/text_item_savedata_remind_nothing2"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="時" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/text_item_remind_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.3"
+                android:text="@={viewModelHomeItemRemind.date}"
+                android:textColor="@color/text_home_text"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="日期" />
+
+            <TextView
+                android:id="@+id/text_item_remind_title"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:letterSpacing="0.05"
+                android:text="@={viewModelHomeItemRemind.title}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/layout_item_remind_time"
+                app:layout_constraintStart_toEndOf="@+id/layout_item_remind_time"
+                app:layout_constraintTop_toTopOf="@+id/layout_item_remind_time"
+                tools:text="提醒" />
+
+            <ImageView
+                android:id="@+id/image_home_item_yet"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_item_yet_image3" />
+
+            <ImageView
+                android:id="@+id/image_home_item_ok"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_item_ok_image3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_item_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/button_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="@={viewModelHomeItemRemind.minute}"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_item_savedata_remind_nothing2"
-                app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours"
-                tools:text="分" />
-
-            <TextView
-                android:id="@+id/text_item_savedata_remind_nothing2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:text=":"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_item_remind_hours"
-                app:layout_constraintEnd_toStartOf="@+id/text_item_remind_minute"
-                app:layout_constraintStart_toEndOf="@+id/text_item_remind_hours"
-                app:layout_constraintTop_toTopOf="@+id/text_item_remind_hours" />
-
-            <TextView
-                android:id="@+id/text_item_remind_hours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:text="@={viewModelHomeItemRemind.hours}"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:text="完成"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/text_item_savedata_remind_nothing2"
-                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="取消"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_check"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="時" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/text_item_remind_title"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="2dp"
-            android:letterSpacing="0.05"
-            android:text="@={viewModelHomeItemRemind.title}"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/layout_item_remind_time"
-            app:layout_constraintStart_toEndOf="@+id/layout_item_remind_time"
-            app:layout_constraintTop_toTopOf="@+id/layout_item_remind_time"
-            tools:text="提醒" />
-
-        <TextView
-            android:id="@+id/text_item_remind_data"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center_horizontal"
-            android:letterSpacing="0.3"
-            android:text="@={viewModelHomeItemRemind.date}"
-            android:textColor="@color/text_home_text"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="日期" />
-
-        <TextView
-            android:id="@+id/text_item_remind_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:letterSpacing="0.1"
-            android:text="@={viewModelHomeItemRemind.name}"
-            android:textColor="@color/text_home_text"
-            app:layout_constraintBottom_toBottomOf="@+id/image_item_remind_profile"
-            app:layout_constraintStart_toEndOf="@+id/image_item_remind_profile"
-            app:layout_constraintTop_toTopOf="@+id/image_item_remind_profile"
-            tools:text="name" />
-
-        <ImageView
-            android:id="@+id/image_item_remind_profile"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_item_remind_time"
-            app:srcCompat="@drawable/icons_36px_profile_normal"
-            app:tint="@color/remind_modify_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
