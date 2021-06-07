@@ -25,6 +25,7 @@ import java.util.*
 
 object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
+    //2021 0607 branch test
 
     private const val PATH_HEALTH = "healthData"
     private const val PATH_REMIND = "remindData"
