@@ -38,10 +38,13 @@
             <Button
                 android:id="@+id/button_health_select_data"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
                 android:text="選擇日期"
+                android:textColor="#222222"
+                android:background="@drawable/home_item_check_button_cancel"
                 app:layout_constraintBottom_toBottomOf="@+id/text_add_health_data"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_add_health_data" />

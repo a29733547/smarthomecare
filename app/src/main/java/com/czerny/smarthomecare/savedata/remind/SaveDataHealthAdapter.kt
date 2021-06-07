@@ -33,7 +33,7 @@ class SaveDataHealthAdapter(val viewModel: SaveDataHealthViewModel, private val 
             binding.executePendingBindings()
 
 
-            binding.imageItemSavedataHealthRemove.setOnClickListener{
+            binding.layoutItemHealthCancel.setOnClickListener{
                 viewModel.deleteHealth(health)
             }
 

@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.databinding.DialogAddremindBinding
@@ -27,6 +29,11 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class AddHealthEditDialog : AppCompatDialogFragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.RemindDialog)
+    }
 
     private val viewModel by viewModels<AddHealthEditViewModel> { getVmFactory() }
 

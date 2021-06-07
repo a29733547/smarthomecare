@@ -24,6 +24,11 @@ import kotlin.collections.HashMap
 
 class AddRemindEditDialog : AppCompatDialogFragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.RemindDialog)
+    }
+
 
     private val viewModel by viewModels<AddRemindEditViewModel> { getVmFactory() }
 

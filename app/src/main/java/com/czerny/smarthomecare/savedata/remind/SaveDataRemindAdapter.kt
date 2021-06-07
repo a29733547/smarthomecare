@@ -32,7 +32,7 @@ class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val 
             binding.executePendingBindings()
 
 
-            binding.imageSavedataRemindRemove.setOnClickListener{
+            binding.layoutItemRemindCancel.setOnClickListener{
                 viewModel.deleteRemind(remind)
             }
 

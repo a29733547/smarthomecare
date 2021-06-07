@@ -37,7 +37,7 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fra
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.recyclerviewSavedataHealth.layoutManager = LinearLayoutManager(context)
-        binding.recyclerviewSavedataHealth.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+//        binding.recyclerviewSavedataHealth.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
         val saveDataHealthAdapter = SaveDataHealthAdapter(viewModel, SaveDataHealthAdapter.OnClickListener {
 //            viewModel.deleteHealth(it)

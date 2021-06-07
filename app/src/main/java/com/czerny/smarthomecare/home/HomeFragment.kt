@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.recyclerViewHome.layoutManager = LinearLayoutManager(context)
-        binding.recyclerViewHome.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+//        binding.recyclerViewHome.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
         val homeAdapter = HomeAdapter(HomeAdapter.OnClickListener{})
         binding.recyclerViewHome.adapter = homeAdapter

@@ -203,15 +203,18 @@
             <Button
                 android:id="@+id/button_remind_select_data"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginEnd="16dp"
+                android:background="@drawable/home_item_check_button_cancel"
+                android:letterSpacing="0.1"
                 android:text="選擇日期"
-
+                android:textColor="#222222"
                 app:layout_constraintBottom_toBottomOf="@+id/text_data"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/text_addremind_data"
-                app:layout_constraintTop_toTopOf="@+id/text_data" />
+                app:layout_constraintTop_toTopOf="@+id/text_data"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/text_addremind_data"

@@ -35,7 +35,7 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
         binding.lifecycleOwner = this
 
         binding.recyclerviewSavedataRemind.layoutManager = LinearLayoutManager(context)
-        binding.recyclerviewSavedataRemind.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+//        binding.recyclerviewSavedataRemind.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
         val saveDataRemindAdapter = SaveDataRemindAdapter(viewModel, SaveDataRemindAdapter.OnClickListener{
             viewModel.navigateToRemindModify(it)

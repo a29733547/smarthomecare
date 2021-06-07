@@ -9,6 +9,6 @@
         android:width="1dp"
         android:color="#6E6E6E" />
 
-    <solid android:color="#43A047" />
+    <solid android:color="@color/add_health_dialog" />
 
 </shape>
