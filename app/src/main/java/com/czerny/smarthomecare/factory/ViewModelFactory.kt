@@ -13,11 +13,13 @@ import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.login.LoginViewModel
 import com.czerny.smarthomecare.profile.ProfileViewModel
 import com.czerny.smarthomecare.profile.add.ProfileAddDataViewModel
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel
+
 import com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel
 
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindViewModel
+import com.czerny.smarthomecare.userfamily.UserFamilyViewModel
+
 
 /**
  * Created by Wayne Chen on 2020-01-15.
@@ -33,14 +35,17 @@ class ViewModelFactory constructor(
         with(modelClass) {
             when {
 
+                isAssignableFrom(UserFamilyViewModel::class.java) ->
+                    UserFamilyViewModel(repository)
+
                 isAssignableFrom(LoginViewModel::class.java) ->
                     LoginViewModel(repository)
 
                 isAssignableFrom(MainViewModel::class.java) ->
                     MainViewModel(repository)
 
-                isAssignableFrom(ChatRoomViewModel::class.java) ->
-                    ChatRoomViewModel(repository)
+//                isAssignableFrom(ChatRoomViewModel::class.java) ->
+//                    ChatRoomViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)

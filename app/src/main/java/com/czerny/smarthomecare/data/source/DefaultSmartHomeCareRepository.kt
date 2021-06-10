@@ -66,27 +66,36 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.addRemindData(remind)
     }
 
-    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean> {
-        return remoteDataSource.postMessage(emails, chatRoom)
+    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
+        return remoteDataSource.postMessage(emails, chatRoom, family)
     }
 
-    //    override fun getAllLiveMessage () : MutableLiveData<List<ChatRoom>> {
-//        return remoteDataSource.getAllLiveMessage()
+    /**--------chatroom--------*/
+    override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean> {
+        return remoteDataSource.postMessage(userId, message, family)
+    }
+    override fun getAllLiveMessage(emails: List<String>, family: String): MutableLiveData<List<ChatRoom>> {
+        return remoteDataSource.getAllLiveMessage(emails, family)
+    }
+    /**--------chatroom--------*/
+
+
+    /**--------add user & family--------*/
+    override fun getUserList(): MutableLiveData<List<UserInfo>> {
+        return remoteDataSource.getUserList()
+    }
+//    override fun getFamilyList(): MutableLiveData<FamilyInfo>> {
+//        return remoteDataSource.getFamilyList()
 //    }
-    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
-        return remoteDataSource.getAllLiveMessage(emails)
+    override fun getFamilyList(): MutableLiveData<List<FamilyInfo>> {
+        return remoteDataSource.getFamilyList()
     }
+    override suspend fun pushFamily(user: User?): Result<Boolean> {
+        return remoteDataSource.pushFamily(user)
+    }
+    /**--------add user & family--------*/
 
-    //    override fun getAllLiveMessage (id:String) : MutableLiveData<List<ChatRoom>> {
-//        return remoteDataSource.getAllLiveMessage(id)
-//    }
-    override suspend fun getUser(userEmail: String): Result<User> {
-        return remoteDataSource.getUser(userEmail)
-    }
 
-    override suspend fun postMessage(userId: String, message: String): Result<Boolean> {
-        return remoteDataSource.postMessage(userId, message)
-    }
 
     override suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser> {
         return remoteDataSource.firebaseAuthWithGoogle(idToken)
@@ -94,6 +103,9 @@ class DefaultSmartHomeCareRepository(
 
     override suspend fun postUser(user: User): Result<Boolean> {
         return remoteDataSource.postUser(user)
+    }
+    override suspend fun getUser(): Result<User> {
+        return remoteDataSource.getUser()
     }
 
 }

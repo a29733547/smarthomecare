@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,7 +27,8 @@ import com.czerny.smarthomecare.login.UserManager
 
 class ChatRoomFragment : Fragment() {
 
-    private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory() }
+    private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory(
+        ChatRoomFragmentArgs.fromBundle(requireArguments()).familyName) }
 
     lateinit var binding: FragmentChatroomBinding
 
@@ -62,9 +64,15 @@ class ChatRoomFragment : Fragment() {
         binding.layoutButtonSend.setOnClickListener {
 
 //            viewModel.sendMessage(UserManager.user.userId)
-            viewModel.sendMessage(UserManager.user.id)
+            viewModel.sendMessage(UserManager.user.email, viewModel.familyNema)
+//            viewModel.sendMessage(UserManager.user.id)
             viewModel.enterMessage.value = ""
         }
+
+//        if (activity is MainActivity) {
+//            (activity as MainActivity).test = viewModel.familyNema
+//
+//        }
 
         return binding.root
     }

@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/userFamilyFragment">
+
+    <fragment
+        android:id="@+id/userFamilyFragment"
+        android:name="com.czerny.smarthomecare.userfamily.UserFamilyFragment"
+        android:label="UserFamilyFragment"
+        tools:layout="@layout/fragment_user_family_list">
+        <action
+            android:id="@+id/action_userFamilyFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
@@ -27,7 +37,11 @@
         android:id="@+id/chatRoomFragment"
         android:name="com.czerny.smarthomecare.chatroom.ChatRoomFragment"
         android:label="ChatRoomFragment"
-        tools:layout="@layout/fragment_chatroom"/>
+        tools:layout="@layout/fragment_chatroom">
+        <argument
+            android:name="familyName"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/saveDataHealthFragment"
@@ -137,15 +151,10 @@
     <action
         android:id="@+id/action_saveDataRemindFragment_to_saveDataRemindModifyFragment"
         app:destination="@id/saveDataRemindModifyFragment" />
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="com.czerny.smarthomecare.login.LoginActivity"
-        android:label="LoginActivity"
-        tools:layout="@layout/fragment_login"/>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.czerny.smarthomecare.MainActivity"
-        android:label="MainActivity" />
+    <action
+        android:id="@+id/action_userFamilyFragment_to_homeFragment"
+        app:destination="@id/homeFragment" />
+
 
 
 </navigation>

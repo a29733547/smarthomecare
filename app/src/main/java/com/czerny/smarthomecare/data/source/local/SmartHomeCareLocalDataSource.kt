@@ -91,33 +91,44 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean> {
+    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun postMessage(userId: String, message: String): Result<Boolean> {
+    /**--------chatroom--------*/
+    override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean> {
         TODO("Not yet implemented")
     }
+    override fun getAllLiveMessage(emails: List<String>, family: String): MutableLiveData<List<ChatRoom>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    /**--------chatroom--------*/
 
-    //    override fun getAllLiveMessage(): MutableLiveData<List<ChatRoom>> {
+    /**--------add user & family--------*/
+    override fun getUserList(): MutableLiveData<List<UserInfo>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+//    override fun getFamilyList(): MutableLiveData<FamilyInfo> {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }
-    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
+    override fun getFamilyList(): MutableLiveData<List<FamilyInfo>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    //    override fun getAllLiveMessage(id:String): MutableLiveData<List<ChatRoom>> {
-//    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//}
-    override suspend fun getUser(userEmail: String): Result<User> {
-        TODO("Not yet implemented")
+    override suspend fun pushFamily(user: User?): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+    /**--------add user & family--------*/
+
 
     override suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser> {
         TODO("Not yet implemented")
     }
 
     override suspend fun postUser(user: User): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+    override suspend fun getUser(): Result<User> {
         TODO("Not yet implemented")
     }
 

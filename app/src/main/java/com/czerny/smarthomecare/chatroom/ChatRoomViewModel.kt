@@ -20,13 +20,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
-class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
+class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
 
 //    val currentChattingUser = userEmail
 
     val userEmail = "a29733547@gmail.com"
 
-
+    val familyNema = family
 
 
     val enterMessage = MutableLiveData<String>()
@@ -69,27 +69,26 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewM
         Logger.i("------------------------------------")
 
 //        getAllLiveMessage(getUserEmails(UserManager.user.userId, userEmail))
-        getAllLiveMessage(getUserEmails(UserManager.user.id, userEmail))
-//        Log.i("czerny","getEmail1 = ${UserManager.user.userId}")
-        Log.i("czerny","getEmail1 = ${UserManager.user.id}")
+        getAllLiveMessage(getUserEmails(UserManager.user.email, ""), family )
+        Log.i("czerny","getEmail1 = ${UserManager.user.email}")
         Log.i("czerny","getEmail2 = ${userEmail}")
     }
 
-    fun sendMessage(userId: String) {
-        postMessage(userId, enterMessage.value.toString())
+    fun sendMessage(userId: String, family: String) {
+        postMessage(userId, enterMessage.value.toString(), family)
     }
 
     fun getUserEmails(user1Email: String, user2Email: String): List<String> {
         return listOf(user1Email, user2Email)
     }
 
-    fun postMessage(userId: String, message: String) {
+    fun postMessage(userId: String, message: String, family: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.postMessage(userId, message)) {
+            when (val result = repository.postMessage(userId, message, family)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -112,9 +111,9 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository) : ViewM
 
     }
 
-    private fun getAllLiveMessage(userEmails: List<String>) {
+    private fun getAllLiveMessage(userEmails: List<String>, family: String) {
 
-        allLiveMessage = repository.getAllLiveMessage(userEmails)
+        allLiveMessage = repository.getAllLiveMessage(userEmails, family)
         _status.value = LoadApiStatus.DONE
     }
 

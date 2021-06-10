@@ -298,6 +298,7 @@
                         android:id="@+id/text_savedata_health_modify_minute"
                         android:layout_width="18dp"
                         android:layout_height="24dp"
+                        android:layout_marginTop="5dp"
                         android:text="@={viewModelHealthModify.healthModify.minute}"
                         app:layout_constraintBottom_toBottomOf="@+id/text_savedata_health_modify_hours"
                         app:layout_constraintEnd_toEndOf="parent"

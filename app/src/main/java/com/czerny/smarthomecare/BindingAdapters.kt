@@ -5,14 +5,39 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.czerny.smarthomecare.data.FamilyInfo
 
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
+import com.czerny.smarthomecare.data.UserInfo
 import com.czerny.smarthomecare.home.HomeAdapter
 import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthAdapter
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindAdapter
+import com.czerny.smarthomecare.userfamily.FamilyAdapter
+import com.czerny.smarthomecare.userfamily.UserAdapter
 
+//@BindingAdapter("familyInfo")
+//fun bindRecyclerViewWithFamilyList(recyclerView: RecyclerView, SaveDataUserInfoItem: List<FamilyInfo>?) {
+//    SaveDataUserInfoItem?.let {
+//        recyclerView.adapter?.apply {
+//            when (this) {
+//                is FamilyAdapter -> submitList(it)
+//            }
+//        }
+//    }
+//}
+
+@BindingAdapter("userInfo")
+fun bindRecyclerViewWithUserList(recyclerView: RecyclerView, SaveDataUserInfoItem: List<UserInfo>?) {
+    SaveDataUserInfoItem?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is UserAdapter -> submitList(it)
+            }
+        }
+    }
+}
 
 @BindingAdapter("healthData")
 fun bindRecyclerViewWithHealthData(recyclerView: RecyclerView, SaveDataHealthItem: List<Health>?) {

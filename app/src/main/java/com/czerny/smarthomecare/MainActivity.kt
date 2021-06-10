@@ -20,15 +20,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity() {
-//class MainActivity : BaseActivity() {
-
+abstract class MainActivity : AppCompatActivity() {
+    
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
-//    private lateinit var appBarConfiguration: AppBarConfiguration
 
-
-
+    
     private lateinit var binding: ActivityMainBinding
+    
+
 
     /**-----botton Navigation fun-------*/
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.chatRoomFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment())
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment("test1"))
                 return@OnNavigationItemSelectedListener true
 
             }
@@ -72,6 +71,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    
+ 
 
     fun mainToolBar(newTitle: String) {
         binding.textToolbarTitle.visibility = View.VISIBLE

@@ -37,18 +37,24 @@ interface SmartHomeCareDataSource {
 
     suspend fun addRemindData(remind: Remind): Result<Boolean>
 
-    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom): Result<Boolean>
+    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
 
-//    fun getAllLiveMessage(): MutableLiveData<List<ChatRoom>>
-    fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>>
-//    fun getAllLiveMessage(id:String): MutableLiveData<List<ChatRoom>>
+    /**--------chatroom--------*/
+    suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
+    fun getAllLiveMessage(emails: List<String>,family: String): MutableLiveData<List<ChatRoom>>
+    /**--------chatroom--------*/
 
-    suspend fun getUser(userEmail: String): Result<User>
+    /**--------add user & family--------*/
+    fun getUserList(): MutableLiveData<List<UserInfo>>
+//    fun getFamilyList(): MutableLiveData<FamilyInfo>
+    fun getFamilyList(): MutableLiveData<List<FamilyInfo>>
+    suspend fun pushFamily(user: User?): Result<Boolean>
+    /**--------add user & family--------*/
 
-    suspend fun postMessage(userId: String, message: String): Result<Boolean>
+
 
     suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser>
 
     suspend fun postUser(user: User): Result<Boolean>
-
+    suspend fun getUser(): Result<User>
 }

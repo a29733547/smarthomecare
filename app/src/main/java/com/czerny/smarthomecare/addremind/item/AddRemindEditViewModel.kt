@@ -65,17 +65,6 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
     }
 
     fun addRemindData() {
-//        val remind = remindData.value?.let {
-//            Remind(
-//                id = it.id,
-//                name = it.name,
-//                hours = it.hours,
-//                minute = it.minute,
-//                date = it.date,
-//                content = it.content,
-//                title = it.title,
-//            )
-//        }
 
         val remind = Remind(
             name = name.value,

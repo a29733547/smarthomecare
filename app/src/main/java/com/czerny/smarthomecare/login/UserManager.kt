@@ -1,14 +1,18 @@
 package com.czerny.smarthomecare.login
 
 import com.czerny.smarthomecare.data.User
-import com.czerny.smarthomecare.data.UserInfo
+
 
 object UserManager {
-        var user = User(
-                id = "",
-                name = "",
-                image = ""
-        )
+
+        var user = User()
+
+//        var user = User(
+//                id = "",
+//                email = "",
+//                name = "",
+//                image = ""
+//        )
 //    val user = UserInfo(
 //        userId = "a29733547",
 ////        userId = "a29733547 test2",
