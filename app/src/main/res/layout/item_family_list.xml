@@ -12,10 +12,6 @@
             name="familyInfotest"
             type="com.czerny.smarthomecare.data.FamilyInfo" />
 
-        <variable
-            name="viewModel"
-            type="com.czerny.smarthomecare.userfamily.UserFamilyViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

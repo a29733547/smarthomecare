@@ -30,8 +30,6 @@ class FamilyAdapter(private val onClickListener: OnClickListener ) :
                     UserFamilyFragmentDirections.actionUserFamilyFragmentToChatRoomFragment(
                         familyInfo.familyName)).onClick(binding.layoutItemFamily)
 
-
-
             }
 
 
