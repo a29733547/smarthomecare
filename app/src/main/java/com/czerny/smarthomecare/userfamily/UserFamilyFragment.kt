@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 
 import androidx.navigation.fragment.findNavController
+import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.databinding.FragmentUserFamilyListBinding
 import com.czerny.smarthomecare.ext.getVmFactory
@@ -44,13 +46,19 @@ class UserFamilyFragment: Fragment() {
             findNavController().navigate(UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment())
         }
 
+        binding.imageFamilyAdd.setOnClickListener {
+            viewModel.addFamily()
+        }
+
         viewModel.liveFamilyInfo.observe(viewLifecycleOwner, Observer {
             it?.let {
                 familyAdapter.submitList(it)
             }
         })
 
-
+        if (activity is MainActivity) {
+            (activity as MainActivity).userFamilyBar()
+        }
 
 
 

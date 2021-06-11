@@ -101,6 +101,7 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
 
             val result = repository.getUser()
 
+
             _profile.value = when (result) {
                 is Result.Success -> {
                     _error.value = null

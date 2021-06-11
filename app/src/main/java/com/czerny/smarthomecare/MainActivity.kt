@@ -24,8 +24,9 @@ class MainActivity : AppCompatActivity() {
     
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
 
-
     private lateinit var binding: ActivityMainBinding
+
+    var getFamilyName : String = ""
 
     /**-----botton Navigation fun-------*/
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -47,8 +48,9 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.chatRoomFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment("test1"))
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment(getFamilyName))
                 return@OnNavigationItemSelectedListener true
+                Log.i("getFamilyName","${getFamilyName}")
 
             }
         }
@@ -70,8 +72,11 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    
- 
+
+    fun userFamilyBar() {
+        binding.toolbar.visibility = View.GONE
+        binding.navView.visibility = View.GONE
+    }
 
     fun mainToolBar(newTitle: String) {
         binding.textToolbarTitle.visibility = View.VISIBLE

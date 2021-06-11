@@ -752,9 +752,12 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     }
 
     override suspend fun getUser(): Result<User> = suspendCoroutine { continuation ->
+
+        val name = UserManager.user.name
+        
         FirebaseFirestore.getInstance()
-                        .collection("user")
-//            .whereEqualTo("email", userEmail)
+            .collection("user")
+            .whereEqualTo("name", name)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -887,7 +890,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             = suspendCoroutine { continuation ->
 
         val ref = FirebaseFirestore.getInstance()
-            .collection("family")
+            .collection("familyInfo")
 //            .document()
 //            .collection("chatroom")
 

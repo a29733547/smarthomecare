@@ -63,6 +63,8 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family:
         viewModelJob.cancel()
     }
 
+
+
     init {
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")

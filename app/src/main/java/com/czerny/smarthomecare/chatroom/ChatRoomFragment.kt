@@ -71,10 +71,9 @@ class ChatRoomFragment : Fragment() {
             viewModel.enterMessage.value = ""
         }
 //
-//        if (activity is MainActivity) {
-//            (activity as MainActivity).test = viewModel.familyNema
-//
-//        }
+        if (activity is MainActivity) {
+            (activity as MainActivity).getFamilyName = viewModel.familyNema
+        }
 
         return binding.root
     }
