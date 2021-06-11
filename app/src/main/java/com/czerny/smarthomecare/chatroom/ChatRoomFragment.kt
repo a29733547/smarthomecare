@@ -27,6 +27,8 @@ import com.czerny.smarthomecare.login.UserManager
 
 class ChatRoomFragment : Fragment() {
 
+
+
     private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory(
         ChatRoomFragmentArgs.fromBundle(requireArguments()).familyName) }
 

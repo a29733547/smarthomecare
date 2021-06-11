@@ -129,7 +129,6 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
             User(
                 familyId = it.familyId,
                 familyName = it.familyName
-
             )
         }
 

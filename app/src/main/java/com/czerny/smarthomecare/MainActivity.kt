@@ -25,7 +25,7 @@ abstract class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
 
     
-    private lateinit var binding: ActivityMainBinding
+
     
 
 
@@ -58,6 +58,7 @@ abstract class MainActivity : AppCompatActivity() {
     }
     /**-----botton Navigation fun-------*/
 
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
