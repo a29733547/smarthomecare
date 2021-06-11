@@ -42,9 +42,9 @@ class UserFamilyFragment: Fragment() {
         val familyAdapter = FamilyAdapter(FamilyAdapter.OnClickListener{})
         binding.recyclerFamily.adapter = familyAdapter
 
-        binding.buttonUserFamilyCheck.setOnClickListener {
-            findNavController().navigate(UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment())
-        }
+//        binding.buttonUserFamilyCheck.setOnClickListener {
+//            findNavController().navigate(UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment(getFamilyName))
+//        }
 
         binding.imageFamilyAdd.setOnClickListener {
             viewModel.addFamily()

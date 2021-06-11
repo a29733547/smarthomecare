@@ -30,16 +30,23 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
     }
 
 
-    private val viewModel by viewModels<AddRemindEditViewModel> { getVmFactory() }
+    private val viewModel by viewModels<AddRemindEditViewModel> { getVmFactory(
+        AddRemindEditDialogArgs.fromBundle(requireArguments()).familyName
+    ) }
 
     private lateinit var binding: DialogAddremindEditBinding
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DialogAddremindEditBinding.inflate(inflater, container, false)
+
         binding.lifecycleOwner = viewLifecycleOwner
 //        binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.addremindEditViewModel = viewModel
+
+        binding.buttonRemindEdit.setOnClickListener {
+            viewModel.addRemindData(viewModel.familyNema)
+        }
 
         binding.buttonRemindSelectData.setOnClickListener{
             findNavController().navigate(AddRemindEditDialogDirections.actionAddRemindEditDialogToItemAddRemindData())

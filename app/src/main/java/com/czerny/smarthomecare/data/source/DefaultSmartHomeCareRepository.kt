@@ -41,30 +41,31 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.remindModify(remind)
     }
 
-    override suspend fun getRemind(): Result<List<Remind>> {
-        return remoteDataSource.getRemind()
+    /**--------get remind data--------*/
+    override suspend fun getRemind(family: String): Result<List<Remind>> {
+        return remoteDataSource.getRemind(family)
     }
-
-    override fun getLiveRemind(): MutableLiveData<List<Remind>> {
-        return remoteDataSource.getLiveRemind()
+    override fun getLiveRemind(family: String): MutableLiveData<List<Remind>> {
+        return remoteDataSource.getLiveRemind(family)
     }
 
     override fun getLiveRemindModify(): MutableLiveData<Remind> {
         return remoteDataSource.getLiveRemindModify()
     }
-
+    /**--------get remind data--------*/
 
     override suspend fun getProfile(): Result<User> {
         return remoteDataSource.getProfile()
     }
 
+    /**--------add data--------*/
     override suspend fun addHealthData(health: Health): Result<Boolean> {
         return remoteDataSource.addHealthData(health)
     }
-
-    override suspend fun addRemindData(remind: Remind): Result<Boolean> {
-        return remoteDataSource.addRemindData(remind)
+    override suspend fun addRemindData(remind: Remind, family: String): Result<Boolean> {
+        return remoteDataSource.addRemindData(remind, family)
     }
+    /**--------add data--------*/
 
 //    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
 //        return remoteDataSource.postMessage(emails, chatRoom, family)

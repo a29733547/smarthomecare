@@ -35,6 +35,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     private const val PATH_FAMILY = "family"
     private const val PATH_USERS = "users"
 
+
     override suspend fun login(id: String): Result<Author> {
         TODO("Not yet implemented")
     }
@@ -168,9 +169,12 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
     /** get health date*/
 
-    /** get remind date*/
-    override suspend fun getRemind(): Result<List<Remind>> = suspendCoroutine { continuation ->
+
+    /** -----------------------get remind date---------------------------*/
+    override suspend fun getRemind(family: String): Result<List<Remind>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document(family)
             .collection(PATH_REMIND)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .get()
@@ -196,11 +200,13 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
-    override fun getLiveRemind(): MutableLiveData<List<Remind>> {
+    override fun getLiveRemind(family: String): MutableLiveData<List<Remind>> {
 
         val liveData = MutableLiveData<List<Remind>>()
 
         FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document(family)
             .collection(PATH_REMIND)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
@@ -223,6 +229,8 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
         return liveData
     }
+    /** -----------------------get remind date---------------------------*/
+
 
     override suspend fun healthModify(health: Health): Result<Boolean> =
         suspendCoroutine { continuation ->
@@ -458,10 +466,10 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                 }
         }
 
-    override suspend fun addRemindData(remind: Remind): Result<Boolean> =
+    override suspend fun addRemindData(remind: Remind, family: String): Result<Boolean> =
         suspendCoroutine { continuation ->
-            val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
-            val document = remindDate.document()
+            val remindDate = FirebaseFirestore.getInstance().collection(PATH_FAMILY)
+            val document = remindDate.document(family).collection(PATH_REMIND).document()
 
             remind.id = document.id
             remind.createdTime = Calendar.getInstance().timeInMillis

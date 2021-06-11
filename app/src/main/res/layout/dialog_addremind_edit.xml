@@ -126,7 +126,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/add_add_button"
                 android:letterSpacing="0.1"
-                android:onClick="@{() -> addremindEditViewModel.addRemindData()}"
+
                 android:text="新增提醒"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"

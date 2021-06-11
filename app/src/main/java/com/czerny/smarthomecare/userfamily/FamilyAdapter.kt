@@ -27,7 +27,7 @@ class FamilyAdapter(private val onClickListener: OnClickListener ) :
 
             binding.layoutItemFamily.setOnClickListener {
                 Navigation.createNavigateOnClickListener(
-                    UserFamilyFragmentDirections.actionUserFamilyFragmentToChatRoomFragment(
+                    UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment(
                         familyInfo.familyName)).onClick(binding.layoutItemFamily)
 
             }

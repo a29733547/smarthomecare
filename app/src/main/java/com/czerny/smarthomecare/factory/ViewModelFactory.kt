@@ -50,8 +50,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
                     SaveDataHealthModifyViewModel(repository)
 
-                isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel(repository)
+//                isAssignableFrom(HomeViewModel::class.java) ->
+//                    HomeViewModel(repository)
 
                 isAssignableFrom(SaveDataHealthViewModel::class.java) ->
                     SaveDataHealthViewModel(repository)
@@ -62,8 +62,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(AddHealthEditViewModel::class.java) ->
                     AddHealthEditViewModel(repository)
 
-                isAssignableFrom(AddRemindEditViewModel::class.java) ->
-                    AddRemindEditViewModel(repository)
+//                isAssignableFrom(AddRemindEditViewModel::class.java) ->
+//                    AddRemindEditViewModel(repository)
 
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)

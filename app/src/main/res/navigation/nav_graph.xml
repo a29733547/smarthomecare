@@ -9,17 +9,17 @@
         android:id="@+id/userFamilyFragment"
         android:name="com.czerny.smarthomecare.userfamily.UserFamilyFragment"
         android:label="UserFamilyFragment"
-        tools:layout="@layout/fragment_user_family_list">
-        <action
-            android:id="@+id/action_userFamilyFragment_to_chatRoomFragment"
-            app:destination="@id/chatRoomFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_user_family_list"/>
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.czerny.smarthomecare.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="familyName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/saveDataFragment"
         android:name="com.czerny.smarthomecare.savedata.SaveDataFragment"
@@ -61,8 +61,7 @@
         android:id="@+id/saveDataRemindFragment"
         android:name="com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment"
         android:label="SaveDataRemindFragment"
-        tools:layout="@layout/item_savedata_remind">
-    </fragment>
+        tools:layout="@layout/item_savedata_remind"/>
 
     <fragment
         android:id="@+id/saveDataRemindModifyFragment"
@@ -83,6 +82,9 @@
         android:label="AddRemindDialog"
         tools:layout="@layout/dialog_addremind">
 
+        <argument
+            android:name="familyName"
+            app:argType="string" />
     </dialog>
 
     <dialog
@@ -91,6 +93,9 @@
         android:label="addRemindEditDialog"
         tools:layout="@layout/dialog_addremind_edit">
 
+        <argument
+            android:name="familyName"
+            app:argType="string" />
     </dialog>
 
     <dialog

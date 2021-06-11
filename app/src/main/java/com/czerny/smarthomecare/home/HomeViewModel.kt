@@ -17,8 +17,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
+class HomeViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
 
+    val familyNema = family
 
     private val _remind = MutableLiveData<List<Remind>>()
     val remind: LiveData<List<Remind>>
@@ -59,20 +60,20 @@ class HomeViewModel(private val repository: SmartHomeCareRepository) : ViewModel
 
 
         if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-            getLiveHomeResult()
+            getLiveHomeResult(family)
         } else {
-            getHomeResult()
+            getHomeResult(family)
 
         }
     }
 
-    fun getHomeResult() {
+    fun getHomeResult(family: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            val result = repository.getRemind()
+            val result = repository.getRemind(family)
 
             _remind.value = when (result) {
                 is Result.Success -> {
@@ -100,8 +101,8 @@ class HomeViewModel(private val repository: SmartHomeCareRepository) : ViewModel
         }
     }
 
-    fun getLiveHomeResult() {
-        liveRemind = repository.getLiveRemind()
+    fun getLiveHomeResult(family: String) {
+        liveRemind = repository.getLiveRemind(family)
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }

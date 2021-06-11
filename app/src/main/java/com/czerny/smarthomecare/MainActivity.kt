@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.homeFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToHomeFragment())
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToHomeFragment(getFamilyName))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.saveDataFragment -> {
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.addRemindDialog -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToAddremindDialog())
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToAddremindDialog(getFamilyName))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.profileFragment -> {

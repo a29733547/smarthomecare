@@ -65,12 +65,12 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-            getLiveRemindResult()
-        } else {
-            getRemindResult()
-
-        }
+//        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
+//            getLiveRemindResult(family)
+//        } else {
+//            getRemindResult(family)
+//
+//        }
     }
 
     fun deleteRemind(remind: Remind) {
@@ -107,13 +107,13 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         }
     }
 
-    fun getRemindResult() {
+    fun getRemindResult(family: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            val result = repository.getRemind()
+            val result = repository.getRemind(family)
 
             _remind.value = when (result) {
                 is Result.Success -> {
@@ -141,8 +141,8 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         }
     }
 
-    fun getLiveRemindResult() {
-        liveRemind = repository.getLiveRemind()
+    fun getLiveRemindResult(family: String) {
+        liveRemind = repository.getLiveRemind(family)
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }

@@ -24,18 +24,19 @@ interface SmartHomeCareDataSource {
     suspend fun healthModify(health: Health): Result<Boolean>
 
     suspend fun remindModify(remind: Remind): Result<Boolean>
-
-    suspend fun getRemind(): Result<List<Remind>>
-
-    fun getLiveRemind(): MutableLiveData<List<Remind>>
-
     fun getLiveRemindModify(): MutableLiveData<Remind>
+
+    /**--------get remind data--------*/
+    suspend fun getRemind(family: String): Result<List<Remind>>
+    fun getLiveRemind(family: String): MutableLiveData<List<Remind>>
+    /**--------get remind data--------*/
 
     suspend fun getProfile(): Result<User>
 
+    /**--------add data--------*/
     suspend fun addHealthData(health: Health): Result<Boolean>
-
-    suspend fun addRemindData(remind: Remind): Result<Boolean>
+    suspend fun addRemindData(remind: Remind, family: String): Result<Boolean>
+    /**--------add data--------*/
 
 //    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
 

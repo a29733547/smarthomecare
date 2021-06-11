@@ -20,7 +20,9 @@ import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
 
 class HomeFragment : Fragment() {
 
-    private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
+    private val viewModel by viewModels<HomeViewModel> { getVmFactory(
+        HomeFragmentArgs.fromBundle(requireArguments()).familyName
+    ) }
 
     lateinit var binding : FragmentHomeBinding
 
@@ -44,6 +46,9 @@ class HomeFragment : Fragment() {
             (activity as MainActivity).mainToolBar("提醒事項")
         }
 
+        if (activity is MainActivity) {
+            (activity as MainActivity).getFamilyName = viewModel.familyNema
+        }
 
         return binding.root
     }

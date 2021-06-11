@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
+import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
@@ -16,9 +17,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): ViewModel(){
+class AddRemindEditViewModel (private val repository: SmartHomeCareRepository, family: String): ViewModel(){
 
-
+    val familyNema = family
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -64,7 +65,7 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
         Logger.i("------------------------------------")
     }
 
-    fun addRemindData() {
+    fun addRemindData(family: String) {
 
         val remind = Remind(
             name = name.value,
@@ -80,7 +81,7 @@ class AddRemindEditViewModel (private val repository: SmartHomeCareRepository): 
 //            val result = repository.addRemindData(remind)
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.addRemindData(remind)){
+            when (val result = repository.addRemindData(remind, family)){
 //            when (val result = remind?.let { repository.addRemindData(it) }){
                 is Result.Success -> {
                     _error.value = null

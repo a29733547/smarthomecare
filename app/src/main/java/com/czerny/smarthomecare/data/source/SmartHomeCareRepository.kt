@@ -18,38 +18,34 @@ interface SmartHomeCareRepository {
     fun getLiveHealth(): MutableLiveData<List<Health>>
 
     fun getLiveHealthModify(): MutableLiveData<Health>
-//    fun getLiveHealthModify(): MutableLiveData<List<Health>>
 
     suspend fun healthModify(health: Health): Result<Boolean>
 
     suspend fun remindModify(remind: Remind): Result<Boolean>
-
-    suspend fun getRemind(): Result<List<Remind>>
-
-    fun getLiveRemind(): MutableLiveData<List<Remind>>
-
     fun getLiveRemindModify(): MutableLiveData<Remind>
+
+    /**--------get remind data--------*/
+    suspend fun getRemind(family: String): Result<List<Remind>>
+    fun getLiveRemind(family: String): MutableLiveData<List<Remind>>
+    /**--------get remind data--------*/
 
     suspend fun getProfile(): Result<User>
 
-    //add頁面
+    /**--------add data--------*/
     suspend fun addHealthData(health: Health): Result<Boolean>
-
-    //add頁面
-    suspend fun addRemindData(remind: Remind): Result<Boolean>
+    suspend fun addRemindData(remind: Remind, family: String): Result<Boolean>
+    /**--------add data--------*/
 
 //    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
 
     /**--------chatroom--------*/
     suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
     fun getAllLiveMessage (emails: List<String>, family: String) : MutableLiveData<List<ChatRoom>>
-
-
     /**--------chatroom--------*/
+
 
     /**--------add user & family--------*/
     fun getUserList(): MutableLiveData<List<UserInfo>>
-
     fun getFamilyList(): MutableLiveData<List<FamilyInfo>>
 //    fun getFamilyList(): MutableLiveData<FamilyInfo>
     suspend fun pushFamily(user: User?): Result<Boolean>

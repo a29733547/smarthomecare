@@ -9,15 +9,23 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.databinding.DialogAddremindBinding
+import com.czerny.smarthomecare.ext.getVmFactory
+import com.czerny.smarthomecare.home.HomeFragmentArgs
+import com.czerny.smarthomecare.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class AddRemindDialog : BottomSheetDialogFragment() {
+
+    private val viewModel by viewModels<AddRemindViewModel> { getVmFactory(
+        AddRemindDialogArgs.fromBundle(requireArguments()).familyName
+    ) }
 
     private lateinit var binding: DialogAddremindBinding
 
@@ -38,7 +46,7 @@ class AddRemindDialog : BottomSheetDialogFragment() {
 
         binding.buttonAddremindRemind.setOnClickListener{
 
-            findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog())
+            findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog(viewModel.familyNema))
         }
 
         binding.buttonAddremindHealth.setOnClickListener{
