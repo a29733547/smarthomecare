@@ -20,14 +20,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-abstract class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
 
-    
 
-    
-
+    private lateinit var binding: ActivityMainBinding
 
     /**-----botton Navigation fun-------*/
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -58,7 +56,7 @@ abstract class MainActivity : AppCompatActivity() {
     }
     /**-----botton Navigation fun-------*/
 
-    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

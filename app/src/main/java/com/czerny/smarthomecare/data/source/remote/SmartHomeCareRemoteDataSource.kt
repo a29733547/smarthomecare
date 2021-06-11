@@ -492,85 +492,91 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         }
 
 
-    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> =
-        suspendCoroutine { continuation ->
+//    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> =
+//        suspendCoroutine { continuation ->
+//
+//            val chat = FirebaseFirestore.getInstance()
+//                .collection("family")
+//
+//
+//                    chat.document("NaNSjGX9Ltf7jTE0Ovji")
+//                        .collection("chatroom")
+//
+//                .get()
+//                .addOnSuccessListener { result ->
+//                    val documentId = chat.document("NaNSjGX9Ltf7jTE0Ovji")
+////                    val documentId = chat.document(result.documents[0].id)
+//                    documentId
+//                        .update(
+//                            "latestTime",
+//                            Calendar.getInstance().timeInMillis,
+//                            "latestMessage",
+//                            chatRoom.message
+//                        )
+//                }
+//                .continueWithTask { task ->
+//                    if (!task.isSuccessful) {
+//                        if (task.exception != null) {
+//                            task.exception?.let {
+//                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+//                                continuation.resume(Result.Error(it))
+//                            }
+//                        } else {
+//                            continuation.resume(
+//                                Result.Fail(
+//                                    SmartHomeCareApplication.appContext.getString(
+//                                        R.string.you_shall_not_pass
+//                                    )
+//                                )
+//                            )
+//                        }
+//                    }
+//
+//                    task.result?.let {
+//                        val documentId2 =
+////                            chat.document(it.documents[0].id).collection("chatroom").document()
+//                            chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").document()
+//
+//                        chatRoom.createdTime = Calendar.getInstance().timeInMillis
+//                        chatRoom.id = documentId2.id
+//
+////                        chat.document(it.documents[0].id).collection("chatroom").add(chatRoom)
+//                        chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").add(chatRoom)
+//
+//
+//                    }
+//
+//
+//                }
+//                .addOnCompleteListener { taskTwo ->
+//                    if (taskTwo.isSuccessful) {
+//                        Logger.i("Chatroom: $chatRoom")
+//
+//                        continuation.resume(Result.Success(true))
+//                    } else {
+//                        taskTwo.exception?.let {
+//
+//                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+//                            continuation.resume(Result.Error(it))
+//                            return@addOnCompleteListener
+//                        }
+//                        continuation.resume(
+//                            Result.Fail(
+//                                SmartHomeCareApplication.appContext.getString(
+//                                    R.string.you_shall_not_pass
+//                                )
+//                            )
+//                        )
+//                    }
+//
+//                }
+//        }
 
-            val chat = FirebaseFirestore.getInstance()
-                .collection("family")
 
 
-                    chat.document("NaNSjGX9Ltf7jTE0Ovji")
-                        .collection("chatroom")
-
-                .get()
-                .addOnSuccessListener { result ->
-                    val documentId = chat.document("NaNSjGX9Ltf7jTE0Ovji")
-//                    val documentId = chat.document(result.documents[0].id)
-                    documentId
-                        .update(
-                            "latestTime",
-                            Calendar.getInstance().timeInMillis,
-                            "latestMessage",
-                            chatRoom.message
-                        )
-                }
-                .continueWithTask { task ->
-                    if (!task.isSuccessful) {
-                        if (task.exception != null) {
-                            task.exception?.let {
-                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                                continuation.resume(Result.Error(it))
-                            }
-                        } else {
-                            continuation.resume(
-                                Result.Fail(
-                                    SmartHomeCareApplication.appContext.getString(
-                                        R.string.you_shall_not_pass
-                                    )
-                                )
-                            )
-                        }
-                    }
-
-                    task.result?.let {
-                        val documentId2 =
-//                            chat.document(it.documents[0].id).collection("chatroom").document()
-                            chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").document()
-
-                        chatRoom.createdTime = Calendar.getInstance().timeInMillis
-                        chatRoom.id = documentId2.id
-
-//                        chat.document(it.documents[0].id).collection("chatroom").add(chatRoom)
-                        chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").add(chatRoom)
 
 
-                    }
-
-
-                }
-                .addOnCompleteListener { taskTwo ->
-                    if (taskTwo.isSuccessful) {
-                        Logger.i("Chatroom: $chatRoom")
-
-                        continuation.resume(Result.Success(true))
-                    } else {
-                        taskTwo.exception?.let {
-
-                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                            continuation.resume(Result.Error(it))
-                            return@addOnCompleteListener
-                        }
-                        continuation.resume(
-                            Result.Fail(
-                                SmartHomeCareApplication.appContext.getString(
-                                    R.string.you_shall_not_pass
-                                )
-                            )
-                        )
-                    }
-
-                }
-        }
+    /**------------------*/
 
     override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
     = suspendCoroutine { continuation ->
@@ -661,6 +667,8 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         return liveData
     }
 
+    /**------------------*/
+
 //    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
 //
 //        val liveData = MutableLiveData<List<ChatRoom>>()
@@ -745,7 +753,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
     override suspend fun getUser(): Result<User> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
-            .collection("user")
+                        .collection("user")
 //            .whereEqualTo("email", userEmail)
             .get()
             .addOnCompleteListener { task ->

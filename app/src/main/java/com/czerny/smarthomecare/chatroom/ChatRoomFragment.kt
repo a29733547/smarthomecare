@@ -70,7 +70,7 @@ class ChatRoomFragment : Fragment() {
 //            viewModel.sendMessage(UserManager.user.id)
             viewModel.enterMessage.value = ""
         }
-
+//
 //        if (activity is MainActivity) {
 //            (activity as MainActivity).test = viewModel.familyNema
 //

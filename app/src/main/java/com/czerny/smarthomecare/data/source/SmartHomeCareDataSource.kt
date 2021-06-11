@@ -37,11 +37,13 @@ interface SmartHomeCareDataSource {
 
     suspend fun addRemindData(remind: Remind): Result<Boolean>
 
-    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
+//    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
 
     /**--------chatroom--------*/
     suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
     fun getAllLiveMessage(emails: List<String>,family: String): MutableLiveData<List<ChatRoom>>
+
+
     /**--------chatroom--------*/
 
     /**--------add user & family--------*/

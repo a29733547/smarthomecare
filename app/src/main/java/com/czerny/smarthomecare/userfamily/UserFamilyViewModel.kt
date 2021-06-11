@@ -62,6 +62,11 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
         _leave.value = needRefresh
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
     init {
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")

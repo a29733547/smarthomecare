@@ -66,9 +66,9 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.addRemindData(remind)
     }
 
-    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
-        return remoteDataSource.postMessage(emails, chatRoom, family)
-    }
+//    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
+//        return remoteDataSource.postMessage(emails, chatRoom, family)
+//    }
 
     /**--------chatroom--------*/
     override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean> {
@@ -77,6 +77,8 @@ class DefaultSmartHomeCareRepository(
     override fun getAllLiveMessage(emails: List<String>, family: String): MutableLiveData<List<ChatRoom>> {
         return remoteDataSource.getAllLiveMessage(emails, family)
     }
+
+
     /**--------chatroom--------*/
 
 

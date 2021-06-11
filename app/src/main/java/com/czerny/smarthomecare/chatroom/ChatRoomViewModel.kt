@@ -24,7 +24,7 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family:
 
 //    val currentChattingUser = userEmail
 
-    val userEmail = "a29733547@gmail.com"
+    val userEmail = "a29733747@gmail.com"
 
     val familyNema = family
 

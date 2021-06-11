@@ -15,8 +15,8 @@ import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthAdapter
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindAdapter
 import com.czerny.smarthomecare.userfamily.FamilyAdapter
-import com.czerny.smarthomecare.userfamily.UserAdapter
 
+//
 //@BindingAdapter("familyInfo")
 //fun bindRecyclerViewWithFamilyList(recyclerView: RecyclerView, SaveDataUserInfoItem: List<FamilyInfo>?) {
 //    SaveDataUserInfoItem?.let {
@@ -28,16 +28,16 @@ import com.czerny.smarthomecare.userfamily.UserAdapter
 //    }
 //}
 
-@BindingAdapter("userInfo")
-fun bindRecyclerViewWithUserList(recyclerView: RecyclerView, SaveDataUserInfoItem: List<UserInfo>?) {
-    SaveDataUserInfoItem?.let {
-        recyclerView.adapter?.apply {
-            when (this) {
-                is UserAdapter -> submitList(it)
-            }
-        }
-    }
-}
+//@BindingAdapter("userInfo")
+//fun bindRecyclerViewWithUserList(recyclerView: RecyclerView, SaveDataUserInfoItem: List<UserInfo>?) {
+//    SaveDataUserInfoItem?.let {
+//        recyclerView.adapter?.apply {
+//            when (this) {
+//                is UserAdapter -> submitList(it)
+//            }
+//        }
+//    }
+//}
 
 @BindingAdapter("healthData")
 fun bindRecyclerViewWithHealthData(recyclerView: RecyclerView, SaveDataHealthItem: List<Health>?) {

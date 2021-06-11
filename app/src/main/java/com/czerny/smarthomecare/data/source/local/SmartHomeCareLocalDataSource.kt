@@ -91,9 +91,9 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     /**--------chatroom--------*/
     override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean> {
@@ -102,6 +102,8 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
     override fun getAllLiveMessage(emails: List<String>, family: String): MutableLiveData<List<ChatRoom>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
     /**--------chatroom--------*/
 
     /**--------add user & family--------*/
