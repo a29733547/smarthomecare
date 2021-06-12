@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="remind_modify_image">#F3B1B1B1</color>
+    <color name="user_familly_welcom">#F3787878</color>
     <color name="text_home_text">#F36C6C6C</color>
     <color name="myPrimary">#A6DAF3</color>
     <color name="chatroom">#FCF4F4F4</color>
