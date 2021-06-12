@@ -2,19 +2,15 @@ package com.czerny.smarthomecare
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 import com.czerny.smarthomecare.databinding.ActivityMainBinding
 import com.czerny.smarthomecare.ext.getVmFactory
+import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
+import com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,15 +28,23 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.homeFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToHomeFragment(getFamilyName))
+                findNavController(R.id.myNavHostFragment).navigate(
+                    NavGraphDirections.navigateToHomeFragment(
+                        getFamilyName
+                    )
+                )
                 return@OnNavigationItemSelectedListener true
             }
             R.id.saveDataFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToSavedataFragment())
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToSavedataFragment(getFamilyName))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.addRemindDialog -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToAddremindDialog(getFamilyName))
+                findNavController(R.id.myNavHostFragment).navigate(
+                    NavGraphDirections.navigateToAddremindDialog(
+                        getFamilyName
+                    )
+                )
                 return@OnNavigationItemSelectedListener true
             }
             R.id.profileFragment -> {
@@ -48,9 +52,13 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.chatRoomFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment(getFamilyName))
+                findNavController(R.id.myNavHostFragment).navigate(
+                    NavGraphDirections.navigateToChatroomFragment(
+                        getFamilyName
+                    )
+                )
                 return@OnNavigationItemSelectedListener true
-                Log.i("getFamilyName","${getFamilyName}")
+                Log.i("getFamilyName", "${getFamilyName}")
 
             }
         }
@@ -69,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
 
         setupBottomNav()
+
 
 
     }

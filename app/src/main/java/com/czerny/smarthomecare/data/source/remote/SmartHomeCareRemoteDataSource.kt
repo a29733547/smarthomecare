@@ -9,6 +9,7 @@ import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.*
 import com.czerny.smarthomecare.data.source.SmartHomeCareDataSource
+import com.czerny.smarthomecare.login.FamilyManger
 import com.czerny.smarthomecare.login.UserManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.coroutines.resume
@@ -75,10 +76,13 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         }
 
 
-    override suspend fun deleteRemind(remind: Remind): Result<Boolean> =
+    override suspend fun deleteRemind(remind: Remind, family: String  ): Result<Boolean> =
         suspendCoroutine { continuation ->
 
-            val articles = FirebaseFirestore.getInstance().collection(PATH_REMIND)
+            val articles = FirebaseFirestore.getInstance()
+                .collection(PATH_FAMILY)
+                .document(family)
+                .collection(PATH_REMIND)
             val document = articles.document(remind.id)
 //        Log.i("czerny","articles.document = ${document}")
 
@@ -230,6 +234,76 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         return liveData
     }
     /** -----------------------get remind date---------------------------*/
+    override suspend fun getSaveRemind(): Result<List<Remind>> = suspendCoroutine { continuation ->
+
+       val familyName = FamilyManger.familyInfo.familyName
+
+        Log.i("getsaveremind","getsaveremind = ${familyName}")
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document()
+            .collection(PATH_REMIND)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Remind>()
+                    for (document in task.result!!) {
+                        Logger.d(document.id + " => " + document.data)
+
+                        val remind = document.toObject(Remind::class.java)
+                        list.add(remind)
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SmartHomeCareApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+    override fun getLiveSaveRemind(): MutableLiveData<List<Remind>> {
+
+        val liveData = MutableLiveData<List<Remind>>()
+
+        val familyName = FamilyManger.familyInfo.familyName
+
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document()
+            .collection(PATH_REMIND)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+
+            .addSnapshotListener { snapshot, exception ->
+
+                Logger.i("addSnapshotListener detect")
+
+                exception?.let {
+                    Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                }
+
+                val list = mutableListOf<Remind>()
+                for (document in snapshot!!) {
+                    Logger.d(document.id + " => " + document.data)
+
+                    val article = document.toObject(Remind::class.java)
+                    list.add(article)
+                }
+
+                liveData.value = list
+            }
+        return liveData
+    }
+
+
+
 
 
     override suspend fun healthModify(health: Health): Result<Boolean> =
@@ -470,6 +544,9 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         suspendCoroutine { continuation ->
             val remindDate = FirebaseFirestore.getInstance().collection(PATH_FAMILY)
             val document = remindDate.document(family).collection(PATH_REMIND).document()
+
+
+            remind.familyName = family
 
             remind.id = document.id
             remind.createdTime = Calendar.getInstance().timeInMillis

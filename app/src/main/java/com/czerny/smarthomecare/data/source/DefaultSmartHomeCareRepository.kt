@@ -13,8 +13,8 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.deleteHealth(health)
     }
 
-    override suspend fun deleteRemind(remind: Remind): Result<Boolean> {
-        return remoteDataSource.deleteRemind(remind)
+    override suspend fun deleteRemind(remind: Remind, family: String ): Result<Boolean> {
+        return remoteDataSource.deleteRemind(remind, family)
     }
 
     override suspend fun getHealth(): Result<List<Health>> {
@@ -48,11 +48,20 @@ class DefaultSmartHomeCareRepository(
     override fun getLiveRemind(family: String): MutableLiveData<List<Remind>> {
         return remoteDataSource.getLiveRemind(family)
     }
+    /**--------get remind data--------*/
+    override suspend fun getSaveRemind(): Result<List<Remind>> {
+        return remoteDataSource.getSaveRemind()
+    }
+    override fun getLiveSaveRemind(): MutableLiveData<List<Remind>> {
+        return remoteDataSource.getLiveSaveRemind()
+    }
+
+
 
     override fun getLiveRemindModify(): MutableLiveData<Remind> {
         return remoteDataSource.getLiveRemindModify()
     }
-    /**--------get remind data--------*/
+
 
     override suspend fun getProfile(): Result<User> {
         return remoteDataSource.getProfile()

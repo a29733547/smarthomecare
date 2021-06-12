@@ -24,7 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class AddRemindDialog : BottomSheetDialogFragment() {
 
     private val viewModel by viewModels<AddRemindViewModel> { getVmFactory(
-        AddRemindDialogArgs.fromBundle(requireArguments()).familyName
+            AddRemindDialogArgs.fromBundle(requireArguments()).familyName
     ) }
 
     private lateinit var binding: DialogAddremindBinding
@@ -46,7 +46,7 @@ class AddRemindDialog : BottomSheetDialogFragment() {
 
         binding.buttonAddremindRemind.setOnClickListener{
 
-            findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog(viewModel.familyNema))
+            findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog(viewModel.familyName))
         }
 
         binding.buttonAddremindHealth.setOnClickListener{

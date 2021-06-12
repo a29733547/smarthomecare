@@ -8,6 +8,10 @@
             name="viewModelHomeItemRemind"
             type="com.czerny.smarthomecare.data.Remind" />
 
+        <variable
+            name="delete"
+            type="com.czerny.smarthomecare.data.FamilyInfo" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

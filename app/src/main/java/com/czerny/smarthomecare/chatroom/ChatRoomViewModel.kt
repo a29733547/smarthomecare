@@ -26,7 +26,7 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family:
 
     val userEmail = "a29733747@gmail.com"
 
-    val familyNema = family
+    val familyName = family
 
 
     val enterMessage = MutableLiveData<String>()

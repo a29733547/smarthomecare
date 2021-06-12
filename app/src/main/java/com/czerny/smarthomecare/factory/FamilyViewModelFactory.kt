@@ -8,6 +8,7 @@ import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindViewModel
+import com.czerny.smarthomecare.savedata.SaveDataViewModel
 
 @Suppress("UNCHECKED_CAST")
 class FamilyViewModelFactory constructor(
@@ -29,6 +30,12 @@ class FamilyViewModelFactory constructor(
 
                 isAssignableFrom(AddRemindEditViewModel::class.java) ->
                     AddRemindEditViewModel(repository, family)
+
+//                isAssignableFrom(SaveDataRemindViewModel::class.java) ->
+//                    SaveDataRemindViewModel(repository, family)
+
+                isAssignableFrom(SaveDataViewModel::class.java) ->
+                    SaveDataViewModel(repository, family)
 
 
                 else ->

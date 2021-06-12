@@ -24,7 +24,11 @@
         android:id="@+id/saveDataFragment"
         android:name="com.czerny.smarthomecare.savedata.SaveDataFragment"
         android:label="SaveDataFragment"
-        tools:layout="@layout/fragment_savedata"/>
+        tools:layout="@layout/fragment_savedata">
+        <argument
+            android:name="familyName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.czerny.smarthomecare.profile.ProfileFragment"
@@ -81,7 +85,6 @@
         android:name="com.czerny.smarthomecare.addremind.AddRemindDialog"
         android:label="AddRemindDialog"
         tools:layout="@layout/dialog_addremind">
-
         <argument
             android:name="familyName"
             app:argType="string" />

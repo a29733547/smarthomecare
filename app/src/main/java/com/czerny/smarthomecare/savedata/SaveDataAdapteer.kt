@@ -6,10 +6,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthFragment
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment
 
-class SaveDataAdapteer(fragmentManager:FragmentManager): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+class SaveDataAdapteer(fragmentManager:FragmentManager, val family: String): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
     override fun getItem(position: Int): Fragment {
         when (position) {
-            0 -> return SaveDataRemindFragment(SaveDataTypeFilter.values()[position])
+            0 -> return SaveDataRemindFragment(SaveDataTypeFilter.values()[position], family)
             else -> return SaveDataHealthFragment(SaveDataTypeFilter.values()[position])
         }
 
@@ -25,4 +25,6 @@ class SaveDataAdapteer(fragmentManager:FragmentManager): FragmentStatePagerAdapt
     override fun getPageTitle(position: Int): CharSequence? {
         return SaveDataTypeFilter.values()[position].value
     }
+
+
 }

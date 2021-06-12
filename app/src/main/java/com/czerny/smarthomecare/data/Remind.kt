@@ -29,7 +29,11 @@ data class Remind(
 
     var eamil: String = "",
     var tag: String = "",
-    val author: Author? = null
+    val author: Author? = null,
+
+    var familyName: String = ""
+
+
 
 
 //    var id: String = "",

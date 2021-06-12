@@ -1,6 +1,7 @@
 package com.czerny.smarthomecare.chatroom
 
 import android.os.Bundle
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -19,6 +20,7 @@ import com.czerny.smarthomecare.MainActivity
 
 import com.czerny.smarthomecare.databinding.FragmentChatroomBinding
 import com.czerny.smarthomecare.ext.getVmFactory
+import com.czerny.smarthomecare.home.HomeFragmentArgs
 
 import com.czerny.smarthomecare.login.UserManager
 
@@ -30,7 +32,7 @@ class ChatRoomFragment : Fragment() {
 
 
     private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory(
-        ChatRoomFragmentArgs.fromBundle(requireArguments()).familyName) }
+        HomeFragmentArgs.fromBundle(requireArguments()).familyName) }
 
     lateinit var binding: FragmentChatroomBinding
 
@@ -66,13 +68,14 @@ class ChatRoomFragment : Fragment() {
         binding.layoutButtonSend.setOnClickListener {
 
 //            viewModel.sendMessage(UserManager.user.userId)
-            viewModel.sendMessage(UserManager.user.email, viewModel.familyNema)
+            viewModel.sendMessage(UserManager.user.email, viewModel.familyName)
 //            viewModel.sendMessage(UserManager.user.id)
             viewModel.enterMessage.value = ""
+
         }
 //
         if (activity is MainActivity) {
-            (activity as MainActivity).getFamilyName = viewModel.familyNema
+            (activity as MainActivity).getFamilyName = viewModel.familyName
         }
 
         return binding.root

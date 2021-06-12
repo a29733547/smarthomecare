@@ -9,7 +9,7 @@ interface SmartHomeCareRepository {
 
     suspend fun deleteHealth(health: Health): Result<Boolean>
 
-    suspend fun deleteRemind(remind: Remind): Result<Boolean>
+    suspend fun deleteRemind(remind: Remind, family: String ): Result<Boolean>
 
     suspend fun getHealth(): Result<List<Health>>
 
@@ -28,6 +28,9 @@ interface SmartHomeCareRepository {
     suspend fun getRemind(family: String): Result<List<Remind>>
     fun getLiveRemind(family: String): MutableLiveData<List<Remind>>
     /**--------get remind data--------*/
+    suspend fun getSaveRemind(): Result<List<Remind>>
+    fun getLiveSaveRemind(): MutableLiveData<List<Remind>>
+
 
     suspend fun getProfile(): Result<User>
 

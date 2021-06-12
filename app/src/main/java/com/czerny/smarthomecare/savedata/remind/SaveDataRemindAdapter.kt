@@ -5,16 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.czerny.smarthomecare.MockData
-import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
-import com.czerny.smarthomecare.databinding.ItemRemindBinding
-import com.czerny.smarthomecare.databinding.ItemSavedataHealthBinding
 import com.czerny.smarthomecare.databinding.ItemSavedataRemindBinding
 
 //20210529 branch test
 
-class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val onClickListener:OnClickListener) :
+class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val onClickListener:OnClickListener,  ) :
     ListAdapter<Remind, RecyclerView.ViewHolder>(DiffCallBack) {
 
     class OnClickListener(val clickListener: (remind: Remind) -> Unit) {
@@ -23,7 +19,7 @@ class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val 
 
     class SaveDataRemindViewHolder(private var binding: ItemSavedataRemindBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(remind: Remind, onClickListener: OnClickListener, viewModel: SaveDataRemindViewModel) {
+        fun bind(remind: Remind, onClickListener: OnClickListener, viewModel: SaveDataRemindViewModel,  ) {
 
 
 
@@ -32,8 +28,10 @@ class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val 
             binding.executePendingBindings()
 
 
+
+
             binding.layoutItemRemindCancel.setOnClickListener{
-                viewModel.deleteRemind(remind)
+                viewModel.deleteRemind(remind, viewModel.getFamily)
             }
 
         }
@@ -66,7 +64,7 @@ class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val 
         when(holder){
             is SaveDataRemindViewHolder
             -> {
-                holder.bind((getItem(position)as Remind), onClickListener, viewModel)
+                holder.bind((getItem(position)as Remind), onClickListener, viewModel,)
             }
         }
     }

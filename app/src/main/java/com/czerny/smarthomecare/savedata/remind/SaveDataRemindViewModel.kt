@@ -1,12 +1,11 @@
 package com.czerny.smarthomecare.savedata.remind
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
@@ -17,8 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository): ViewModel(){
+class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository ): ViewModel(){
 
+    var getFamily = ""
 
     private val _remind = MutableLiveData<List<Remind>>()
     val remind: LiveData<List<Remind>>
@@ -66,25 +66,20 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository):
         Logger.i("------------------------------------")
 
 //        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-//            getLiveRemindResult(family)
+//            getLiveRemindResult()
 //        } else {
-//            getRemindResult(family)
-//
+//            getRemindResult()
 //        }
     }
 
-    fun deleteRemind(remind: Remind) {
-//
-//        if (_author.value == null) {
-//            _error.value = "who r u?"
-//            _refreshStatus.value = false
-//            return
-//        }
+
+    fun deleteRemind(remind: Remind, family: String) {
+
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
-            when (val result = repository.deleteRemind(remind)) {
+            when (val result = repository.deleteRemind(remind, family)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

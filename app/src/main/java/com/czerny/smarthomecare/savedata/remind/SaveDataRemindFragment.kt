@@ -7,23 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Remind
-import com.czerny.smarthomecare.databinding.FragmentHomeBinding
+import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.databinding.FragmentSavedataRemindBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.home.HomeAdapter
-import com.czerny.smarthomecare.home.HomeViewModel
+
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
 
-class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Fragment(){
+class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, private val family: String) : Fragment(){
 
-    private val viewModel by viewModels<SaveDataRemindViewModel> { getVmFactory() }
+    private val viewModel by viewModels<SaveDataRemindViewModel> { getVmFactory(
+    ) }
+
 
     lateinit var binding : FragmentSavedataRemindBinding
 
@@ -42,6 +39,7 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
         })
         binding.recyclerviewSavedataRemind.adapter = saveDataRemindAdapter
 
+
         viewModel.navigateToRemindModify.observe(viewLifecycleOwner, Observer {
             it?.let {
                 findNavController().navigate(SaveDataHealthFragmentDirections.
@@ -51,6 +49,15 @@ class SaveDataRemindFragment(private val saveDataType:SaveDataTypeFilter) : Frag
 
         })
 
+        viewModel.getFamily = family
+
+        viewModel.getLiveRemindResult(family)
+        viewModel.getRemindResult(family)
+
+
+
+//        Log.i("getfamily","getfamily = ${viewModel.getfamily}")
+//        Log.i("getfamily","family = ${family}")
 
         return binding.root
     }

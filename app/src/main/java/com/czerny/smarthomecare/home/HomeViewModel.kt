@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
 
-    val familyNema = family
+    val familyName = family
 
     private val _remind = MutableLiveData<List<Remind>>()
     val remind: LiveData<List<Remind>>
