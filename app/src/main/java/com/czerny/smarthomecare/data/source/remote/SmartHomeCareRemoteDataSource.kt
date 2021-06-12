@@ -341,11 +341,11 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         }
 
 
-    override suspend fun remindModify(remind: Remind): Result<Boolean> =
+    override suspend fun remindModify(remind: Remind, family: String  ): Result<Boolean> =
         suspendCoroutine { continuation ->
 
-            val remindDate = FirebaseFirestore.getInstance().collection(PATH_REMIND)
-            val document = remindDate.document(remind.id)
+            val remindDate = FirebaseFirestore.getInstance().collection(PATH_FAMILY)
+            val document = remindDate.document(family).collection(PATH_REMIND).document(remind.id)
 
             remind.id = document.id
             remind.createdTime = Calendar.getInstance().timeInMillis

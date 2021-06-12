@@ -37,8 +37,8 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.healthModify(health)
     }
 
-    override suspend fun remindModify(remind: Remind): Result<Boolean> {
-        return remoteDataSource.remindModify(remind)
+    override suspend fun remindModify(remind: Remind,  family: String): Result<Boolean> {
+        return remoteDataSource.remindModify(remind, family)
     }
 
     /**--------get remind data--------*/

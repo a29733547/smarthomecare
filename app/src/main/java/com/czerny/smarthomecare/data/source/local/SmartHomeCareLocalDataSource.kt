@@ -61,7 +61,7 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun remindModify(remind: Remind): Result<Boolean> {
+    override suspend fun remindModify(remind: Remind, family: String): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

@@ -1,7 +1,6 @@
 package com.czerny.smarthomecare.savedata.remind
 
 import android.os.Bundle
-import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.czerny.smarthomecare.SmartHomeCareApplication
@@ -20,6 +18,7 @@ import com.czerny.smarthomecare.databinding.FragmentSavedataHealthBinding
 import com.czerny.smarthomecare.ext.getVmFactory
 
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
+import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 
 class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fragment() {

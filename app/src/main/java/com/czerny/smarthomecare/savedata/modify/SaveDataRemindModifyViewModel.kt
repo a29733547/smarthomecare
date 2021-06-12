@@ -16,18 +16,15 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareRepository,
-                                     private val arguments: Remind): ViewModel() {
+                                     private val arguments: Remind, private val family: String): ViewModel() {
+
+    val getFamily = family
 
     private var _remindModify = MutableLiveData<Remind>().apply {
         value = arguments
     }
     val remindModify: LiveData<Remind>
         get() = _remindModify
-
-//    private var _remindModify = MutableLiveData<Remind>()
-//    val remindModify: LiveData<Remind>
-//        get() = _remindModify
-
 
     private var viewModelJob = Job()
 
@@ -47,30 +44,7 @@ class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
 
     private val _leave = MutableLiveData<Boolean>()
 
-//    val name = MutableLiveData<String>()
-//    val date = MutableLiveData<String>()
-//    val hours = MutableLiveData<String>()
-//    val minute = MutableLiveData<String>()
-//    val title = MutableLiveData<String>()
-//    val content = MutableLiveData<String>()
-
-
-//
-//    init {
-//        Logger.i("------------------------------------")
-//        Logger.i("[${this::class.simpleName}]${this}")
-//        Logger.i("------------------------------------")
-//
-//        getLiveRemindModify()
-//
-//    }
-//
-//
-//
-
-
-
-    fun healthRemindFun() {
+    fun healthRemindFun(family: String) {
 
         val remind = remindModify.value?.let {
             Remind(
@@ -84,22 +58,11 @@ class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
             )
         }
 
-//    val remind = Remind(
-//
-//        id = remindModify.value?.id,
-//        name = remindModify.value?.name,
-//        hours = remindModify.value?.hours,
-//        minute = remindModify.value?.minute,
-//        date = remindModify.value?.date,
-//        content = remindModify.value?.content,
-//        title = remindModify.value?.title,
-//    )
-
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = remind?.let { repository.remindModify(it) }) {
+            when (val result = remind?.let { repository.remindModify(it, family) }) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

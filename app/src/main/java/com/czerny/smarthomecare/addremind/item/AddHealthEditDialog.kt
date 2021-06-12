@@ -1,32 +1,19 @@
 package com.czerny.smarthomecare.addremind.item
 
-import android.icu.util.Calendar
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Health
-import com.czerny.smarthomecare.databinding.DialogAddremindBinding
-import com.czerny.smarthomecare.databinding.DialogAddremindEditBinding
 import com.czerny.smarthomecare.databinding.DialogAddremindHealthBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.home.HomeViewModel
-import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.firestore.FirebaseFirestore
-import org.w3c.dom.Document
+import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 import java.util.*
-import kotlin.collections.HashMap
 
 class AddHealthEditDialog : AppCompatDialogFragment() {
 

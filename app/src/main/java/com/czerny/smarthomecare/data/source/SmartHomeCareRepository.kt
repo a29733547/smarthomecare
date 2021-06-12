@@ -21,7 +21,7 @@ interface SmartHomeCareRepository {
 
     suspend fun healthModify(health: Health): Result<Boolean>
 
-    suspend fun remindModify(remind: Remind): Result<Boolean>
+    suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
     fun getLiveRemindModify(): MutableLiveData<Remind>
 
     /**--------get remind data--------*/

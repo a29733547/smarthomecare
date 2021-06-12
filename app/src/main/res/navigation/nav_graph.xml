@@ -75,6 +75,9 @@
         <argument
             android:name="remindKey"
             app:argType="com.czerny.smarthomecare.data.Remind" />
+        <argument
+            android:name="familyName"
+            app:argType="string" />
     </fragment>
 
 

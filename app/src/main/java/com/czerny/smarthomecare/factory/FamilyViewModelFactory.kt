@@ -13,7 +13,7 @@ import com.czerny.smarthomecare.savedata.SaveDataViewModel
 @Suppress("UNCHECKED_CAST")
 class FamilyViewModelFactory constructor(
     private val repository: SmartHomeCareRepository,
-    private val family: String
+    private val family: String,
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =

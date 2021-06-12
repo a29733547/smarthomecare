@@ -10,16 +10,15 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.databinding.FragmentSavedataRemindBinding
 import com.czerny.smarthomecare.ext.getVmFactory
 
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
+import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, private val family: String) : Fragment(){
 
-    private val viewModel by viewModels<SaveDataRemindViewModel> { getVmFactory(
-    ) }
+    private val viewModel by viewModels<SaveDataRemindViewModel> { getVmFactory() }
 
 
     lateinit var binding : FragmentSavedataRemindBinding
@@ -43,7 +42,7 @@ class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, priva
         viewModel.navigateToRemindModify.observe(viewLifecycleOwner, Observer {
             it?.let {
                 findNavController().navigate(SaveDataHealthFragmentDirections.
-                actionSaveDataRemindFragmentToSaveDataRemindModifyFragment(it))
+                actionSaveDataRemindFragmentToSaveDataRemindModifyFragment(it, family))
                 viewModel.onRemindModifylNavigated() //no this can't go back
             }
 

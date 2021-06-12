@@ -20,9 +20,9 @@ fun Fragment.getVmFactory(): ViewModelFactory {
     return ViewModelFactory(repository)
 }
 
-fun Fragment.getVmFactory(remind: Remind): RemindModifyViewModelFactory {
+fun Fragment.getVmFactory(remind: Remind, family: String): RemindModifyViewModelFactory {
     val repository = (requireContext().applicationContext as SmartHomeCareApplication).repository
-    return RemindModifyViewModelFactory(repository, remind)
+    return RemindModifyViewModelFactory(repository, remind, family)
 }
 
 fun Fragment.getVmFactory(family: String): FamilyViewModelFactory {
