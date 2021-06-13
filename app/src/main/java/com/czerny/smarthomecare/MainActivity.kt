@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // 20210612 branch test
 
+// 20210613 crash lytics branch test
+
 class MainActivity : AppCompatActivity() {
     
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
