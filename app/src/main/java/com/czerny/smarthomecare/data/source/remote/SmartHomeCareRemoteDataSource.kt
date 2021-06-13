@@ -42,11 +42,15 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     }
 
 
-    override suspend fun deleteHealth(health: Health): Result<Boolean> =
+    override suspend fun deleteHealth(health: Health, family: String): Result<Boolean> =
         suspendCoroutine { continuation ->
 
-            val articles = FirebaseFirestore.getInstance().collection(PATH_HEALTH)
+            val articles = FirebaseFirestore.getInstance()
+                .collection(PATH_FAMILY)
+                .document(family)
+                .collection(PATH_HEALTH)
             val document = articles.document(health.id)
+
 
             health.id = document.id
 
@@ -115,8 +119,10 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
 
     /** get health date*/
-    override suspend fun getHealth(): Result<List<Health>> = suspendCoroutine { continuation ->
+    override suspend fun getHealth(family: String): Result<List<Health>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document(family)
             .collection(PATH_HEALTH)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .get()
@@ -142,11 +148,13 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
-    override fun getLiveHealth(): MutableLiveData<List<Health>> {
+    override fun getLiveHealth(family: String): MutableLiveData<List<Health>> {
 
         val liveData = MutableLiveData<List<Health>>()
 
         FirebaseFirestore.getInstance()
+            .collection(PATH_FAMILY)
+            .document(family)
             .collection(PATH_HEALTH)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
@@ -272,9 +280,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
         val liveData = MutableLiveData<List<Remind>>()
 
-        val familyName = FamilyManger.familyInfo.familyName
-
-
         FirebaseFirestore.getInstance()
             .collection(PATH_FAMILY)
             .document()
@@ -306,15 +311,13 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
 
 
-    override suspend fun healthModify(health: Health): Result<Boolean> =
+    override suspend fun healthModify(health: Health, family: String): Result<Boolean> =
         suspendCoroutine { continuation ->
-            val remindDate = FirebaseFirestore.getInstance().collection(PATH_HEALTH)
-            val document = remindDate.document()
+            val remindDate = FirebaseFirestore.getInstance().collection(PATH_FAMILY)
+            val document = remindDate.document(family).collection(PATH_HEALTH).document(health.id)
 
             health.id = document.id
-
             health.createdTime = Calendar.getInstance().timeInMillis
-
             document
                 .set(health)
                 .addOnCompleteListener { task ->
@@ -406,7 +409,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             }
     }
 
-    override suspend fun getHealthModify(id: String): Result<Health> =
+    override suspend fun getHealthModify(): Result<Health> =
         suspendCoroutine { continuation ->
 //        override suspend fun getProfile(): Result<List<User>> = suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
@@ -507,10 +510,12 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     }
 
 
-    override suspend fun addHealthData(health: Health): Result<Boolean> =
+    override suspend fun addHealthData(health: Health, family: String): Result<Boolean> =
         suspendCoroutine { continuation ->
-            val remindDate = FirebaseFirestore.getInstance().collection(PATH_HEALTH)
-            val document = remindDate.document()
+            val remindDate = FirebaseFirestore.getInstance().collection(PATH_FAMILY)
+            val document = remindDate.document(family).collection(PATH_HEALTH).document()
+
+            health.familyName = family
 
             health.id = document.id
             health.createdTime = Calendar.getInstance().timeInMillis

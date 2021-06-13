@@ -9,37 +9,40 @@ class DefaultSmartHomeCareRepository(
     private val localDataSource: SmartHomeCareDataSource
 ) : SmartHomeCareRepository {
 
-    override suspend fun deleteHealth(health: Health): Result<Boolean> {
-        return remoteDataSource.deleteHealth(health)
+    override suspend fun deleteHealth(health: Health, family: String): Result<Boolean> {
+        return remoteDataSource.deleteHealth(health, family)
     }
 
     override suspend fun deleteRemind(remind: Remind, family: String ): Result<Boolean> {
         return remoteDataSource.deleteRemind(remind, family)
     }
 
-    override suspend fun getHealth(): Result<List<Health>> {
-        return remoteDataSource.getHealth()
-    }
 
-    override suspend fun getHealthModify(id: String): Result<Health> {
-        return remoteDataSource.getHealthModify(id)
-    }
 
-    override fun getLiveHealth(): MutableLiveData<List<Health>> {
-        return remoteDataSource.getLiveHealth()
+    override suspend fun getHealthModify(): Result<Health> {
+        return remoteDataSource.getHealthModify()
     }
-
     override fun getLiveHealthModify(): MutableLiveData<Health> {
         return remoteDataSource.getLiveHealthModify()
     }
 
-    override suspend fun healthModify(health: Health): Result<Boolean> {
-        return remoteDataSource.healthModify(health)
-    }
 
+    override suspend fun healthModify(health: Health, family: String): Result<Boolean> {
+        return remoteDataSource.healthModify(health, family)
+    }
     override suspend fun remindModify(remind: Remind,  family: String): Result<Boolean> {
         return remoteDataSource.remindModify(remind, family)
     }
+
+
+    /**--------get health data--------*/
+    override fun getLiveHealth(family: String): MutableLiveData<List<Health>> {
+        return remoteDataSource.getLiveHealth(family)
+    }
+    override suspend fun getHealth(family: String): Result<List<Health>> {
+        return remoteDataSource.getHealth(family)
+    }
+    /**--------get health data--------*/
 
     /**--------get remind data--------*/
     override suspend fun getRemind(family: String): Result<List<Remind>> {
@@ -68,8 +71,8 @@ class DefaultSmartHomeCareRepository(
     }
 
     /**--------add data--------*/
-    override suspend fun addHealthData(health: Health): Result<Boolean> {
-        return remoteDataSource.addHealthData(health)
+    override suspend fun addHealthData(health: Health, family: String): Result<Boolean> {
+        return remoteDataSource.addHealthData(health, family)
     }
     override suspend fun addRemindData(remind: Remind, family: String): Result<Boolean> {
         return remoteDataSource.addRemindData(remind, family)

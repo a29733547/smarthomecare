@@ -10,7 +10,7 @@ class SaveDataAdapteer(fragmentManager:FragmentManager, val family: String): Fra
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> return SaveDataRemindFragment(SaveDataTypeFilter.values()[position], family)
-            else -> return SaveDataHealthFragment(SaveDataTypeFilter.values()[position])
+            else -> return SaveDataHealthFragment(SaveDataTypeFilter.values()[position], family)
         }
 
 //        return SaveDataRemindFragment(SaveDataTypeFilter.values()[position])

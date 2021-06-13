@@ -59,7 +59,14 @@
         android:id="@+id/saveDataHealtyModifyFragment"
         android:name="com.czerny.smarthomecare.savedata.modify.SaveDataHealtyModifyFragment"
         android:label="SaveDataHealtyModifyFragment"
-        tools:layout="@layout/fragment_savedata_health_midify"/>
+        tools:layout="@layout/fragment_savedata_health_midify">
+        <argument
+            android:name="healthKey"
+            app:argType="com.czerny.smarthomecare.data.Health" />
+        <argument
+            android:name="familyName"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/saveDataRemindFragment"
@@ -116,6 +123,9 @@
         android:label="addhealthEditDialog"
         tools:layout="@layout/dialog_addremind_health">
 
+        <argument
+            android:name="familyName"
+            app:argType="string" />
     </dialog>
 
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"

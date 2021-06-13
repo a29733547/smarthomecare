@@ -7,22 +7,24 @@ import com.google.firebase.auth.FirebaseUser
 
 interface SmartHomeCareRepository {
 
-    suspend fun deleteHealth(health: Health): Result<Boolean>
-
+    suspend fun deleteHealth(health: Health, family: String): Result<Boolean>
     suspend fun deleteRemind(remind: Remind, family: String ): Result<Boolean>
 
-    suspend fun getHealth(): Result<List<Health>>
 
-    suspend fun getHealthModify(id: String): Result<Health>
 
-    fun getLiveHealth(): MutableLiveData<List<Health>>
 
+    suspend fun healthModify(health: Health, family: String): Result<Boolean>
+    suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
+
+    fun getLiveRemindModify(): MutableLiveData<Remind>
+    suspend fun getHealthModify(): Result<Health>
     fun getLiveHealthModify(): MutableLiveData<Health>
 
-    suspend fun healthModify(health: Health): Result<Boolean>
 
-    suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
-    fun getLiveRemindModify(): MutableLiveData<Remind>
+    /**--------get health data--------*/
+    suspend fun getHealth(family: String): Result<List<Health>>
+    fun getLiveHealth(family: String): MutableLiveData<List<Health>>
+    /**--------get health data--------*/
 
     /**--------get remind data--------*/
     suspend fun getRemind(family: String): Result<List<Remind>>
@@ -35,7 +37,7 @@ interface SmartHomeCareRepository {
     suspend fun getProfile(): Result<User>
 
     /**--------add data--------*/
-    suspend fun addHealthData(health: Health): Result<Boolean>
+    suspend fun addHealthData(health: Health, family: String): Result<Boolean>
     suspend fun addRemindData(remind: Remind, family: String): Result<Boolean>
     /**--------add data--------*/
 

@@ -29,38 +29,35 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
 //            }
 //        }
 
-    override suspend fun deleteHealth(health: Health): Result<Boolean> {
+    override suspend fun deleteHealth(health: Health, family: String): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
     override suspend fun deleteRemind(remind: Remind, family: String  ): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getHealth(): Result<List<Health>> {
+
+    override suspend fun getHealthModify(): Result<Health> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
-    override suspend fun getHealthModify(id: String): Result<Health> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getLiveHealth(): MutableLiveData<List<Health>> {
-        TODO("Not yet implemented")
-    }
-
     override fun getLiveHealthModify(): MutableLiveData<Health> {
         TODO("Not yet implemented")
     }
-//    override fun getLiveHealthModify(): MutableLiveData<List<Health>> {
-//        TODO("Not yet implemented")
-//    }
 
 
-    override suspend fun healthModify(health: Health): Result<Boolean> {
+    /**--------get health data--------*/
+    override fun getLiveHealth(family: String): MutableLiveData<List<Health>> {
+        TODO("Not yet implemented")
+    }
+    override suspend fun getHealth(family: String): Result<List<Health>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+    /**--------get health data--------*/
 
+
+    override suspend fun healthModify(health: Health, family: String): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
     override suspend fun remindModify(remind: Remind, family: String): Result<Boolean> {
         TODO("Not yet implemented")
     }
@@ -80,8 +77,6 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
     override fun getLiveSaveRemind(): MutableLiveData<List<Remind>> {
         TODO("Not yet implemented")
     }
-
-
     override fun getLiveRemindModify(): MutableLiveData<Remind> {
         TODO("Not yet implemented")
     }
@@ -91,7 +86,7 @@ class SmartHomeCareLocalDataSource(val context: Context) : SmartHomeCareDataSour
     }
 
     /**--------add data--------*/
-    override suspend fun addHealthData(health: Health): Result<Boolean> {
+    override suspend fun addHealthData(health: Health, family: String): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
     override suspend fun addRemindData(remind: Remind, family: String): Result<Boolean> {

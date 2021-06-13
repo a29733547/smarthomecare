@@ -49,14 +49,9 @@ class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, priva
         })
 
         viewModel.getFamily = family
-
         viewModel.getLiveRemindResult(family)
         viewModel.getRemindResult(family)
 
-
-
-//        Log.i("getfamily","getfamily = ${viewModel.getfamily}")
-//        Log.i("getfamily","family = ${family}")
 
         return binding.root
     }

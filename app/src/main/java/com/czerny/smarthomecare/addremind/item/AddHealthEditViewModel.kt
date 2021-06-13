@@ -16,7 +16,9 @@ import kotlinx.coroutines.launch
 
 
 
-class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
+class AddHealthEditViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
+
+    val familyNema = family
 
     private var viewModelJob = Job()
 
@@ -30,7 +32,7 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
 //    val id = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val title = MutableLiveData<String>()
-    val healthPlaceData = MutableLiveData<String>()
+    val place = MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val note = MutableLiveData<String>()
     val date = MutableLiveData<String>()
@@ -54,23 +56,23 @@ class AddHealthEditViewModel(private val repository: SmartHomeCareRepository) : 
         _leave.value = needRefresh
     }
 
-    fun addHealthDataFun() {
+    fun addHealthDataFun(family: String) {
         val health = Health(
-            healthPlaceData = healthPlaceData.value!!,
-            title = title.value!!,
-            name = name.value!!,
-            content = content.value!!,
-            note = note.value!!,
-            hours = hours.value!!,
-            minute = minute.value!!,
-            date = date.value!!
+            Place = place.value,
+            title = title.value,
+            name = name.value,
+            content = content.value,
+            note = note.value,
+            hours = hours.value,
+            minute = minute.value,
+            date = date.value
         )
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.addHealthData(health)) {
+            when (val result = repository.addHealthData(health, family)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

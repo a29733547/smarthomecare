@@ -34,7 +34,7 @@ class SaveDataHealthAdapter(val viewModel: SaveDataHealthViewModel, private val 
 
 
             binding.layoutItemHealthCancel.setOnClickListener{
-                viewModel.deleteHealth(health)
+                viewModel.deleteHealth(health, viewModel.getFamily)
             }
 
         }

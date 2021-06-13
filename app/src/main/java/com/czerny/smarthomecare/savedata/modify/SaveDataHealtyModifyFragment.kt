@@ -12,7 +12,10 @@ import com.czerny.smarthomecare.ext.getVmFactory
 
 class SaveDataHealtyModifyFragment : Fragment() {
 
-    private val viewModel by viewModels<SaveDataHealthModifyViewModel> { getVmFactory()
+    private val viewModel by viewModels<SaveDataHealthModifyViewModel> { getVmFactory(
+        SaveDataHealtyModifyFragmentArgs.fromBundle(requireArguments()).healthKey,
+        SaveDataHealtyModifyFragmentArgs.fromBundle(requireArguments()).familyName
+    )
     }
 
     override fun onCreateView(
@@ -22,6 +25,9 @@ class SaveDataHealtyModifyFragment : Fragment() {
         binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.buttonSavedataHealthModifyPush.setOnClickListener {
+            viewModel.healthModifyFun(viewModel.getFamily)
+        }
 
 
 

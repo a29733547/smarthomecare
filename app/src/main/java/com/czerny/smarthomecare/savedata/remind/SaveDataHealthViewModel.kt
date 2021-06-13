@@ -21,8 +21,7 @@ import kotlinx.coroutines.launch
 
 class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) : ViewModel(){
 
-
-
+    var getFamily = ""
 
 
     private val _author = MutableLiveData<Author>()
@@ -84,26 +83,20 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
 
 
 
-        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-            getLiveHealthResult()
-        } else {
-            getHealthResult()
-        }
+//        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
+//            getLiveHealthResult()
+//        } else {
+//            getHealthResult()
+//        }
     }
 
 
-    fun deleteHealth(health: Health) {
-//
-//        if (_author.value == null) {
-//            _error.value = "who r u?"
-//            _refreshStatus.value = false
-//            return
-//        }
+    fun deleteHealth(health: Health, family: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
-            when (val result = repository.deleteHealth(health)) {
+            when (val result = repository.deleteHealth(health, family)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -126,13 +119,13 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
         }
     }
 
-    fun getHealthResult() {
+    fun getHealthResult(family: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            val result = repository.getHealth()
+            val result = repository.getHealth(family)
             Log.i("czerny save data", "save data =${result}")
 
             _health.value = when (result) {
@@ -161,8 +154,8 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
         }
     }
 
-    fun getLiveHealthResult() {
-        liveHealth = repository.getLiveHealth()
+    fun getLiveHealthResult(family: String) {
+        liveHealth = repository.getLiveHealth(family)
         Log.i("czerny", "liveHealth = ${liveHealth}")
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false

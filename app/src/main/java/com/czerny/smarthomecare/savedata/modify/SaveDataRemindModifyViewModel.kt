@@ -87,12 +87,6 @@ class SaveDataRemindModifyViewModel (private val repository: SmartHomeCareReposi
     fun leave(needRefresh: Boolean = false) {
         _leave.value = needRefresh
     }
-//
-//
-//    fun getLiveRemindModify() {
-//        _remindModify = repository.getLiveRemindModify()
-//        _status.value = LoadApiStatus.DONE
-//        _refreshStatus.value = false
-//    }
+
 
 }

@@ -21,7 +21,7 @@ import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
 import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 
-class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fragment() {
+class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter, private val family: String) : Fragment() {
 
 
     private val viewModel by viewModels<SaveDataHealthViewModel> { getVmFactory() }
@@ -48,13 +48,15 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter) : Fra
         viewModel.navigateToHealthModify.observe(viewLifecycleOwner, Observer {
             it?.let {
                 findNavController().navigate(SaveDataHealthFragmentDirections.
-                actionSaveDataHealthFragmentToSaveDataHealtyModifyFragment())
+                actionSaveDataHealthFragmentToSaveDataHealtyModifyFragment(it, viewModel.getFamily))
                 viewModel.onHealthModifylNavigated() //no this can't go back
             }
 
         })
 
-
+        viewModel.getFamily = family
+        viewModel.getLiveHealthResult(family)
+        viewModel.getHealthResult(family)
 
         return binding.root
     }

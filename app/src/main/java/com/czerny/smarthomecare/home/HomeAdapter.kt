@@ -1,21 +1,14 @@
 package com.czerny.smarthomecare.home
-
-import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.databinding.ItemRemindBinding
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.czerny.smarthomecare.chatroom.ChatRoomAdapter
-import com.czerny.smarthomecare.data.Health
+
 import com.czerny.smarthomecare.data.Remind
-import com.czerny.smarthomecare.databinding.ItemRemindCheckBinding
-import com.czerny.smarthomecare.databinding.ItemSavedataRemindBinding
-import com.czerny.smarthomecare.generated.callback.OnClickListener
-import com.czerny.smarthomecare.login.UserManager
+
 import java.util.concurrent.CancellationException
 
 class HomeAdapter(private val onClickListener: OnClickListener) :

@@ -52,6 +52,7 @@ class AddRemindEditDialog : AppCompatDialogFragment() {
             findNavController().navigate(AddRemindEditDialogDirections.actionAddRemindEditDialogToItemAddRemindData())
         }
 
+
         /**---------ItemAddRemindData 選擇日期後會這這邊Log會看到*/
         findNavController().currentBackStackEntry?.savedStateHandle?.
         getLiveData<String>("RemindData")?.observe(viewLifecycleOwner) { data ->

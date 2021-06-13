@@ -8,23 +8,24 @@ interface SmartHomeCareDataSource {
 
     suspend fun login(id: String): Result<Author>
 
-    suspend fun deleteHealth(health: Health): Result<Boolean>
-
+    suspend fun deleteHealth(health: Health, family: String): Result<Boolean>
     suspend fun deleteRemind(remind: Remind, family: String  ): Result<Boolean>
 
-    suspend fun getHealth(): Result<List<Health>>
 
-    suspend fun getHealthModify(id: String): Result<Health>
 
-    fun getLiveHealth(): MutableLiveData<List<Health>>
 
-    fun getLiveHealthModify(): MutableLiveData<Health>
-//    fun getLiveHealthModify(): MutableLiveData<List<Health>>
 
-    suspend fun healthModify(health: Health): Result<Boolean>
-
+    suspend fun healthModify(health: Health, family: String): Result<Boolean>
     suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
+
     fun getLiveRemindModify(): MutableLiveData<Remind>
+    suspend fun getHealthModify(): Result<Health>
+    fun getLiveHealthModify(): MutableLiveData<Health>
+
+    /**--------get health data--------*/
+    fun getLiveHealth(family: String): MutableLiveData<List<Health>>
+    suspend fun getHealth(family: String): Result<List<Health>>
+    /**--------get health data--------*/
 
     /**--------get remind data--------*/
     suspend fun getRemind(family: String): Result<List<Remind>>
@@ -37,7 +38,7 @@ interface SmartHomeCareDataSource {
     suspend fun getProfile(): Result<User>
 
     /**--------add data--------*/
-    suspend fun addHealthData(health: Health): Result<Boolean>
+    suspend fun addHealthData(health: Health, family: String): Result<Boolean>
     suspend fun addRemindData(remind: Remind, family: String): Result<Boolean>
     /**--------add data--------*/
 

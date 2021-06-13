@@ -47,8 +47,8 @@ class ViewModelFactory constructor(
 //                isAssignableFrom(ChatRoomViewModel::class.java) ->
 //                    ChatRoomViewModel(repository)
 
-                isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
-                    SaveDataHealthModifyViewModel(repository)
+//                isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
+//                    SaveDataHealthModifyViewModel(repository)
 
 //                isAssignableFrom(HomeViewModel::class.java) ->
 //                    HomeViewModel(repository)
@@ -59,11 +59,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(SaveDataRemindViewModel::class.java) ->
                     SaveDataRemindViewModel(repository)
 
-                isAssignableFrom(AddHealthEditViewModel::class.java) ->
-                    AddHealthEditViewModel(repository)
-
-//                isAssignableFrom(AddRemindEditViewModel::class.java) ->
-//                    AddRemindEditViewModel(repository)
+//                isAssignableFrom(AddHealthEditViewModel::class.java) ->
+//                    AddHealthEditViewModel(repository)
 
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)

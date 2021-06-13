@@ -22,7 +22,9 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
         setStyle(DialogFragment.STYLE_NO_FRAME, R.style.RemindDialog)
     }
 
-    private val viewModel by viewModels<AddHealthEditViewModel> { getVmFactory() }
+    private val viewModel by viewModels<AddHealthEditViewModel> { getVmFactory(
+        AddHealthEditDialogArgs.fromBundle(requireArguments()).familyName
+    ) }
 
 
     private lateinit var binding: DialogAddremindHealthBinding
@@ -38,6 +40,10 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
         binding.isLiveDataDesign = SmartHomeCareApplication.instance.isLiveDataDesign()
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.buttonHealthEdit.setOnClickListener {
+            viewModel.addHealthDataFun(viewModel.familyNema)
+        }
+
         binding.buttonHealthSelectData.setOnClickListener {
             findNavController().navigate(AddHealthEditDialogDirections.actionAddHealthEditDialogToItemAddRemindData())
         }
@@ -48,35 +54,6 @@ class AddHealthEditDialog : AppCompatDialogFragment() {
             binding.textAddHealthData.text = data
 
         }
-
-//        binding.buttonHealthEdit.setOnClickListener{
-
-//
-//            val user: MutableMap<String, Any> = HashMap()
-//            user["id"] = db.collection("healthDate").document().id
-//            user["createdTime"] = Calendar.getInstance().timeInMillis
-////            user["id"] = viewModel.health.id
-//            user["title"] = viewModel.health.title
-//            user["name"] = viewModel.health.name
-//            user["healthPlaceData"] = viewModel.health.healthPlaceData
-//            user["content"] = viewModel.health.content
-//            user["note"] = viewModel.health.note
-//
-//
-//
-//            db.collection("healthDate")
-//                .add(user)
-//                .addOnSuccessListener { documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.id) }
-//                .addOnFailureListener { e -> Log.w("TAG", "Error adding document", e) }
-//
-//
-//        }
-
-
-
-
-
-        //test brancn
 
         return binding.root
     }

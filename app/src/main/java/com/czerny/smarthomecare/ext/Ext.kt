@@ -22,7 +22,7 @@ fun updateHeaalth(health: Health) {
     val data = hashMapOf(
         "title" to health.title,
         "name" to health.name,
-        "healthPlaceData" to health.healthPlaceData,
+        "healthPlaceData" to health.Place,
         "content" to health.content,
         "note" to health.note
     )
