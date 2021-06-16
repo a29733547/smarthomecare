@@ -4,12 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.czerny.smarthomecare.MockData
+
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
+import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
+import com.czerny.smarthomecare.login.FamilyManger
 import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.util.Logger
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +22,9 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
 
     val familyName = family
+
+    val testfamily = MutableLiveData<FamilyInfo>()
+
 
     private val _remind = MutableLiveData<List<Remind>>()
     val remind: LiveData<List<Remind>>
@@ -56,7 +61,6 @@ class HomeViewModel(private val repository: SmartHomeCareRepository, family: Str
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
-
 
 
         if (SmartHomeCareApplication.instance.isLiveDataDesign()) {

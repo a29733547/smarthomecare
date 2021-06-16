@@ -8,16 +8,11 @@ import com.czerny.smarthomecare.savedata.remind.SaveDataRemindFragment
 
 class SaveDataAdapteer(fragmentManager:FragmentManager, val family: String): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
     override fun getItem(position: Int): Fragment {
-        when (position) {
-            0 -> return SaveDataRemindFragment(SaveDataTypeFilter.values()[position], family)
-            else -> return SaveDataHealthFragment(SaveDataTypeFilter.values()[position], family)
+        return when (position) {
+            0 -> SaveDataRemindFragment(SaveDataTypeFilter.values()[position], family)
+            else -> SaveDataHealthFragment(SaveDataTypeFilter.values()[position], family)
         }
 
-//        return SaveDataRemindFragment(SaveDataTypeFilter.values()[position])
-//        return SaveDataFragment(when (position){
-//            0 -> SaveDataTypeFilter.REMIND
-//            else -> SaveDataTypeFilter.HEALTH
-//        })
     }
 
     override fun getCount() = SaveDataTypeFilter.values().size

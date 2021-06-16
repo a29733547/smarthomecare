@@ -15,11 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
-// 20210612 branch test
-
-// 20210613 crash lytics branch test
-
 class MainActivity : AppCompatActivity() {
     
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
@@ -32,11 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.homeFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(
-                    NavGraphDirections.navigateToHomeFragment(
-                        getFamilyName
-                    )
-                )
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToHomeFragment(getFamilyName))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.saveDataFragment -> {
@@ -44,11 +35,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.addRemindDialog -> {
-                findNavController(R.id.myNavHostFragment).navigate(
-                    NavGraphDirections.navigateToAddremindDialog(
-                        getFamilyName
-                    )
-                )
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToAddremindDialog(getFamilyName))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.profileFragment -> {
@@ -56,11 +43,8 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.chatRoomFragment -> {
-                findNavController(R.id.myNavHostFragment).navigate(
-                    NavGraphDirections.navigateToChatroomFragment(
-                        getFamilyName
-                    )
-                )
+                findNavController(R.id.myNavHostFragment).navigate(NavGraphDirections.navigateToChatroomFragment(getFamilyName))
+
                 return@OnNavigationItemSelectedListener true
                 Log.i("getFamilyName", "${getFamilyName}")
 
@@ -86,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**-----ToolBar visibility Fun-------*/
     fun userFamilyBar() {
         binding.toolbar.visibility = View.GONE
         binding.navView.visibility = View.GONE
@@ -97,13 +82,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.visibility = View.VISIBLE
         binding.navView.visibility = View.VISIBLE
     }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.myNavHostFragment)
-//        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-//    }
-
-
+    /**-----ToolBar visibility Fun-------*/
 
     /**-----botton Navigation fun-------*/
     private fun setupBottomNav() {

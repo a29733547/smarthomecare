@@ -8,8 +8,6 @@ import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.ChatRoom
-import com.czerny.smarthomecare.data.User
-import com.czerny.smarthomecare.data.UserInfo
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.login.UserManager
 import com.czerny.smarthomecare.network.LoadApiStatus
@@ -22,12 +20,7 @@ import kotlinx.coroutines.launch
 
 class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family: String) : ViewModel() {
 
-//    val currentChattingUser = userEmail
-
-    val userEmail = "a29733747@gmail.com"
-
     val familyName = family
-
 
     val enterMessage = MutableLiveData<String>()
 
@@ -70,10 +63,8 @@ class ChatRoomViewModel(private val repository: SmartHomeCareRepository, family:
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-//        getAllLiveMessage(getUserEmails(UserManager.user.userId, userEmail))
         getAllLiveMessage(getUserEmails(UserManager.user.email, ""), family )
         Log.i("czerny","getEmail1 = ${UserManager.user.email}")
-        Log.i("czerny","getEmail2 = ${userEmail}")
     }
 
     fun sendMessage(userId: String, family: String) {

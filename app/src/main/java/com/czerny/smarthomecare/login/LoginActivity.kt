@@ -31,7 +31,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-//class LoginActivity : Fragment() {
 class LoginActivity : AppCompatActivity() {
     val viewModel by viewModels<LoginViewModel> { getVmFactory() }
 
@@ -61,9 +60,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-//    fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        binding = FragmentLoginBinding.inflate(inflater, container, false)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,14 +101,6 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-
-//        binding.button2.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(R.anim.fragment_fade_enter, R.anim.fragment_fade_exit)
-//        }
-
-//        return binding.root
     }
 
 

@@ -6,21 +6,14 @@ import com.google.firebase.auth.FirebaseUser
 
 interface SmartHomeCareDataSource {
 
-    suspend fun login(id: String): Result<Author>
+
 
     suspend fun deleteHealth(health: Health, family: String): Result<Boolean>
     suspend fun deleteRemind(remind: Remind, family: String  ): Result<Boolean>
 
 
-
-
-
     suspend fun healthModify(health: Health, family: String): Result<Boolean>
     suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
-
-    fun getLiveRemindModify(): MutableLiveData<Remind>
-    suspend fun getHealthModify(): Result<Health>
-    fun getLiveHealthModify(): MutableLiveData<Health>
 
     /**--------get health data--------*/
     fun getLiveHealth(family: String): MutableLiveData<List<Health>>
@@ -31,11 +24,10 @@ interface SmartHomeCareDataSource {
     suspend fun getRemind(family: String): Result<List<Remind>>
     fun getLiveRemind(family: String): MutableLiveData<List<Remind>>
     /**--------get remind data--------*/
-    suspend fun getSaveRemind(): Result<List<Remind>>
-    fun getLiveSaveRemind(): MutableLiveData<List<Remind>>
 
 
-    suspend fun getProfile(): Result<User>
+
+    suspend fun getProfile(): Result<Profile>
 
     /**--------add data--------*/
     suspend fun addHealthData(health: Health, family: String): Result<Boolean>
@@ -52,8 +44,6 @@ interface SmartHomeCareDataSource {
     /**--------chatroom--------*/
 
     /**--------add user & family--------*/
-    fun getUserList(): MutableLiveData<List<UserInfo>>
-//    fun getFamilyList(): MutableLiveData<FamilyInfo>
     fun getFamilyList(): MutableLiveData<List<FamilyInfo>>
     suspend fun pushFamily(user: User?): Result<Boolean>
     /**--------add user & family--------*/

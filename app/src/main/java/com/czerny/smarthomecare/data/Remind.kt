@@ -15,11 +15,8 @@ data class Remind(
     var content: String? = null,
     var title: String? = null,
     var createdTime: Long = -1,
-
     var eamil: String = "",
     var tag: String = "",
-    val author: Author? = null,
-
     var familyName: String = ""
 
 ) : Parcelable

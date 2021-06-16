@@ -14,7 +14,6 @@ import com.czerny.smarthomecare.databinding.FragmentSavedataRemindBinding
 import com.czerny.smarthomecare.ext.getVmFactory
 
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, private val family: String) : Fragment(){
 
@@ -31,7 +30,6 @@ class SaveDataRemindFragment(private val saveDataType: SaveDataTypeFilter, priva
         binding.lifecycleOwner = this
 
         binding.recyclerviewSavedataRemind.layoutManager = LinearLayoutManager(context)
-//        binding.recyclerviewSavedataRemind.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
         val saveDataRemindAdapter = SaveDataRemindAdapter(viewModel, SaveDataRemindAdapter.OnClickListener{
             viewModel.navigateToRemindModify(it)

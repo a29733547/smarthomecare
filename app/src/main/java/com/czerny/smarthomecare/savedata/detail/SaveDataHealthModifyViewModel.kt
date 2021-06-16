@@ -1,17 +1,14 @@
-package com.czerny.smarthomecare.savedata.modify
+package com.czerny.smarthomecare.savedata.detail
 
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.Health
-import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
-import com.czerny.smarthomecare.login.UserManager
 import com.czerny.smarthomecare.network.LoadApiStatus
 import com.czerny.smarthomecare.util.Logger
 import kotlinx.coroutines.CoroutineScope

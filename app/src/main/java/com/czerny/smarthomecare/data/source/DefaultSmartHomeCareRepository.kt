@@ -19,12 +19,7 @@ class DefaultSmartHomeCareRepository(
 
 
 
-    override suspend fun getHealthModify(): Result<Health> {
-        return remoteDataSource.getHealthModify()
-    }
-    override fun getLiveHealthModify(): MutableLiveData<Health> {
-        return remoteDataSource.getLiveHealthModify()
-    }
+
 
 
     override suspend fun healthModify(health: Health, family: String): Result<Boolean> {
@@ -52,21 +47,15 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.getLiveRemind(family)
     }
     /**--------get remind data--------*/
-    override suspend fun getSaveRemind(): Result<List<Remind>> {
-        return remoteDataSource.getSaveRemind()
-    }
-    override fun getLiveSaveRemind(): MutableLiveData<List<Remind>> {
-        return remoteDataSource.getLiveSaveRemind()
-    }
 
 
 
-    override fun getLiveRemindModify(): MutableLiveData<Remind> {
-        return remoteDataSource.getLiveRemindModify()
-    }
+//    override fun getLiveRemindModify(): MutableLiveData<Remind> {
+//        return remoteDataSource.getLiveRemindModify()
+//    }
 
 
-    override suspend fun getProfile(): Result<User> {
+    override suspend fun getProfile(): Result<Profile> {
         return remoteDataSource.getProfile()
     }
 
@@ -78,10 +67,6 @@ class DefaultSmartHomeCareRepository(
         return remoteDataSource.addRemindData(remind, family)
     }
     /**--------add data--------*/
-
-//    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> {
-//        return remoteDataSource.postMessage(emails, chatRoom, family)
-//    }
 
     /**--------chatroom--------*/
     override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean> {
@@ -96,12 +81,7 @@ class DefaultSmartHomeCareRepository(
 
 
     /**--------add user & family--------*/
-    override fun getUserList(): MutableLiveData<List<UserInfo>> {
-        return remoteDataSource.getUserList()
-    }
-//    override fun getFamilyList(): MutableLiveData<FamilyInfo>> {
-//        return remoteDataSource.getFamilyList()
-//    }
+
     override fun getFamilyList(): MutableLiveData<List<FamilyInfo>> {
         return remoteDataSource.getFamilyList()
     }

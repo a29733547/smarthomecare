@@ -15,10 +15,8 @@ data class Health(
     var minute: String? = null,
     var date: String? = null,
     var createdTime: Long = -1,
-
     var familyName: String = "",
 
-    var tag: String = "",
-    val author: Author? = null
+
 
 ) : Parcelable

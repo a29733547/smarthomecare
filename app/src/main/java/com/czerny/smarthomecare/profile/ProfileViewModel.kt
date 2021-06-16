@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
+import com.czerny.smarthomecare.data.Profile
 import com.czerny.smarthomecare.data.Result
 import com.czerny.smarthomecare.data.User
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
@@ -18,33 +19,9 @@ import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val repository: SmartHomeCareRepository) : ViewModel() {
 
-//    沒有好像也可以？
-  /*  val profileId = MutableLiveData<String>()
-    val profileNameData = MutableLiveData<String>()
-    val profileBirth = MutableLiveData<String>()
-    val profilYear = MutableLiveData<String>()
-    val profileWeight = MutableLiveData<String>()
-    val profileBlood = MutableLiveData<String>()
-    val profileGenetic = MutableLiveData<String>()
-    val profileAllergy = MutableLiveData<String>()
-    val profileNote = MutableLiveData<String>()
-    val profileFamilyId = MutableLiveData<Int>()
 
-    val usersProfile = User(
-        profileId.value ?: "",
-        profileNameData.value ?: "",
-        profileBirth.value ?: "",
-        profilYear.value ?: "",
-        profileWeight.value ?: "",
-        profileBlood.value ?: "",
-        profileGenetic.value ?: "",
-        profileAllergy.value ?: "",
-        profileNote.value ?: "",
-        profileFamilyId.value ?: 0,
-    )*/
-
-    private val _profile = MutableLiveData<User>()
-    val profile: LiveData<User>
+    private val _profile = MutableLiveData<Profile>()
+    val profile: LiveData<Profile>
         get() = _profile
 
 

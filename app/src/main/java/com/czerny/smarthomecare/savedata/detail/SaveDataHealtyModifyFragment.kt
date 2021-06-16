@@ -1,4 +1,4 @@
-package com.czerny.smarthomecare.savedata.modify
+package com.czerny.smarthomecare.savedata.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -18,7 +18,6 @@ import com.czerny.smarthomecare.databinding.FragmentSavedataHealthBinding
 import com.czerny.smarthomecare.ext.getVmFactory
 
 import com.czerny.smarthomecare.savedata.SaveDataTypeFilter
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 
 class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter, private val family: String) : Fragment() {
@@ -36,10 +35,13 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter, priva
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.recyclerviewSavedataHealth.layoutManager = LinearLayoutManager(context)
+
+        // add recyclerview bottom line
 //        binding.recyclerviewSavedataHealth.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
+
         val saveDataHealthAdapter = SaveDataHealthAdapter(viewModel, SaveDataHealthAdapter.OnClickListener {
-//            viewModel.deleteHealth(it)
+
             viewModel.navigateToHealthModify(it)
 //            Log.i("czerny", "viewModel.deleteHealth(it) = $it")
         })

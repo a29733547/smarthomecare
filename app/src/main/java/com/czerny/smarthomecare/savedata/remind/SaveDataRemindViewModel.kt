@@ -56,20 +56,11 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository )
         _navigateToRemindModify.value = null
     }
 
-
-    /**
-     * Call getRemindResult() on init so we can display status immediately.
-     */
     init {
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-//        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-//            getLiveRemindResult()
-//        } else {
-//            getRemindResult()
-//        }
     }
 
 
@@ -145,7 +136,6 @@ class SaveDataRemindViewModel (private val repository: SmartHomeCareRepository )
     fun navigateToRemindModify(remind: Remind) {
         _navigateToRemindModify.value = remind
     }
-
 
     fun refresh() {
 

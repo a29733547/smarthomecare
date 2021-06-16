@@ -25,8 +25,6 @@ import com.czerny.smarthomecare.home.HomeFragmentArgs
 import com.czerny.smarthomecare.login.UserManager
 
 
-// 20210604 branch test
-
 class ChatRoomFragment : Fragment() {
 
 
@@ -59,7 +57,6 @@ class ChatRoomFragment : Fragment() {
         })
 
 
-//test
 
         if (activity is MainActivity) {
             (activity as MainActivity).mainToolBar("聊天室")
@@ -67,13 +64,14 @@ class ChatRoomFragment : Fragment() {
 
         binding.layoutButtonSend.setOnClickListener {
 
-//            viewModel.sendMessage(UserManager.user.userId)
+
             viewModel.sendMessage(UserManager.user.email, viewModel.familyName)
-//            viewModel.sendMessage(UserManager.user.id)
+
+            // push message -> edit enter message = " "
             viewModel.enterMessage.value = ""
 
         }
-//
+
         if (activity is MainActivity) {
             (activity as MainActivity).getFamilyName = viewModel.familyName
         }

@@ -80,7 +80,6 @@ class ChatRoomAdapter : ListAdapter<ChatRoom, RecyclerView.ViewHolder>(DiffCallB
     override fun getItemViewType(position: Int): Int {
         return when(getItem(position).senderEmail){
 
-//            UserManager.user.userId -> ITEM_VIEW_TYPE_MY
             UserManager.user.email -> ITEM_VIEW_TYPE_MY
 
             else -> ITEM_VIEW_TYPE_FAMILY

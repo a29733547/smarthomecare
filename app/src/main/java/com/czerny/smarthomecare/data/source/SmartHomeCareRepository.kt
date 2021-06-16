@@ -7,19 +7,15 @@ import com.google.firebase.auth.FirebaseUser
 
 interface SmartHomeCareRepository {
 
+    /**--------delete data--------*/
     suspend fun deleteHealth(health: Health, family: String): Result<Boolean>
     suspend fun deleteRemind(remind: Remind, family: String ): Result<Boolean>
-
+    /**--------delete data--------*/
 
 
 
     suspend fun healthModify(health: Health, family: String): Result<Boolean>
     suspend fun remindModify(remind: Remind, family: String ): Result<Boolean>
-
-    fun getLiveRemindModify(): MutableLiveData<Remind>
-    suspend fun getHealthModify(): Result<Health>
-    fun getLiveHealthModify(): MutableLiveData<Health>
-
 
     /**--------get health data--------*/
     suspend fun getHealth(family: String): Result<List<Health>>
@@ -30,18 +26,16 @@ interface SmartHomeCareRepository {
     suspend fun getRemind(family: String): Result<List<Remind>>
     fun getLiveRemind(family: String): MutableLiveData<List<Remind>>
     /**--------get remind data--------*/
-    suspend fun getSaveRemind(): Result<List<Remind>>
-    fun getLiveSaveRemind(): MutableLiveData<List<Remind>>
 
 
-    suspend fun getProfile(): Result<User>
+
+
 
     /**--------add data--------*/
     suspend fun addHealthData(health: Health, family: String): Result<Boolean>
     suspend fun addRemindData(remind: Remind, family: String): Result<Boolean>
     /**--------add data--------*/
 
-//    suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean>
 
     /**--------chatroom--------*/
     suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
@@ -50,13 +44,12 @@ interface SmartHomeCareRepository {
 
 
     /**--------add user & family--------*/
-    fun getUserList(): MutableLiveData<List<UserInfo>>
     fun getFamilyList(): MutableLiveData<List<FamilyInfo>>
-//    fun getFamilyList(): MutableLiveData<FamilyInfo>
     suspend fun pushFamily(user: User?): Result<Boolean>
     /**--------add user & family--------*/
 
 
+    suspend fun getProfile(): Result<Profile>
 
     suspend fun firebaseAuthWithGoogle(idToken: String): Result<FirebaseUser>
 

@@ -3,9 +3,6 @@ package com.czerny.smarthomecare.util
 import android.util.Log
 import com.czerny.smarthomecare.BuildConfig
 
-/**
- * Created by Wayne Chen on 2020-01-15.
- */
 object Logger {
 
     private const val TAG = "Czerny-SmartHomeCare"

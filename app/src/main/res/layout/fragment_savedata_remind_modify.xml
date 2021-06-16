@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModelRemindModify"
-            type="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel" />
+            type="com.czerny.smarthomecare.savedata.detail.SaveDataRemindModifyViewModel" />
         <variable
             name="isLiveDataDesign"
             type="Boolean" />

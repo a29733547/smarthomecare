@@ -26,13 +26,13 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
 
             binding.root.setOnClickListener {
                 onClickListener.onClick(remind)
-
                 if (binding.layoutItemCheck.visibility == View.GONE) {
                     binding.layoutItemCheck.visibility = View.VISIBLE
                 } else {
                     binding.layoutItemCheck.visibility = View.GONE
                 }
             }
+
 
             binding.buttonCheck.setOnClickListener {
                 binding.imageHomeItemYet.visibility = View.INVISIBLE
@@ -50,15 +50,6 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
         }
     }
 
-//    class HomeCheckViewModel(var binding: ItemRemindCheckBinding) :
-//        RecyclerView.ViewHolder(binding.root) {
-//        fun bind(remind: Remind) {
-//            binding.checker = remind
-//
-//            binding.executePendingBindings()
-//        }
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             ITEM_VIEW_TYPE -> HomeViewHolder(
@@ -67,25 +58,14 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
                 )
             )
 
-//            ITEM_VIEW_TYPE_CHECK -> HomeCheckViewModel(
-//                ItemRemindCheckBinding.inflate(
-//                    LayoutInflater.from(parent.context), parent, false
-//                )
-//            )
-
             else -> throw CancellationException("Unknown viewType $viewType")
         }
 
-//        val layoutInflater = LayoutInflater.from(parent.context)
-//        return HomeViewHolder(
-//                ItemRemindBinding.inflate(layoutInflater, parent, false)
-//        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HomeViewHolder -> holder.bind((getItem(position) as Remind), onClickListener)
-//            is HomeCheckViewModel -> holder.bind((getItem(position) as Remind))
         }
 
     }

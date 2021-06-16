@@ -5,14 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.viewModels
 import com.czerny.smarthomecare.databinding.DialogProfileAddBinding
 
 
 
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -40,7 +38,7 @@ class ProfileAddDataDialog : BottomSheetDialogFragment() {
 
 
             /**將資料上傳到firebase*/
-            db.collection("profileDate") //firebase的名字是（）裡面的
+            db.collection("profileDate")
                 .add(user)
                 .addOnSuccessListener { documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.id) }
                 .addOnFailureListener { e -> Log.w("TAG", "Error adding document", e) }

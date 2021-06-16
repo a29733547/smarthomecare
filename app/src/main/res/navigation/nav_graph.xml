@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/saveDataHealtyModifyFragment"
-        android:name="com.czerny.smarthomecare.savedata.modify.SaveDataHealtyModifyFragment"
+        android:name="com.czerny.smarthomecare.savedata.detail.SaveDataHealtyModifyFragment"
         android:label="SaveDataHealtyModifyFragment"
         tools:layout="@layout/fragment_savedata_health_midify">
         <argument
@@ -76,7 +76,7 @@
 
     <fragment
         android:id="@+id/saveDataRemindModifyFragment"
-        android:name="com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragment"
+        android:name="com.czerny.smarthomecare.savedata.detail.SaveDataRemindModifyFragment"
         android:label="SaveDataRemindModifyFragment"
         tools:layout="@layout/fragment_savedata_remind_modify">
         <argument

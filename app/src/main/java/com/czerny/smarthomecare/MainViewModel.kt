@@ -10,10 +10,4 @@ import com.czerny.smarthomecare.util.CurrentFragmentType
 //class MainViewModel : ViewModel() {
     class MainViewModel (private val repository: SmartHomeCareRepository): ViewModel() {
 
-    private val _getRemindTimeData = MutableLiveData<String>()
-    val getRemindTimeData: LiveData<String>
-        get() = _getRemindTimeData
-
-
-
 }

@@ -4,13 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.czerny.smarthomecare.MockData
-import com.czerny.smarthomecare.R
-import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.Health
 
 import com.czerny.smarthomecare.databinding.ItemSavedataHealthBinding

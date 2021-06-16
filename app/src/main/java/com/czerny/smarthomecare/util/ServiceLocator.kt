@@ -11,11 +11,6 @@ import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.data.source.local.SmartHomeCareLocalDataSource
 import com.czerny.smarthomecare.data.source.remote.SmartHomeCareRemoteDataSource
 
-/**
- * Created by Wayne Chen on 2020-01-15.
- *
- * A Service Locator for the [PublisherRepository].
- */
 object ServiceLocator {
 
     @Volatile

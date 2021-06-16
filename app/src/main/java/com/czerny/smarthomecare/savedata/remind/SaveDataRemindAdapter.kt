@@ -10,7 +10,7 @@ import com.czerny.smarthomecare.databinding.ItemSavedataRemindBinding
 
 //20210529 branch test
 
-class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val onClickListener:OnClickListener,  ) :
+class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val onClickListener:OnClickListener ) :
     ListAdapter<Remind, RecyclerView.ViewHolder>(DiffCallBack) {
 
     class OnClickListener(val clickListener: (remind: Remind) -> Unit) {
@@ -19,23 +19,16 @@ class SaveDataRemindAdapter(val viewModel: SaveDataRemindViewModel, private val 
 
     class SaveDataRemindViewHolder(private var binding: ItemSavedataRemindBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(remind: Remind, onClickListener: OnClickListener, viewModel: SaveDataRemindViewModel,  ) {
-
-
+        fun bind(remind: Remind, onClickListener: OnClickListener, viewModel: SaveDataRemindViewModel ) {
 
             binding.root.setOnClickListener { onClickListener.onClick(remind) }
             binding.viewModelItemSaveDataRemind = remind
             binding.executePendingBindings()
 
-
-
-
             binding.layoutItemRemindCancel.setOnClickListener{
                 viewModel.deleteRemind(remind, viewModel.getFamily)
             }
-
         }
-
     }
 
     companion object DiffCallBack : DiffUtil.ItemCallback<Remind>() {

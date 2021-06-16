@@ -1,4 +1,4 @@
-package com.czerny.smarthomecare.savedata.modify
+package com.czerny.smarthomecare.savedata.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.databinding.FragmentSavedataRemindModifyBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.home.HomeFragmentArgs
 
 
 class SaveDataRemindModifyFragment : Fragment() {

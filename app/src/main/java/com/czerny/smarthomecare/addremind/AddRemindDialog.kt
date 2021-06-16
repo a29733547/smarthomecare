@@ -38,19 +38,13 @@ class AddRemindDialog : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
 
-
-
-        //        binding.layoutRemind.startAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_slide_up))
         binding = DialogAddremindBinding.inflate(inflater, container, false)
 
-
         binding.buttonAddremindRemind.setOnClickListener{
-
             findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddRemindEditDialog(viewModel.familyName))
         }
 
         binding.buttonAddremindHealth.setOnClickListener{
-//            Log.d("Hiya", "date=${(activity as MainActivity).data}")
             findNavController().navigate(AddRemindDialogDirections.actionAddRemindDialogToAddhealthEditDialog(viewModel.familyName))
         }
 
@@ -60,10 +54,5 @@ class AddRemindDialog : BottomSheetDialogFragment() {
 
         return binding.root
     }
-
-//    override fun dismiss() {
-//        binding.layoutRemind.startAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_slide_down))
-//        Handler().postDelayed({ super.dismiss() }, 200)
-//    }
 
 }

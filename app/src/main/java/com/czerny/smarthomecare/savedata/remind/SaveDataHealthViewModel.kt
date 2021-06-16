@@ -4,10 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.czerny.smarthomecare.MockData
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
-import com.czerny.smarthomecare.data.Author
+
 import com.czerny.smarthomecare.data.Health
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
 import com.czerny.smarthomecare.network.LoadApiStatus
@@ -24,10 +23,6 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
     var getFamily = ""
 
 
-    private val _author = MutableLiveData<Author>()
-
-    val author: LiveData<Author>
-        get() = _author
 
     private val _health = MutableLiveData<List<Health>>()
     val health: LiveData<List<Health>>
@@ -61,33 +56,11 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
     val navigateToHealthModify: LiveData<Health>
         get() = _navigateToHealthModify
 
-//     Deleted article title for snack bar to show
-    private val _deletedArticleTitle = MutableLiveData<String>()
-
-    val deletedArticleTitle: LiveData<String>
-        get() = _deletedArticleTitle
-
-
-
-    /**
-     * Call getHealthResult() on init so we can display status immediately.
-     */
-//    init {
-//        getHealthResult()
-//
-//    }
     init {
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
 
-
-
-//        if (SmartHomeCareApplication.instance.isLiveDataDesign()) {
-//            getLiveHealthResult()
-//        } else {
-//            getHealthResult()
-//        }
     }
 
 
@@ -168,12 +141,6 @@ class SaveDataHealthViewModel(private val repository: SmartHomeCareRepository) :
     fun onHealthModifylNavigated() {
         _navigateToHealthModify.value = null
     }
-
-//    fun passDeletedTitle(title: String) {
-//        _deletedArticleTitle.value = title
-//    }
-
-
 
     fun refresh() {
 

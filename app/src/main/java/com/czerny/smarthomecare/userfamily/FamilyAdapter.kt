@@ -1,4 +1,5 @@
 package com.czerny.smarthomecare.userfamily
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -21,7 +22,7 @@ class FamilyAdapter(private val onClickListener: OnClickListener ) :
     class FamilyViewHolder(var binding: ItemFamilyListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(familyInfo: FamilyInfo, onClickListener: OnClickListener) {
-            binding.familyInfotest = familyInfo
+            binding.itemFamilyList = familyInfo
 
 
 
@@ -29,7 +30,7 @@ class FamilyAdapter(private val onClickListener: OnClickListener ) :
                 Navigation.createNavigateOnClickListener(
                     UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment(
                         familyInfo.familyName)).onClick(binding.layoutItemFamily)
-
+                Log.i("czerny","familyInfo = ${familyInfo.familyName}")
             }
 
 

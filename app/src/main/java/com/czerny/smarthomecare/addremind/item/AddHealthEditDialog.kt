@@ -12,7 +12,6 @@ import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.databinding.DialogAddremindHealthBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 import java.util.*
 
 class AddHealthEditDialog : AppCompatDialogFragment() {

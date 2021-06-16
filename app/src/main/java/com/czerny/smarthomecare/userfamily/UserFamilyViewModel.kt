@@ -25,13 +25,8 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
     var liveUserInfo = MutableLiveData<List<UserInfo>>()
 
     var liveFamilyInfo = MutableLiveData<List<FamilyInfo>>()
-//    var liveFamilyInfo = MutableLiveData<FamilyInfo>()
 
     val familyName = MutableLiveData<String>()
-
-//    private var _userInfo = MutableLiveData<List<UserInfo>>()
-//    val userInfo: LiveData<List<UserInfo>>
-//        get() = _userInfo
 
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
@@ -73,21 +68,14 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
         Logger.i("------------------------------------")
 
         getProfileResult()
-//        getLiveUserInfoResult()
+
         getLiveFamilyInfoResult()
 
     }
 
-    fun getLiveUserInfoResult() {
-        liveUserInfo = repository.getUserList()
-        Log.i("getLiveUserInfoResult" , "liveUserInfo = ${liveUserInfo}")
-        _status.value = LoadApiStatus.DONE
-        _refreshStatus.value = false
-    }
-
     fun getLiveFamilyInfoResult() {
         liveFamilyInfo = repository.getFamilyList()
-        Log.i("getLiveFamilyInfoResult" , " liveFamilyInfo = ${liveUserInfo}")
+        Log.i("getLiveFamilyInfoResult" , " liveFamilyInfo = ${liveFamilyInfo}")
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }

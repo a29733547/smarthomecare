@@ -3,20 +3,12 @@ package com.czerny.smarthomecare.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-import com.czerny.smarthomecare.data.Author
+
 import com.czerny.smarthomecare.data.Health
 
-import com.czerny.smarthomecare.data.Remind
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
-import com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyViewModel
+import com.czerny.smarthomecare.savedata.detail.SaveDataHealthModifyViewModel
 
-
-/**
- * Created by Wayne Chen on 2020-01-15.
- *
- * Factory for all ViewModels which need [Author].
- */
 @Suppress("UNCHECKED_CAST")
 class HealthModifyViewModelFactory(
     private val repository: SmartHomeCareRepository,

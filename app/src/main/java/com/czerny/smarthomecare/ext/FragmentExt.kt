@@ -11,12 +11,6 @@ import com.czerny.smarthomecare.factory.HealthModifyViewModelFactory
 
 import com.czerny.smarthomecare.factory.RemindModifyViewModelFactory
 
-
-/**
- * Created by Wayne Chen in Jul. 2019.
- *
- * Extension functions for Fragment.
- */
 fun Fragment.getVmFactory(): ViewModelFactory {
     val repository = (requireContext().applicationContext as SmartHomeCareApplication).repository
     return ViewModelFactory(repository)

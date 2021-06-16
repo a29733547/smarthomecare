@@ -3,18 +3,11 @@ package com.czerny.smarthomecare.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.czerny.smarthomecare.MainViewModel
-import com.czerny.smarthomecare.addremind.item.AddHealthEditViewModel
-import com.czerny.smarthomecare.addremind.item.AddRemindEditViewModel
-
-import com.czerny.smarthomecare.chatroom.ChatRoomViewModel
 
 import com.czerny.smarthomecare.data.source.SmartHomeCareRepository
-import com.czerny.smarthomecare.home.HomeViewModel
 import com.czerny.smarthomecare.login.LoginViewModel
 import com.czerny.smarthomecare.profile.ProfileViewModel
 import com.czerny.smarthomecare.profile.add.ProfileAddDataViewModel
-
-import com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel
 
 import com.czerny.smarthomecare.savedata.remind.SaveDataHealthViewModel
 import com.czerny.smarthomecare.savedata.remind.SaveDataRemindViewModel
@@ -22,8 +15,6 @@ import com.czerny.smarthomecare.userfamily.UserFamilyViewModel
 
 
 /**
- * Created by Wayne Chen on 2020-01-15.
- *
  * Factory for all ViewModels.
  */
 @Suppress("UNCHECKED_CAST")
@@ -44,30 +35,17 @@ class ViewModelFactory constructor(
                 isAssignableFrom(MainViewModel::class.java) ->
                     MainViewModel(repository)
 
-//                isAssignableFrom(ChatRoomViewModel::class.java) ->
-//                    ChatRoomViewModel(repository)
-
-//                isAssignableFrom(SaveDataHealthModifyViewModel::class.java) ->
-//                    SaveDataHealthModifyViewModel(repository)
-
-//                isAssignableFrom(HomeViewModel::class.java) ->
-//                    HomeViewModel(repository)
-
                 isAssignableFrom(SaveDataHealthViewModel::class.java) ->
                     SaveDataHealthViewModel(repository)
 
                 isAssignableFrom(SaveDataRemindViewModel::class.java) ->
                     SaveDataRemindViewModel(repository)
 
-//                isAssignableFrom(AddHealthEditViewModel::class.java) ->
-//                    AddHealthEditViewModel(repository)
-
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)
 
                 isAssignableFrom(ProfileAddDataViewModel::class.java) ->
                     ProfileAddDataViewModel(repository)
-
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

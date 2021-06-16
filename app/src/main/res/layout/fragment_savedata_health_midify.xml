@@ -8,7 +8,7 @@
 
         <variable
             name="viewModelHealthModify"
-            type="com.czerny.smarthomecare.savedata.modify.SaveDataHealthModifyViewModel" />
+            type="com.czerny.smarthomecare.savedata.detail.SaveDataHealthModifyViewModel" />
 
         <variable
             name="isLiveDataDesign"

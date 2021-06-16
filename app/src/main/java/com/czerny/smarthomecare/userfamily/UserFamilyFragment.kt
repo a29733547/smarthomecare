@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 
-import androidx.navigation.fragment.findNavController
 import com.czerny.smarthomecare.MainActivity
-import com.czerny.smarthomecare.data.FamilyInfo
 import com.czerny.smarthomecare.databinding.FragmentUserFamilyListBinding
 import com.czerny.smarthomecare.ext.getVmFactory
-import com.czerny.smarthomecare.savedata.modify.SaveDataRemindModifyFragmentArgs
 
 
 class UserFamilyFragment: Fragment() {
@@ -34,17 +30,8 @@ class UserFamilyFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-
-//        val userAdapter = UserAdapter(UserAdapter.OnClickListener{})
-//        binding.recyclerUser.adapter = userAdapter
-
-
         val familyAdapter = FamilyAdapter(FamilyAdapter.OnClickListener{})
         binding.recyclerFamily.adapter = familyAdapter
-
-//        binding.buttonUserFamilyCheck.setOnClickListener {
-//            findNavController().navigate(UserFamilyFragmentDirections.actionUserFamilyFragmentToHomeFragment(getFamilyName))
-//        }
 
         binding.imageFamilyAdd.setOnClickListener {
             viewModel.addFamily()
