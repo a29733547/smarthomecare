@@ -15,6 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
+//20210619 branch test
+
 class MainActivity : AppCompatActivity() {
     
     private val viewModel by viewModels<MainViewModel> { getVmFactory() }
