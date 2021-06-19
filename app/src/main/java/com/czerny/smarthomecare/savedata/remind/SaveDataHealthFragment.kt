@@ -43,7 +43,6 @@ class SaveDataHealthFragment(private val saveDataType: SaveDataTypeFilter, priva
         val saveDataHealthAdapter = SaveDataHealthAdapter(viewModel, SaveDataHealthAdapter.OnClickListener {
 
             viewModel.navigateToHealthModify(it)
-//            Log.i("czerny", "viewModel.deleteHealth(it) = $it")
         })
         binding.recyclerviewSavedataHealth.adapter = saveDataHealthAdapter
 

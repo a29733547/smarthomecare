@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
         binding.recyclerViewHome.layoutManager = LinearLayoutManager(context)
 
-        val homeAdapter = HomeAdapter(HomeAdapter.OnClickListener{
+        val homeAdapter = HomeAdapter(viewModel, HomeAdapter.OnClickListener{
 
         })
         binding.recyclerViewHome.adapter = homeAdapter

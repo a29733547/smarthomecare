@@ -11,7 +11,7 @@ import com.czerny.smarthomecare.data.Remind
 
 import java.util.concurrent.CancellationException
 
-class HomeAdapter(private val onClickListener: OnClickListener) :
+class HomeAdapter(val viewModel: HomeViewModel, private val onClickListener: OnClickListener) :
     ListAdapter<Remind, RecyclerView.ViewHolder>(DiffCallBack) {
 
 
@@ -21,7 +21,7 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
 
     class HomeViewHolder(var binding: ItemRemindBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(remind: Remind, onClickListener: OnClickListener) {
+        fun bind(remind: Remind, onClickListener: OnClickListener, viewModel: HomeViewModel) {
             binding.viewModelHomeItemRemind = remind
 
             binding.root.setOnClickListener {
@@ -37,7 +37,12 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
             binding.buttonCheck.setOnClickListener {
                 binding.imageHomeItemYet.visibility = View.INVISIBLE
                 binding.imageHomeItemOk.visibility = View.VISIBLE
+
+
+
+
             }
+
             binding.buttonCancel.setOnClickListener {
                 binding.imageHomeItemYet.visibility = View.VISIBLE
                 binding.imageHomeItemOk.visibility = View.INVISIBLE
@@ -65,9 +70,8 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HomeViewHolder -> holder.bind((getItem(position) as Remind), onClickListener)
+            is HomeViewHolder -> holder.bind((getItem(position) as Remind), onClickListener, viewModel)
         }
-
     }
 
     companion object DiffCallBack : DiffUtil.ItemCallback<Remind>() {
