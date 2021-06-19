@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
     var getFamilyName : String = ""
 
     /**-----botton Navigation fun-------*/
