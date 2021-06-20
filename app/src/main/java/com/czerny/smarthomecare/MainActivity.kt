@@ -83,9 +83,11 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
 
+
+
         setupBottomNav()
 
-
+        binding.buttonNotify.visibility = View.GONE
 
         createNotificationChannel()
 
@@ -96,9 +98,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Title")
-            .setContentText("Content")
-            .setSmallIcon(R.drawable.ic_android_black_24dp)
+            .setContentTitle("關心家人也關心自己 d(^＿^)b ")
+            .setContentText("觀看一下家人狀況")
+            .setSmallIcon(R.drawable.notify_image)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .build()
@@ -133,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         binding.textToolbarTitle.text = newTitle
         binding.toolbar.visibility = View.VISIBLE
         binding.navView.visibility = View.VISIBLE
+        binding.buttonNotify.visibility = View.VISIBLE
     }
     /**-----ToolBar visibility Fun-------*/
 

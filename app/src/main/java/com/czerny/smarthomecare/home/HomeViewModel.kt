@@ -1,16 +1,15 @@
 package com.czerny.smarthomecare.home
 
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Intent
+import android.content.Context
+import android.graphics.Color
 import android.os.Build
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.czerny.smarthomecare.MainActivity
 import com.czerny.smarthomecare.R
 import com.czerny.smarthomecare.SmartHomeCareApplication
 import com.czerny.smarthomecare.data.FamilyInfo
@@ -120,6 +119,7 @@ class HomeViewModel(private val repository: SmartHomeCareRepository, family: Str
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }
+
 
 
 }

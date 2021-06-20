@@ -27,14 +27,13 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
     //2021 0607 branch test
 
     private const val PATH_FAMILY_INFO = "familyInfo"
-    private const val PATH_USER_INFO = "userInfo"
     private const val PATH_HEALTH = "healthData"
     private const val PATH_REMIND = "remindData"
     private const val PATH_PROFILE = "profileDate"
     private const val KEY_CREATED_TIME = "createdTime"
-    private const val PATH_CHATLIST = "chatList"
     private const val PATH_FAMILY = "family"
-    private const val PATH_USERS = "users"
+    private const val PATH_CHATROOM = "chatroom"
+
 
 
 
@@ -86,7 +85,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
                 .document(family)
                 .collection(PATH_REMIND)
             val document = articles.document(remind.id)
-//        Log.i("czerny","articles.document = ${document}")
 
             remind.id = document.id
 
@@ -410,104 +408,15 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         }
 
 
-//    override suspend fun postMessage(emails: List<String>, chatRoom: ChatRoom, family: String): Result<Boolean> =
-//        suspendCoroutine { continuation ->
-//
-//            val chat = FirebaseFirestore.getInstance()
-//                .collection("family")
-//
-//
-//                    chat.document("NaNSjGX9Ltf7jTE0Ovji")
-//                        .collection("chatroom")
-//
-//                .get()
-//                .addOnSuccessListener { result ->
-//                    val documentId = chat.document("NaNSjGX9Ltf7jTE0Ovji")
-////                    val documentId = chat.document(result.documents[0].id)
-//                    documentId
-//                        .update(
-//                            "latestTime",
-//                            Calendar.getInstance().timeInMillis,
-//                            "latestMessage",
-//                            chatRoom.message
-//                        )
-//                }
-//                .continueWithTask { task ->
-//                    if (!task.isSuccessful) {
-//                        if (task.exception != null) {
-//                            task.exception?.let {
-//                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                                continuation.resume(Result.Error(it))
-//                            }
-//                        } else {
-//                            continuation.resume(
-//                                Result.Fail(
-//                                    SmartHomeCareApplication.appContext.getString(
-//                                        R.string.you_shall_not_pass
-//                                    )
-//                                )
-//                            )
-//                        }
-//                    }
-//
-//                    task.result?.let {
-//                        val documentId2 =
-////                            chat.document(it.documents[0].id).collection("chatroom").document()
-//                            chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").document()
-//
-//                        chatRoom.createdTime = Calendar.getInstance().timeInMillis
-//                        chatRoom.id = documentId2.id
-//
-////                        chat.document(it.documents[0].id).collection("chatroom").add(chatRoom)
-//                        chat.document("NaNSjGX9Ltf7jTE0Ovji").collection("chatroom").add(chatRoom)
-//
-//
-//                    }
-//
-//
-//                }
-//                .addOnCompleteListener { taskTwo ->
-//                    if (taskTwo.isSuccessful) {
-//                        Logger.i("Chatroom: $chatRoom")
-//
-//                        continuation.resume(Result.Success(true))
-//                    } else {
-//                        taskTwo.exception?.let {
-//
-//                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                            continuation.resume(Result.Error(it))
-//                            return@addOnCompleteListener
-//                        }
-//                        continuation.resume(
-//                            Result.Fail(
-//                                SmartHomeCareApplication.appContext.getString(
-//                                    R.string.you_shall_not_pass
-//                                )
-//                            )
-//                        )
-//                    }
-//
-//                }
-//        }
-
-
-
-
-
     /**------------------*/
 
     override suspend fun postMessage(userId: String, message: String, family: String): Result<Boolean>
     = suspendCoroutine { continuation ->
 
         val ref = FirebaseFirestore.getInstance()
-            .collection("family")
+            .collection(PATH_FAMILY)
             .document(family)
-//            .document("NaNSjGX9Ltf7jTE0Ovji")
-            .collection("chatroom")
-
-//            chatRoom.id = chat.id
-//            chatRoom.createdTime = Calendar.getInstance().timeInMillis
-//        val userName = UserManager.user.userName
+            .collection(PATH_CHATROOM)
         val userName = UserManager.user.name
 
         val document = ref
@@ -550,18 +459,11 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
         val liveData = MutableLiveData<List<ChatRoom>>()
 
-//       val chat = FirebaseFirestore.getInstance()
-//            .collection("family")
-//        chat.whereIn("attendees", listOf(emails, emails.reversed()))
-//            chat.document(emails[0])
 
         FirebaseFirestore.getInstance()
-            .collection("family")
+            .collection(PATH_FAMILY)
             .document(family)
-//            .document("NaNSjGX9Ltf7jTE0Ovji")
-
-
-            .collection("chatroom")
+            .collection(PATH_CHATROOM)
             .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
             .addSnapshotListener { snapshot, exception ->
 
@@ -587,56 +489,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
 
     /**------------------*/
 
-//    override fun getAllLiveMessage(emails: List<String>): MutableLiveData<List<ChatRoom>> {
 //
-//        val liveData = MutableLiveData<List<ChatRoom>>()
-//
-//        val chat = FirebaseFirestore.getInstance().collection("family")
-//        chat.whereIn("attendees", listOf(emails, emails.reversed()))
-//            .get()
-//            .addOnCompleteListener { task ->
-//                if (!task.isSuccessful) {
-//                    task.exception?.let {
-//                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                        return@addOnCompleteListener
-//                    }
-//                }
-//
-//                task.result?.let {
-//                    chat.document("NaNSjGX9Ltf7jTE0Ovji")
-////                    chat.document(it.documents[0].id)
-//                        .collection("chatroom")
-//                        .orderBy(KEY_CREATED_TIME)
-//                        .addSnapshotListener { snapshot, exception ->
-//                            Logger.i("addSnapshotListener detect")
-//
-//                            if (snapshot != null) {
-//                                Log.d("outbounder", "snapshot = ${snapshot.documents}")
-//                            } else {
-//                                Log.d("outbounder", "snapshot = null")
-//                            }
-//
-//
-//                            exception?.let {
-//                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                            }
-//
-//                            val list = mutableListOf<ChatRoom>()
-//
-//                            for (document in snapshot!!) {
-//                                Logger.d(document.id + " => " + document.data)
-//                                Log.d("outbounder", "${document.data}")
-//                                val message = document.toObject(ChatRoom::class.java)
-//                                list.add(message)
-//                            }
-//
-//                            liveData.value = list
-//                            Logger.w("liveData.value = ${liveData.value}")
-//                        }
-//                }
-//            }
-//        return liveData
-//    }
 
 
 
@@ -744,7 +597,6 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
         val liveData = MutableLiveData<List<FamilyInfo>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_FAMILY_INFO)
-//            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
 
                 Logger.i("addSnapshotListener detect")
@@ -770,10 +622,7 @@ object SmartHomeCareRemoteDataSource : SmartHomeCareDataSource {
             = suspendCoroutine { continuation ->
 
         val ref = FirebaseFirestore.getInstance()
-            .collection("familyInfo")
-//            .document()
-//            .collection("chatroom")
-
+            .collection(PATH_FAMILY_INFO)
         if (user != null) {
             user.createdTime = Calendar.getInstance().timeInMillis
         }

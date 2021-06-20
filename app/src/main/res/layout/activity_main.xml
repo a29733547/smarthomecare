@@ -72,15 +72,16 @@
             app:navGraph="@navigation/nav_graph"
             tools:layout="@layout/fragment_home" />
 
-        <Button
+        <ImageView
             android:id="@+id/button_notify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/notify_image"
+            app:tint="@color/chatroom" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
