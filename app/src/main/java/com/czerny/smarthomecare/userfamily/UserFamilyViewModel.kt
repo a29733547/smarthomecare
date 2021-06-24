@@ -22,8 +22,6 @@ class UserFamilyViewModel (private val repository: SmartHomeCareRepository) : Vi
         get() = _profile
 
 
-    var liveUserInfo = MutableLiveData<List<UserInfo>>()
-
     var liveFamilyInfo = MutableLiveData<List<FamilyInfo>>()
 
     val familyName = MutableLiveData<String>()

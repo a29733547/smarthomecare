@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         setupBottomNav()
 
-        binding.buttonNotify.visibility = View.GONE
+
 
         createNotificationChannel()
 
@@ -128,6 +128,7 @@ class MainActivity : AppCompatActivity() {
     fun userFamilyBar() {
         binding.toolbar.visibility = View.GONE
         binding.navView.visibility = View.GONE
+        binding.buttonNotify.visibility = View.GONE
     }
 
     fun mainToolBar(newTitle: String) {
