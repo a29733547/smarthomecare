@@ -33,3 +33,18 @@
 * **Design Patterns**: MVVM, Singleton, Observer
 * **Jetpack**: Data Binding, Navigation, LiveData, ViewMode, Notificatino, Paging
 * **Tools**: Firebase, Firebase Cloud, Google Sign In 
+
+## 系統需求
+* Android 10+ (Android SDK 29+)
+* Android Studio 4.0+
+
+## 版本
+* 1.01
+
+## 聯絡方式
+* a29733547@gmail.com
+
+
+
+
+
