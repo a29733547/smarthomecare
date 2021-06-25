@@ -1,3 +1,4 @@
+
 # Smart Home Care - 智慧家庭照護
 
 [<img src="https://i.imgur.com/I58bWLd.png" width="200">](https://play.google.com/store/apps/details?id=com.czerny.smarthomecare)
@@ -8,24 +9,24 @@
 
 * 建立或加入家庭群組，可讓家庭裡不同使用者共同編輯資料
 
-![R01](https://user-images.githubusercontent.com/77201717/123233798-f3b54880-d50c-11eb-9b58-b8b7531b962b.png)
+![R01-removebg-preview](https://user-images.githubusercontent.com/77201717/123380452-09d11080-d5c2-11eb-92ec-5950af9c4a73.png)
 
 * 進入後會先看到提醒資訊，讓每個家庭成員知道受關心的長輩資訊；
 * 點選新增按鈕後完成填寫，即可儲存資料並顯現在提醒資訊頁面
 
-![R02](https://user-images.githubusercontent.com/77201717/123260156-d3df4e00-d527-11eb-96f5-baf7ac2cd195.png)
-![R06](https://user-images.githubusercontent.com/77201717/123260213-e5c0f100-d527-11eb-9e6e-b58dd029bc7b.png)
+![R02-removebg-preview](https://user-images.githubusercontent.com/77201717/123380548-2a00cf80-d5c2-11eb-9973-30229e76a851.png)
+![R06-removebg-preview](https://user-images.githubusercontent.com/77201717/123380579-3553fb00-d5c2-11eb-9245-5c5b03dc35f7.png)
 
 * 另外填寫過的資料會自動儲存到家庭紀錄，並讓不同使用者共同編輯及查看資料
 
-![R03](https://user-images.githubusercontent.com/77201717/123296070-e6b64a80-d548-11eb-96d4-bcfd74e1768f.png)
-![R04](https://user-images.githubusercontent.com/77201717/123260344-0a1ccd80-d528-11eb-85aa-60bf3dc82a55.png)
+![R03-removebg-preview](https://user-images.githubusercontent.com/77201717/123380696-57e61400-d5c2-11eb-8edc-bf20891b974d.png)
+![R04-removebg-preview](https://user-images.githubusercontent.com/77201717/123380731-66343000-d5c2-11eb-8773-d1034ae02424.png)
 
 * 透過家庭聊天室讓您即時與家人互動
 * 有了Notification讓您可在第一時間快速回到App
 
-![R05](https://user-images.githubusercontent.com/77201717/123260541-42241080-d528-11eb-855d-35410a80f71d.png)
-![R11](https://user-images.githubusercontent.com/77201717/123260777-8dd6ba00-d528-11eb-826e-7907047f47bd.png)
+![R05-removebg-preview](https://user-images.githubusercontent.com/77201717/123380756-6d5b3e00-d5c2-11eb-8826-21765ccc7fac.png)
+![R11-removebg-preview](https://user-images.githubusercontent.com/77201717/123380785-73511f00-d5c2-11eb-98d2-d058196c573c.png)
 
 ## 實用技術
 * **Language**: Kotlin
@@ -43,6 +44,7 @@
 
 ## 聯絡方式
 * a29733547@gmail.com
+
 
 
 
